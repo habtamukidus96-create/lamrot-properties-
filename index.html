@@ -7,82 +7,113 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        body { background-color: #0a0a0a; color: #ffffff; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
-        .gold-text { color: #d4af37; }
-        .gold-border { border-color: #d4af37; }
-        .gradient-overlay { background: linear-gradient(to bottom, rgba(0,0,0,0.3), rgba(0,0,0,0.9)); }
+        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600&display=swap');
+        
+        body { 
+            background-color: #0d0d0d; 
+            color: #ffffff; 
+            font-family: 'Inter', sans-serif; 
+        }
+        .serif { font-family: 'Playfair Display', serif; }
+        .gold-text { color: #c5a059; }
+        .gold-border { border-color: #c5a059; }
+        .gold-bg { background-color: #c5a059; }
+        .gradient-overlay { 
+            background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0) 100%); 
+        }
+        .profile-frame {
+            border: 1px solid #c5a059;
+            box-shadow: 20px -20px 0px -5px rgba(197, 160, 89, 0.1);
+        }
     </style>
 </head>
-<body>
+<body class="antialiased">
 
-    <header class="p-6 flex justify-between items-center max-w-6xl mx-auto">
-        <div class="flex gap-4 text-xl gold-text">
-            <i class="fab fa-facebook"></i>
-            <i class="fab fa-instagram"></i>
-            <i class="fab fa-tiktok"></i>
-            <i class="fab fa-telegram"></i>
+    <header class="p-6 flex justify-between items-center max-w-6xl mx-auto border-b border-white/10">
+        <div class="flex gap-5 text-lg gold-text">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-tiktok"></i></a>
+            <a href="#"><i class="fab fa-telegram-plane"></i></a>
         </div>
         <div class="text-center">
-            <h1 class="text-2xl font-bold tracking-widest uppercase">TEMER PROPERTIES</h1>
-            <p class="text-xs gold-text">ተምር ሪል እስቴት</p>
+            <h1 class="serif text-2xl font-bold tracking-[0.2em] uppercase">TEMER PROPERTIES</h1>
+            <p class="text-[10px] gold-text tracking-[0.3em] mt-1">ተምር ሪል እስቴት</p>
         </div>
-        <div class="text-2xl"><i class="fas fa-bars"></i></div>
+        <div class="text-2xl cursor-pointer"><i class="fas fa-bars"></i></div>
     </header>
 
-    <section class="relative px-6 py-12 max-w-6xl mx-auto flex flex-col md:flex-row items-center gap-8">
-        <div class="relative w-64 h-80 rounded-lg overflow-hidden border-2 gold-border shadow-2xl shadow-yellow-900/20">
-             <img src="YOUR_PROFILE_IMAGE_URL" alt="Profile" class="w-full h-full object-cover">
+    <section class="relative px-6 py-16 max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-12">
+        <div class="relative w-72 h-80 flex-shrink-0">
+            <img src="mititi.jpg" alt="Professional Profile" class="profile-frame w-full h-full object-cover rounded-sm">
         </div>
-        <div class="text-center md:text-left flex-1">
-            <h2 class="text-2xl mb-4 Amharic-font">ጥራት ቤቶች ወርክመሪ ቅንጡ መኖሪያን...</h2>
-            <p class="italic text-gray-400 text-lg">"Philosophy is the philosophy of ensuring the property listings in Addis Ababa."</p>
+        <div class="text-center md:text-left">
+            <h2 class="serif text-3xl mb-6 leading-relaxed">ጥራት ቤቶች ወርክመሪ ቅንጡ መኖሪያን <br><span class="gold-text italic text-2xl">ዕድልዎን ዛሬውኑ ነው፡ ባርሶን ያድቁ</span></h2>
+            <div class="h-px w-20 gold-bg mb-6 mx-auto md:mx-0"></div>
+            <p class="italic text-gray-400 text-lg serif max-w-md">"Philosophy is the philosophy of ensuring the property listings in Addis Ababa."</p>
         </div>
     </section>
 
-    <main class="px-6 py-12 max-w-6xl mx-auto">
-        <h3 class="text-center text-3xl gold-text uppercase tracking-widest mb-12">Temer Properties Portfolio</h3>
+    <main class="px-6 py-16 max-w-6xl mx-auto">
+        <h3 class="text-center serif text-3xl gold-text uppercase tracking-[0.25em] mb-16">Portfolio</h3>
         
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div class="relative rounded-2xl overflow-hidden border border-gray-800 bg-zinc-900 shadow-xl">
-                <img src="PROPERTY_IMAGE_1" class="w-full h-64 object-cover">
-                <div class="absolute inset-0 gradient-overlay flex flex-col justify-end p-6 text-center">
-                    <p class="text-xl font-bold">በ500,000 ብር</p>
-                    <p class="text-sm gold-text">Property Details</p>
-                    <p class="text-xs text-gray-400">Cormorant Addis</p>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+            <div class="group relative rounded-sm overflow-hidden border border-white/5 transition-transform duration-500 hover:scale-[1.02]">
+                <img src="img1.jpg" class="w-full h-[450px] object-cover">
+                <div class="absolute inset-0 gradient-overlay flex flex-col justify-end p-8 text-center">
+                    <p class="text-2xl font-light tracking-widest mb-1">በ500,000 ብር</p>
+                    <div class="w-12 h-px gold-bg mx-auto mb-3"></div>
+                    <p class="text-xs gold-text uppercase tracking-widest mb-1">Property Details</p>
+                    <p class="text-[10px] text-gray-400 uppercase tracking-widest">Cormorant Addis</p>
                 </div>
             </div>
 
-            <div class="relative rounded-2xl overflow-hidden border border-gray-800 bg-zinc-900 shadow-xl">
-                <img src="PROPERTY_IMAGE_2" class="w-full h-64 object-cover">
-                <div class="absolute inset-0 gradient-overlay flex flex-col justify-end p-6 text-center">
-                    <p class="text-xl font-bold">በ500,000 ብር</p>
-                    <p class="text-sm gold-text">Property Details</p>
-                    <p class="text-xs text-gray-400">Cormorant Ababa</p>
+            <div class="group relative rounded-sm overflow-hidden border border-white/5 transition-transform duration-500 hover:scale-[1.02]">
+                <img src="img2.jpg" class="w-full h-[450px] object-cover">
+                <div class="absolute inset-0 gradient-overlay flex flex-col justify-end p-8 text-center">
+                    <p class="text-2xl font-light tracking-widest mb-1">በ500,000 ብር</p>
+                    <div class="w-12 h-px gold-bg mx-auto mb-3"></div>
+                    <p class="text-xs gold-text uppercase tracking-widest mb-1">Property Details</p>
+                    <p class="text-[10px] text-gray-400 uppercase tracking-widest">Cormorant Ababa</p>
                 </div>
             </div>
 
-            <div class="relative rounded-2xl overflow-hidden border border-gray-800 bg-zinc-900 shadow-xl">
-                <img src="PROPERTY_IMAGE_3" class="w-full h-64 object-cover">
-                <div class="absolute inset-0 gradient-overlay flex flex-col justify-end p-6 text-center">
-                    <p class="text-xl font-bold">በ500,000 ብር</p>
-                    <p class="text-sm gold-text">Property Details</p>
-                    <p class="text-xs text-gray-400">Cormorant Boston</p>
+            <div class="group relative rounded-sm overflow-hidden border border-white/5 transition-transform duration-500 hover:scale-[1.02]">
+                <img src="img3.jpg" class="w-full h-[450px] object-cover">
+                <div class="absolute inset-0 gradient-overlay flex flex-col justify-end p-8 text-center">
+                    <p class="text-2xl font-light tracking-widest mb-1">በ500,000 ብር</p>
+                    <div class="w-12 h-px gold-bg mx-auto mb-3"></div>
+                    <p class="text-xs gold-text uppercase tracking-widest mb-1">Property Details</p>
+                    <p class="text-[10px] text-gray-400 uppercase tracking-widest">Cormorant Boston</p>
                 </div>
             </div>
         </div>
     </main>
 
-    <footer class="bg-zinc-950 border-t border-zinc-800 py-10 px-6">
-        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
-            <div class="flex items-center gap-2">
-                <i class="fas fa-phone gold-text"></i>
-                <span>+251 912 643 473</span>
+    <section class="bg-zinc-900/30 py-20 px-6 border-y border-white/5">
+        <div class="max-w-4xl mx-auto text-center">
+            <h4 class="serif text-2xl gold-text mb-8 tracking-widest">ABOUT US</h4>
+            <div class="grid md:grid-cols-2 gap-12 text-sm text-gray-400 leading-relaxed text-justify">
+                <p>We are dedicated to providing premium real estate solutions in the heart of Addis Ababa, focusing on high-end architecture and unparalleled living experiences for our exclusive clientele.</p>
+                <p>ጥራት ቤቶች ወርክመሪ ትላንት መነሻነት ጉዞዎ ዛሬም ነገም ደምቆ እንዲቀጥል ይረዳናል! እኛን ይምረጡ።</p>
             </div>
-            <div class="flex items-center gap-2">
-                <i class="fas fa-envelope gold-text"></i>
-                <span>lamrothabtamu8@gmail.com</span>
+        </div>
+    </section>
+
+    <footer class="py-12 px-6">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8 border-t border-white/10 pt-10">
+            <div class="flex items-center gap-3">
+                <i class="fas fa-phone-alt gold-text"></i>
+                <span class="tracking-widest text-sm">+251 912 643 473</span>
             </div>
-            <div class="text-gray-500">Quick-links</div>
+            <div class="flex items-center gap-3">
+                <i class="far fa-envelope gold-text"></i>
+                <span class="tracking-widest text-sm lowercase">lamrothabtamu8@gmail.com</span>
+            </div>
+            <div class="text-[10px] uppercase tracking-[0.4em] text-gray-500">Quick-links</div>
+        </div>
+        <div class="text-center mt-12 text-[10px] text-gray-600 uppercase tracking-widest">
+            &copy; 2026 Temer Properties. All Rights Reserved.
         </div>
     </footer>
 
