@@ -19,7 +19,7 @@
       background-color: #0b0c10; /* Obsidian Black */
       color: #ffffff;
       font-family: 'Helvetica Neue', Arial, sans-serif;
-      overflow-x: hidden; /* Fixes horizontal side scroll */
+      overflow-x: hidden; /* Strict horizontal lock to stop blank spaces */
       width: 100%;
     }
 
@@ -52,7 +52,7 @@
     }
 
     .social-icons a {
-      color: #c5a880; /* Gold */
+      color: #c5a880; /* Premium Gold */
       text-decoration: none;
       font-size: 13px;
       width: 28px;
@@ -75,17 +75,17 @@
     .logo-text h2 {
       font-size: 10px;
       letter-spacing: 3px;
-      color: #c5a880; /* Gold */
+      color: #c5a880; 
       font-weight: 400;
       margin-top: 4px;
     }
 
-    /* Technical menu toggle helper */
+    /* Menu toggle controller */
     .menu-toggle {
       display: none !important;
     }
 
-    /* Desktop Navigation Menu Links */
+    /* Desktop Navigation */
     .nav-links {
       display: flex;
     }
@@ -99,7 +99,7 @@
       font-weight: 500;
     }
 
-    /* Desktop Hamburger Button - Hidden */
+    /* Mobile Hamburger lines */
     .hamburger {
       display: none;
       cursor: pointer;
@@ -115,7 +115,7 @@
       border-radius: 2px;
     }
 
-    /* HERO AREA */
+    /* HERO SECTION */
     .hero-section {
       max-width: 1200px;
       margin: 30px auto;
@@ -165,23 +165,24 @@
       font-size: 14px;
     }
 
-    /* PROPERTY LISTINGS SECTION */
-    .listings-section {
-      max-width: 1200px;
-      margin: 0 auto 50px auto;
-      padding: 0 20px;
-    }
-
+    /* SECTION BASICS */
     .section-title {
       font-size: 20px;
       color: #c5a880;
       letter-spacing: 2px;
       text-align: center;
-      margin-bottom: 30px;
+      margin-bottom: 35px;
       font-weight: 500;
+      text-transform: uppercase;
     }
 
-    /* Side-by-Side Responsive Grid Layout */
+    /* PROPERTY LISTINGS */
+    .listings-section {
+      max-width: 1200px;
+      margin: 0 auto 60px auto;
+      padding: 0 20px;
+    }
+
     .listings-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -216,7 +217,6 @@
       font-size: 18px;
       font-weight: 600;
       margin-bottom: 8px;
-      color: #ffffff;
     }
 
     .property-price {
@@ -230,6 +230,64 @@
       font-size: 14px;
       color: #a3a3a3;
       line-height: 1.5;
+    }
+
+    /* ABOUT US SECTION */
+    .about-section {
+      max-width: 800px;
+      margin: 0 auto 60px auto;
+      padding: 0 20px;
+      text-align: center;
+    }
+
+    .about-content {
+      background: rgba(255, 255, 255, 0.01);
+      border: 1px solid rgba(197, 168, 128, 0.1);
+      padding: 30px 20px;
+      border-radius: 12px;
+      line-height: 1.8;
+      color: #d1d1d1;
+      font-size: 15px;
+    }
+
+    /* FOOTER AND CONTACTS */
+    .main-footer {
+      background-color: #06070a;
+      border-top: 1px solid rgba(197, 168, 128, 0.15);
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    .footer-contacts {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 15px;
+      margin-bottom: 25px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 15px;
+      transition: color 0.3s;
+    }
+
+    .contact-item i {
+      color: #c5a880;
+    }
+
+    .contact-item:hover {
+      color: #c5a880;
+    }
+
+    .footer-credits {
+      font-size: 12px;
+      color: #666666;
+      letter-spacing: 1px;
     }
 
     /* ==========================================
@@ -284,7 +342,7 @@
         <div class="logo-text">
           <h1>LAMROT</h1>
           <h2>PROPERTIES</h2>
-          </div>
+        </div>
       </div>
 
       <input type="checkbox" id="menu-toggle" class="menu-toggle">
@@ -318,8 +376,7 @@
   </main>
 
   <section class="listings-section">
-    <h3 class="section-title">OUR PROPERTIES</h3>
-    
+    <h3 class="section-title">Our Properties</h3>
     <div class="listings-grid">
       
       <div class="property-card">
@@ -351,6 +408,25 @@
 
     </div>
   </section>
+
+  <section class="about-section">
+    <h3 class="section-title">About Us</h3>
+    <div class="about-content">
+      <p>Welcome to Lamrot Properties. We specialize in providing high-end, premium real estate choices tailored to match an exceptional standard of living. Our absolute dedication ensures that whether you are looking for luxurious residential options or a premium business office layout, we source spaces that reflect luxury, functionality, and outstanding architectural craftsmanship.</p>
+    </div>
+  </section>
+
+  <footer class="main-footer">
+    <div class="footer-contacts">
+      <a href="tel:+251922785816" class="contact-item">
+        <i class="fas fa-phone-alt"></i> +251 922 785 816
+      </a>
+      <a href="mailto:lamrothabtamu2524@gmail.com" class="contact-item">
+        <i class="fas fa-envelope"></i> lamrothabtamu2524@gmail.com
+      </a>
+    </div>
+    <p class="footer-credits">&copy; 2026 LAMROT PROPERTIES. All Rights Reserved.</p>
+  </footer>
 
 </body>
 </html>
