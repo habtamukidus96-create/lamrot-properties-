@@ -9,7 +9,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
-        /* Base Reset & Luxury System Styles */
         * {
             box-sizing: border-box;
             margin: 0;
@@ -19,7 +18,7 @@
             scroll-behavior: smooth;
         }
         body {
-            background-color: #0b0c10; /* Deep Luxury Obsidian Dark */
+            background-color: #0b0c10; 
             color: #f5f5f5;
             font-family: 'Montserrat', sans-serif;
             line-height: 1.6;
@@ -31,13 +30,13 @@
             transition: all 0.3s ease;
         }
 
-        /* 1 & 2. Modern Navigation Bar Header Layout */
+        /* Fixed Navigation Header Layout with proper flex constraints */
         header {
             background-color: rgba(11, 12, 16, 0.95);
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 20px;
+            padding: 15px 20px;
             position: sticky;
             top: 0;
             z-index: 1000;
@@ -45,82 +44,59 @@
             backdrop-filter: blur(10px);
         }
         
-        /* Gold Circular Top Left Social Icons Array */
         .top-left-socials {
             display: flex;
-            gap: 12px;
+            gap: 8px;
         }
         .top-left-socials a {
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 32px;
-            height: 32px;
+            width: 28px;
+            height: 28px;
             border: 1px solid rgba(212, 175, 55, 0.4);
             border-radius: 50%;
             color: rgba(212, 175, 55, 0.8);
-            font-size: 0.9rem;
-        }
-        .top-left-socials a:hover {
-            color: #ffffff;
-            border-color: #ffffff;
-            box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+            font-size: 0.8rem;
         }
 
-        /* Clean Branding Typography (Amharic Tagline Removed) */
         .logo-container {
             text-align: center;
-            position: absolute;
-            left: 50%;
-            transform: translateX(-50%);
+            padding: 0 10px;
         }
         .logo {
             font-family: 'Cormorant Garamond', serif;
             font-weight: 700;
-            font-size: 1.25rem;
-            letter-spacing: 2px;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
             color: #ffffff;
             text-transform: uppercase;
             line-height: 1.2;
         }
         .logo span {
             display: block;
-            color: #D4AF37; /* Gold Accent for PROPERTIES text line */
-            font-size: 1.1rem;
+            color: #D4AF37; 
+            font-size: 0.95rem;
             font-weight: 600;
-            letter-spacing: 3px;
+            letter-spacing: 2px;
         }
         
-        /* Interactive Right Navigation Menu Button */
         .menu-btn {
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            width: 26px;
-            height: 15px;
+            width: 24px;
+            height: 14px;
             cursor: pointer;
-            z-index: 1001;
         }
         .menu-btn span {
             display: block;
             height: 1.5px;
             width: 100%;
             background-color: rgba(212, 175, 55, 0.8);
-            transition: transform 0.3s ease, opacity 0.3s ease;
-        }
-        
-        /* Transforming Mobile Menu Hamburger To Closing Cross Mark */
-        .menu-btn.open span:nth-child(1) {
-            transform: translateY(6.5px) rotate(45deg);
-        }
-        .menu-btn.open span:nth-child(2) {
-            opacity: 0;
-        }
-        .menu-btn.open span:nth-child(3) {
-            transform: translateY(-7px) rotate(-45deg);
         }
 
-        /* Dropdown Interactive Navigation Box Drawer Overlay */
+        /* Dropdown Interactive Menu Box System */
         .nav-links {
             display: flex;
             position: absolute;
@@ -141,36 +117,40 @@
             opacity: 1;
         }
         .nav-links a {
-            padding: 18px 25px;
-            font-size: 0.9rem;
+            padding: 15px 25px;
+            font-size: 0.85rem;
             letter-spacing: 2px;
             border-bottom: 1px solid rgba(255, 255, 255, 0.03);
-            font-weight: 400;
             color: #cccccc;
         }
-        .nav-links a:hover {
-            color: #D4AF37;
-            background-color: rgba(212, 175, 55, 0.02);
-        }
 
-        /* 3. Main Luxury Presentation Grid Hero Layout */
+        /* Hero Section Structural Changes */
         .hero-section {
-            padding: 40px 20px;
+            padding: 50px 20px 30px 20px;
             background: radial-gradient(circle at top, #161a22 0%, #0b0c10 70%);
-            position: relative;
-        }
-        .hero-layout-grid {
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 30px;
+            position: relative;
         }
         
-        /* Double Rounded Elegant Border Gold Accent Framing for Headshot Profile */
+        /* Side socials position constraints adjusted so they do not overlap text */
+        .profile-side-socials {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.35); 
+            position: absolute;
+            left: 20px;
+            top: 50px;
+        }
+
         .profile-wrapper {
             position: relative;
             padding: 10px;
-            display: inline-block;
+            margin-bottom: 30px;
+            z-index: 5;
         }
         .profile-frame {
             position: absolute;
@@ -181,7 +161,6 @@
             border: 1px solid rgba(212, 175, 55, 0.3);
             border-radius: 12px;
             transform: rotate(-3deg);
-            pointer-events: none;
         }
         .profile-frame-inner {
             position: absolute;
@@ -192,62 +171,43 @@
             border: 1px solid rgba(212, 175, 55, 0.15);
             border-radius: 12px;
             transform: rotate(3deg);
-            pointer-events: none;
         }
         .headshot {
-            width: 160px;
-            height: 200px;
+            width: 150px;
+            height: 190px;
             object-fit: cover;
             border-radius: 8px;
+            display: block;
             position: relative;
-            z-index: 2;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            z-index: 6;
         }
 
-        /* Profile Left Multi-Linked Elegant Blended Social Icons Stack */
-        .profile-side-socials {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-            font-size: 1.1rem;
-            color: rgba(255, 255, 255, 0.35); /* Elegant Blended Aesthetic */
-            position: absolute;
-            left: 15px;
-            top: 80px;
-        }
-        .profile-side-socials a:hover {
-            color: #D4AF37;
-            transform: translateX(2px);
-        }
-
-        /* Hero Philosophical Content Copy Elements */
         .philosophy-container {
             text-align: center;
-            padding: 0 10px;
-            max-width: 500px;
-            margin: 0 auto;
+            padding: 0 15px;
+            max-width: 450px;
+            margin-top: 10px;
         }
         .philosophy-text {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1.45rem;
+            font-size: 1.35rem;
             font-style: italic;
-            color: rgba(255, 255, 255, 0.85);
-            line-height: 1.7;
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.6;
         }
 
-        /* Custom Elegant Corporate Core Features Block Layout Grid Matrix */
+        /* Custom Unique Value Grid Features Section */
         .exclusive-features-section {
-            padding: 30px 20px;
+            padding: 40px 20px;
             text-align: center;
         }
         .features-subtitle {
             font-family: 'Montserrat', sans-serif;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             letter-spacing: 3px;
             color: #D4AF37;
             text-transform: uppercase;
-            margin-bottom: 25px;
-            font-weight: 500;
+            margin-bottom: 30px;
         }
         .features-grid-stack {
             display: flex;
@@ -264,7 +224,7 @@
             border-bottom: none;
         }
         .feature-item-icon {
-            font-size: 1.5rem;
+            font-size: 1.4rem;
             color: #D4AF37;
             margin-bottom: 8px;
         }
@@ -272,27 +232,25 @@
             font-family: 'Cormorant Garamond', serif;
             font-size: 1.15rem;
             text-transform: uppercase;
-            letter-spacing: 1.5px;
+            letter-spacing: 1px;
             color: #ffffff;
-            margin-bottom: 5px;
+            margin-bottom: 4px;
         }
         .feature-item-box p {
             font-size: 0.75rem;
             color: #8a92a6;
             text-transform: uppercase;
-            letter-spacing: 1px;
         }
 
-        /* 4. Luxury Portfolio List Block Presentation Section Title Styling */
+        /* Listings Presentation Style Configuration */
         .section-main-title {
             font-family: 'Cormorant Garamond', serif;
             text-align: center;
             padding: 40px 20px 10px 20px;
-            font-size: 1.75rem;
+            font-size: 1.6rem;
             color: #D4AF37;
-            letter-spacing: 3px;
+            letter-spacing: 2px;
             text-transform: uppercase;
-            font-weight: 600;
         }
         
         .listings-view-grid {
@@ -306,13 +264,11 @@
             border-radius: 6px;
             overflow: hidden;
             border: 1px solid rgba(212, 175, 55, 0.1);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6);
         }
         .property-media-wrapper {
             position: relative;
             width: 100%;
-            height: 260px;
-            background-color: #161920;
+            height: 250px;
         }
         .property-media-asset {
             width: 100%;
@@ -320,7 +276,6 @@
             object-fit: cover;
         }
         
-        /* Content Panel Layout Matrix for Cards */
         .property-content-details {
             padding: 25px 20px;
             text-align: center;
@@ -330,12 +285,10 @@
             font-size: 1.15rem;
             font-family: 'Cormorant Garamond', serif;
             color: #ffffff;
-            letter-spacing: 1px;
-            margin-bottom: 12px;
+            margin-bottom: 10px;
         }
         .property-card-price {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 1.2rem;
+            font-size: 1.15rem;
             font-weight: 500;
             color: #D4AF37;
             margin-bottom: 8px;
@@ -343,88 +296,70 @@
         .property-card-desc {
             font-size: 0.8rem;
             color: #8a92a6;
-            letter-spacing: 0.5px;
         }
 
-        /* 4. Corporate About Us Bio Panel */
+        /* Corporate Section Wording Bio */
         .corporate-about-section {
             background-color: #11141a;
             padding: 50px 20px;
-            margin-top: 20px;
             text-align: center;
             border-top: 1px solid rgba(212, 175, 55, 0.1);
             border-bottom: 1px solid rgba(212, 175, 55, 0.1);
         }
         .about-title {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1.75rem;
+            font-size: 1.6rem;
             color: #ffffff;
             letter-spacing: 2px;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             text-transform: uppercase;
-        }
-        .about-content-flex {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 25px;
         }
         .about-left-paragraph {
             font-size: 0.85rem;
             color: #cccccc;
             max-width: 450px;
-            line-height: 1.8;
-            text-align: justify;
+            margin: 0 auto;
+            line-height: 1.7;
         }
 
-        /* Interactive Footer & Traversal Quick-Links Protocol Panel */
+        /* Interaction Footer Panel */
         footer {
             background-color: #0b0c10;
-            padding: 45px 20px 30px 20px;
+            padding: 40px 20px;
             text-align: center;
-        }
-        .footer-action-contacts {
-            margin-bottom: 35px;
         }
         .footer-action-contacts a {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            margin: 12px 0;
-            font-size: 0.95rem;
-            letter-spacing: 0.5px;
+            margin: 10px 0;
+            font-size: 0.9rem;
             color: #e5e5e5;
             width: 100%;
         }
         .footer-action-contacts i {
             color: #D4AF37;
-            margin-right: 12px;
-            font-size: 1.1rem;
+            margin-right: 10px;
         }
         
-        /* Secondary Traversal Navigation Matrices Link Layout */
         .footer-quick-traversal {
             display: flex;
             flex-direction: column;
-            align-items: flex-end;
+            align-items: center;
             gap: 12px;
             border-top: 1px solid rgba(212, 175, 55, 0.1);
             padding-top: 25px;
-            padding-right: 25px;
-            font-size: 1rem;
+            font-size: 0.95rem;
             font-family: 'Cormorant Garamond', serif;
-            letter-spacing: 1.5px;
-            color: rgba(255, 255, 255, 0.7);
+            letter-spacing: 1px;
         }
         .footer-quick-traversal a:hover {
             color: #D4AF37;
         }
         .footer-brand-label {
-            text-align: left;
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             color: #555555;
-            margin-top: 20px;
-            letter-spacing: 1px;
+            margin-top: 25px;
             text-transform: uppercase;
         }
     </style>
@@ -466,17 +401,107 @@
             <a href="https://t.me/LamrotHabtamu" target="_blank" rel="noopener"><i class="fab fa-telegram-plane"></i></a>
         </div>
 
-        <div class="hero-layout-grid">
-            <div class="profile-wrapper">
-                <div class="profile-frame"></div>
-                <div class="profile-frame-inner"></div>
-                <img src="Headshot%20mititi.jpg" alt="Lamrot Habtamu" class="headshot">
-            </div>
+        <div class="profile-wrapper">
+            <div class="profile-frame"></div>
+            <div class="profile-frame-inner"></div>
+            <img src="headshot.jpg" alt="Lamrot Habtamu" class="headshot">
+        </div>
 
-            <div class="philosophy-container">
-                <p class="philosophy-text">"Philosophy is the philosophy of ensuring the residential properties in Addis Ababa."</p>
+        <div class="philosophy-container">
+            <p class="philosophy-text">"Philosophy is the philosophy of ensuring the residential properties in Addis Ababa."</p>
+        </div>
+    </section>
+
+    <section class="exclusive-features-section">
+        <h3 class="features-subtitle">Exclusive Features</h3>
+        <div class="features-grid-stack">
+            <div class="feature-item-box">
+                <i class="fas fa-crown feature-item-icon"></i>
+                <h4>Premium Location Access</h4>
+                <p>Curated property distributions situated in coveted districts</p>
+            </div>
+            <div class="feature-item-box">
+                <i class="fas fa-chart-line feature-item-icon"></i>
+                <h4>Guaranteed Investment Growth</h4>
+                <p>Exceptional luxury assets optimizing long-term capital yields</p>
+            </div>
+            <div class="feature-item-box">
+                <i class="fas fa-user-shield feature-item-icon"></i>
+                <h4>Best-In-Class Assistance</h4>
+                <p>Elite concierge Brokerage fulfillment solutions</p>
             </div>
         </div>
     </section>
 
-    <section class="exclusive-features-section
+    <section id="listings">
+        <h2 class="section-main-title">Lamrot Properties Listings</h2>
+        <div class="listings-view-grid">
+            
+            <div class="premium-property-card">
+                <div class="property-media-wrapper">
+                    <img src="property1.jpg" alt="Premium Apartment Asset" class="property-media-asset">
+                </div>
+                <div class="property-content-details">
+                    <h3 class="property-card-category">Residential Apartment</h3>
+                    <div class="property-card-price">ETB 500,000</div>
+                    <p class="property-card-desc">Luxury Executive Residential Suite Options located in Bole, Addis Ababa</p>
+                </div>
+            </div>
+
+            <div class="premium-property-card">
+                <div class="property-media-wrapper">
+                    <img src="property2.jpg" alt="Elite Commercial Real Estate Asset" class="property-media-asset">
+                </div>
+                <div class="property-content-details">
+                    <h3 class="property-card-category">Commercial Office</h3>
+                    <div class="property-card-price">ETB 500,000</div>
+                    <p class="property-card-desc">Premium Corporate Workspaces and Strategic Multi-Level Commercial Complex Sites</p>
+                </div>
+            </div>
+
+            <div class="premium-property-card">
+                <div class="property-media-wrapper">
+                    <img src="property3.jpg" alt="High-yield Retail Property Asset" class="property-media-asset">
+                </div>
+                <div class="property-content-details">
+                    <h3 class="property-card-category">Retail Property</h3>
+                    <div class="property-card-price">ETB 500,000</div>
+                    <p class="property-card-desc">Premium Commercial Shop Options & Elite Traversed Business Space Units</p>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="about" class="corporate-about-section">
+        <h2 class="about-title">About Us</h2>
+        <p class="about-left-paragraph">
+            Welcome to Lamrot Properties. We are a premier real estate brokerage specializing in connecting elite clients with exceptional high-end residential, corporate office, and prime commercial investment properties across Ethiopia's most sought-after development corridors. Our unwavering commitment remains focused on absolute excellence, security, and delivering premium financial asset growth.
+        </p>
+    </section>
+
+    <footer>
+        <div class="footer-action-contacts">
+            <a href="tel:+251922785816"><i class="fas fa-phone"></i> +251 922 785 816</a>
+            <a href="mailto:lamrothabtamu2524@gmail.com"><i class="fas fa-envelope"></i> lamrothabtamu2524@gmail.com</a>
+        </div>
+
+        <div class="footer-quick-traversal">
+            <a href="#home">Home</a>
+            <a href="#listings">Listings</a>
+            <a href="#about">About Us</a>
+        </div>
+
+        <div class="footer-brand-label">
+            &copy; 2026 Lamrot Properties. All Rights Reserved.
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
