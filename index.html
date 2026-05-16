@@ -7,8 +7,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2 family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
+        /* CSS Reset & Luxury Glow Theme Tokens */
         * {
             box-sizing: border-box;
             margin: 0;
@@ -18,7 +19,7 @@
             scroll-behavior: smooth;
         }
         body {
-            background-color: #0b0c10; 
+            background-color: #060709; /* Ultra-deep luxury black background */
             color: #f5f5f5;
             font-family: 'Montserrat', sans-serif;
             line-height: 1.6;
@@ -30,80 +31,89 @@
             transition: all 0.3s ease;
         }
 
-        /* Fixed Navigation Header Layout with proper flex constraints */
+        /* 1 & 2. Sleek Fixed Header Layout */
         header {
-            background-color: rgba(11, 12, 16, 0.95);
+            background: linear-gradient(180deg, rgba(11, 12, 16, 0.98) 0%, rgba(6, 7, 9, 0.92) 100%);
             display: flex;
             align-items: center;
             justify-content: space-between;
-            padding: 15px 20px;
+            padding: 20px;
             position: sticky;
             top: 0;
             z-index: 1000;
             border-bottom: 1px solid rgba(212, 175, 55, 0.15);
-            backdrop-filter: blur(10px);
+            backdrop-filter: blur(15px);
         }
         
+        /* Top Left Circular Gold Icons Stack */
         .top-left-socials {
             display: flex;
-            gap: 8px;
+            gap: 10px;
         }
         .top-left-socials a {
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 28px;
-            height: 28px;
-            border: 1px solid rgba(212, 175, 55, 0.4);
+            width: 34px;
+            height: 34px;
+            border: 1px solid rgba(212, 175, 55, 0.35);
             border-radius: 50%;
-            color: rgba(212, 175, 55, 0.8);
-            font-size: 0.8rem;
+            color: #d4af37;
+            font-size: 0.95rem;
+            box-shadow: 0 0 8px rgba(212, 175, 55, 0.1);
         }
 
+        /* Clean Branding Typography Container */
         .logo-container {
             text-align: center;
-            padding: 0 10px;
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
         }
         .logo {
             font-family: 'Cormorant Garamond', serif;
             font-weight: 700;
-            font-size: 1.1rem;
-            letter-spacing: 1px;
+            font-size: 1.35rem;
+            letter-spacing: 3px;
             color: #ffffff;
             text-transform: uppercase;
-            line-height: 1.2;
+            line-height: 1.1;
         }
         .logo span {
             display: block;
-            color: #D4AF37; 
-            font-size: 0.95rem;
+            color: #d4af37; 
+            font-size: 1.1rem;
             font-weight: 600;
-            letter-spacing: 2px;
+            letter-spacing: 4px;
+            margin-top: 1px;
         }
         
+        /* Interactive Hamburger Toggle Button */
         .menu-btn {
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            width: 24px;
-            height: 14px;
+            width: 26px;
+            height: 16px;
             cursor: pointer;
+            z-index: 1001;
         }
         .menu-btn span {
             display: block;
-            height: 1.5px;
+            height: 2px;
             width: 100%;
-            background-color: rgba(212, 175, 55, 0.8);
+            background-color: #d4af37;
+            transition: transform 0.3s ease, opacity 0.3s ease;
         }
 
-        /* Dropdown Interactive Menu Box System */
+        /* Slide Drawer Menu System Links Layout */
         .nav-links {
             display: flex;
             position: absolute;
             top: 100%;
             left: 0;
             width: 100%;
-            background-color: rgba(11, 12, 16, 0.98);
+            background-color: rgba(6, 7, 9, 0.98);
             flex-direction: column;
             padding: 10px 0;
             border-bottom: 1px solid rgba(212, 175, 55, 0.2);
@@ -117,39 +127,51 @@
             opacity: 1;
         }
         .nav-links a {
-            padding: 15px 25px;
-            font-size: 0.85rem;
+            padding: 18px 25px;
+            font-size: 0.9rem;
             letter-spacing: 2px;
             border-bottom: 1px solid rgba(255, 255, 255, 0.03);
             color: #cccccc;
         }
+        .nav-links a:hover {
+            color: #d4af37;
+            background-color: rgba(212, 175, 55, 0.03);
+        }
 
-        /* Hero Section Structural Changes */
+        /* 3. Hero Layout (Headshot Left Overlay Frame / Socials Side Align) */
         .hero-section {
-            padding: 50px 20px 30px 20px;
-            background: radial-gradient(circle at top, #161a22 0%, #0b0c10 70%);
+            padding: 60px 20px 40px 20px;
+            background: radial-gradient(circle at 30% 20%, #161a22 0%, #060709 65%);
             display: flex;
             flex-direction: column;
             align-items: center;
             position: relative;
+            min-height: 380px;
         }
         
-        /* Side socials position constraints adjusted so they do not overlap text */
+        /* Floating Left Panel Social Anchors */
         .profile-side-socials {
             display: flex;
             flex-direction: column;
-            gap: 16px;
-            font-size: 1.1rem;
-            color: rgba(255, 255, 255, 0.35); 
+            gap: 20px;
+            font-size: 1.15rem;
+            color: rgba(255, 255, 255, 0.3); /* Blended luxury look */
             position: absolute;
-            left: 20px;
-            top: 50px;
+            left: 24px;
+            top: 70px;
+            z-index: 10;
+        }
+        .profile-side-socials a:hover {
+            color: #d4af37;
+            transform: scale(1.1);
         }
 
+        /* Dual Gold Glowing Soft Rotated Frame System for Headshot Profile Picture */
         .profile-wrapper {
             position: relative;
-            padding: 10px;
-            margin-bottom: 30px;
+            padding: 12px;
+            margin-bottom: 25px;
+            margin-left: 35px; /* Pushes profile right slightly to clear floating left links completely */
             z-index: 5;
         }
         .profile-frame {
@@ -158,9 +180,10 @@
             left: 0;
             width: 100%;
             height: 100%;
-            border: 1px solid rgba(212, 175, 55, 0.3);
-            border-radius: 12px;
-            transform: rotate(-3deg);
+            border: 1px solid rgba(212, 175, 55, 0.45);
+            border-radius: 20px;
+            transform: rotate(-5deg);
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.1);
         }
         .profile-frame-inner {
             position: absolute;
@@ -168,107 +191,130 @@
             left: 0;
             width: 100%;
             height: 100%;
-            border: 1px solid rgba(212, 175, 55, 0.15);
-            border-radius: 12px;
-            transform: rotate(3deg);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 20px;
+            transform: rotate(4deg);
         }
         .headshot {
-            width: 150px;
-            height: 190px;
+            width: 155px;
+            height: 195px;
             object-fit: cover;
-            border-radius: 8px;
+            border-radius: 14px;
             display: block;
             position: relative;
             z-index: 6;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.6);
         }
 
+        /* Editorial Philosophy Content Style Block */
         .philosophy-container {
             text-align: center;
-            padding: 0 15px;
-            max-width: 450px;
-            margin-top: 10px;
+            padding: 0 20px;
+            max-width: 480px;
+            margin-top: 15px;
         }
         .philosophy-text {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1.35rem;
+            font-size: 1.5rem;
             font-style: italic;
-            color: rgba(255, 255, 255, 0.9);
-            line-height: 1.6;
+            color: rgba(255, 255, 255, 0.85);
+            line-height: 1.7;
+            letter-spacing: 0.3px;
         }
 
-        /* Custom Unique Value Grid Features Section */
+        /* Curated Exclusive Features Matrix Grid Setup */
         .exclusive-features-section {
-            padding: 40px 20px;
+            padding: 50px 20px 30px 20px;
             text-align: center;
+            background-color: #0b0c10;
         }
         .features-subtitle {
-            font-family: 'Montserrat', sans-serif;
-            font-size: 0.85rem;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.5rem;
             letter-spacing: 3px;
-            color: #D4AF37;
+            color: #d4af37;
             text-transform: uppercase;
-            margin-bottom: 30px;
+            margin-bottom: 35px;
+            font-weight: 600;
+        }
+        .features-subtitle::after {
+            content: '';
+            display: block;
+            width: 40px;
+            height: 1px;
+            background-color: rgba(212, 175, 55, 0.4);
+            margin: 10px auto 0 auto;
         }
         .features-grid-stack {
             display: flex;
             flex-direction: column;
-            gap: 25px;
+            gap: 30px;
             max-width: 400px;
             margin: 0 auto;
         }
         .feature-item-box {
-            border-bottom: 1px solid rgba(212, 175, 55, 0.1);
-            padding-bottom: 20px;
-        }
-        .feature-item-box:last-child {
-            border-bottom: none;
+            border: 1px solid rgba(212, 175, 55, 0.12);
+            background: rgba(22, 26, 34, 0.4);
+            padding: 25px 20px;
+            border-radius: 8px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
         }
         .feature-item-icon {
-            font-size: 1.4rem;
-            color: #D4AF37;
-            margin-bottom: 8px;
+            font-size: 1.6rem;
+            color: #d4af37;
+            margin-bottom: 12px;
         }
         .feature-item-box h4 {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1.15rem;
-            text-transform: uppercase;
+            font-size: 1.3rem;
             letter-spacing: 1px;
             color: #ffffff;
-            margin-bottom: 4px;
+            margin-bottom: 6px;
         }
         .feature-item-box p {
-            font-size: 0.75rem;
+            font-size: 0.8rem;
             color: #8a92a6;
-            text-transform: uppercase;
+            font-weight: 300;
         }
 
-        /* Listings Presentation Style Configuration */
+        /* 4. Real Estate Luxury Custom Cards Display Grid Layout */
         .section-main-title {
             font-family: 'Cormorant Garamond', serif;
             text-align: center;
-            padding: 40px 20px 10px 20px;
-            font-size: 1.6rem;
-            color: #D4AF37;
-            letter-spacing: 2px;
+            padding: 55px 20px 15px 20px;
+            font-size: 1.75rem;
+            color: #ffffff;
+            letter-spacing: 3px;
             text-transform: uppercase;
+            font-weight: 600;
+        }
+        .section-main-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 1px;
+            background-color: #d4af37;
+            margin: 12px auto 0 auto;
         }
         
         .listings-view-grid {
-            padding: 20px;
+            padding: 25px 20px;
             display: flex;
             flex-direction: column;
-            gap: 35px;
+            gap: 40px;
         }
         .premium-property-card {
-            background: linear-gradient(180deg, #11141a 0%, #0b0c10 100%);
-            border-radius: 6px;
+            background: linear-gradient(180deg, #12151c 0%, #060709 100%);
+            border-radius: 12px;
             overflow: hidden;
-            border: 1px solid rgba(212, 175, 55, 0.1);
+            border: 1px solid rgba(212, 175, 55, 0.18);
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.7);
         }
         .property-media-wrapper {
             position: relative;
             width: 100%;
-            height: 250px;
+            height: 270px;
+            overflow: hidden;
         }
         .property-media-asset {
             width: 100%;
@@ -280,86 +326,105 @@
             padding: 25px 20px;
             text-align: center;
             border-top: 1px solid rgba(212, 175, 55, 0.15);
+            background: rgba(6, 7, 9, 0.5);
         }
         .property-card-category {
-            font-size: 1.15rem;
+            font-size: 1.35rem;
             font-family: 'Cormorant Garamond', serif;
             color: #ffffff;
-            margin-bottom: 10px;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+            font-weight: 600;
         }
         .property-card-price {
-            font-size: 1.15rem;
-            font-weight: 500;
-            color: #D4AF37;
-            margin-bottom: 8px;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #d4af37;
+            margin-bottom: 10px;
+            letter-spacing: 0.5px;
         }
         .property-card-desc {
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             color: #8a92a6;
+            font-weight: 300;
+            line-height: 1.5;
         }
 
-        /* Corporate Section Wording Bio */
+        /* 4. Corporate About Us Philosophy Text Block */
         .corporate-about-section {
-            background-color: #11141a;
-            padding: 50px 20px;
+            background-color: #0b0c10;
+            padding: 60px 25px;
             text-align: center;
             border-top: 1px solid rgba(212, 175, 55, 0.1);
             border-bottom: 1px solid rgba(212, 175, 55, 0.1);
         }
         .about-title {
             font-family: 'Cormorant Garamond', serif;
-            font-size: 1.6rem;
+            font-size: 1.75rem;
             color: #ffffff;
             letter-spacing: 2px;
-            margin-bottom: 15px;
+            margin-bottom: 20px;
             text-transform: uppercase;
         }
         .about-left-paragraph {
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             color: #cccccc;
-            max-width: 450px;
+            max-width: 500px;
             margin: 0 auto;
-            line-height: 1.7;
+            line-height: 1.8;
+            font-weight: 300;
         }
 
-        /* Interaction Footer Panel */
+        /* Luxury Contact Footer Structure Setup */
         footer {
-            background-color: #0b0c10;
-            padding: 40px 20px;
+            background-color: #060709;
+            padding: 55px 24px 35px 24px;
             text-align: center;
+            position: relative;
+        }
+        .footer-action-contacts {
+            margin-bottom: 40px;
         }
         .footer-action-contacts a {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            margin: 10px 0;
-            font-size: 0.9rem;
+            margin: 12px 0;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
             color: #e5e5e5;
             width: 100%;
         }
         .footer-action-contacts i {
-            color: #D4AF37;
-            margin-right: 10px;
+            color: #d4af37;
+            margin-right: 12px;
+            font-size: 1.1rem;
         }
         
+        /* Fixed Quick Links Display on Right Margin */
         .footer-quick-traversal {
             display: flex;
             flex-direction: column;
-            align-items: center;
+            align-items: flex-end;
             gap: 12px;
-            border-top: 1px solid rgba(212, 175, 55, 0.1);
-            padding-top: 25px;
-            font-size: 0.95rem;
+            border-top: 1px solid rgba(212, 175, 55, 0.15);
+            padding-top: 30px;
+            padding-right: 15px;
+            font-size: 1.1rem;
             font-family: 'Cormorant Garamond', serif;
-            letter-spacing: 1px;
+            letter-spacing: 1.5px;
+            color: rgba(255, 255, 255, 0.75);
         }
         .footer-quick-traversal a:hover {
-            color: #D4AF37;
+            color: #d4af37;
         }
         .footer-brand-label {
-            font-size: 0.7rem;
-            color: #555555;
-            margin-top: 25px;
+            text-align: center;
+            font-size: 0.75rem;
+            color: #444444;
+            margin-top: 35px;
+            letter-spacing: 1px;
             text-transform: uppercase;
         }
     </style>
