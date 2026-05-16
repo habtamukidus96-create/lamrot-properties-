@@ -3,119 +3,481 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Temer Properties Portfolio</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <title>Lamrot Properties | Luxury Real Estate</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,700;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600&display=swap');
+        /* CSS Reset & Luxury Theme Tokens */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+        body {
+            background-color: #0b0c10; /* Deep Obsidian */
+            color: #f5f5f5;
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        a {
+            text-decoration: none;
+            color: inherit;
+            transition: all 0.3s ease;
+        }
+
+        /* 1 & 2. Functional Fixed Header Layout */
+        header {
+            background-color: rgba(11, 12, 16, 0.95);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 20px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+            backdrop-filter: blur(10px);
+        }
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 700;
+            font-size: 1.35rem;
+            letter-spacing: 2px;
+            color: #D4AF37; /* Matte Metallic Gold */
+            text-transform: uppercase;
+        }
         
-        body { 
-            background-color: #0d0d0d; 
-            color: #ffffff; 
-            font-family: 'Inter', sans-serif; 
+        /* Interactive Hamburger Menu Button */
+        .menu-btn {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 24px;
+            height: 16px;
+            cursor: pointer;
+            z-index: 1001;
         }
-        .serif { font-family: 'Playfair Display', serif; }
-        .gold-text { color: #c5a059; }
-        .gold-border { border-color: #c5a059; }
-        .gold-bg { background-color: #c5a059; }
-        .gradient-overlay { 
-            background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0) 100%); 
+        .menu-btn span {
+            display: block;
+            height: 1.5px;
+            width: 100%;
+            background-color: #D4AF37;
+            transition: transform 0.3s ease, opacity 0.3s ease;
         }
-        .profile-frame {
-            border: 1px solid #c5a059;
-            box-shadow: 20px -20px 0px -5px rgba(197, 160, 89, 0.1);
+        
+        /* Hamburger Transformation to "X" when active */
+        .menu-btn.open span:nth-child(1) {
+            transform: translateY(7px) rotate(45deg);
+        }
+        .menu-btn.open span:nth-child(2) {
+            opacity: 0;
+        }
+        .menu-btn.open span:nth-child(3) {
+            transform: translateY(-7px) rotate(-45deg);
+        }
+
+        /* Slide-down Menu Navigation Box */
+        .nav-links {
+            display: flex;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background-color: rgba(11, 12, 16, 0.98);
+            flex-direction: column;
+            padding: 10px 0;
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease, opacity 0.3s ease;
+        }
+        .nav-links.active {
+            max-height: 300px;
+            opacity: 1;
+        }
+        .nav-links a {
+            padding: 18px 25px;
+            font-size: 1rem;
+            letter-spacing: 2px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.03);
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 400;
+            color: #cccccc;
+        }
+        .nav-links a:hover {
+            color: #D4AF37;
+            background-color: rgba(212, 175, 55, 0.02);
+        }
+        
+        /* Balance placeholder element for standard center logo display */
+        .header-spacer {
+            width: 24px;
+        }
+
+        /* 3. Hero Layout (Headshot Left / Socials Right / Soft Blended Style) */
+        .hero-section {
+            padding: 45px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            background: linear-gradient(180deg, #0b0c10 0%, #11141a 100%);
+        }
+        .profile-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 25px;
+            margin-bottom: 25px;
+            width: 100%;
+            max-width: 400px;
+        }
+        .headshot {
+            width: 125px;
+            height: 125px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 1.5px solid rgba(212, 175, 55, 0.4);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
+        }
+        /* Fancy, subtle blended social bar icons */
+        .social-links {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            font-size: 1.15rem;
+            color: rgba(245, 245, 245, 0.45); /* Blended, soft tone */
+        }
+        .social-links a:hover {
+            color: #D4AF37; /* Highlights on interaction */
+            transform: translateX(3px);
+        }
+        .hero-text h1 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 2.1rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: #ffffff;
+            margin-bottom: 6px;
+        }
+        .hero-text p {
+            color: #D4AF37;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-weight: 400;
+        }
+
+        /* Typography Separation Header Elements */
+        .section-title {
+            font-family: 'Cormorant Garamond', serif;
+            text-align: center;
+            padding: 50px 20px 15px 20px;
+            font-size: 1.8rem;
+            color: #ffffff;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 35px;
+            height: 1px;
+            background-color: #D4AF37;
+            margin: 12px auto 0 auto;
+        }
+
+        /* 4. Luxury Property Listings Presentation Setup */
+        .listings-grid {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 35px;
+        }
+        .property-card {
+            background: #11141a;
+            border-radius: 4px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.02);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+        }
+        .property-img-wrapper {
+            position: relative;
+            width: 100%;
+            height: 250px;
+            background-color: #161920;
+        }
+        .property-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .tag {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background-color: #D4AF37;
+            color: #0b0c10;
+            padding: 4px 12px;
+            font-size: 0.65rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 1px;
+        }
+        .property-details {
+            padding: 22px;
+        }
+        .property-price {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.65rem;
+            font-weight: 700;
+            color: #D4AF37;
+            margin-bottom: 5px;
+        }
+        .property-title {
+            font-size: 0.95rem;
+            font-weight: 400;
+            color: #e5e5e5;
+            margin-bottom: 12px;
+            letter-spacing: 0.3px;
+        }
+        .property-meta {
+            font-size: 0.8rem;
+            color: #8a92a6;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* Added Extra: Custom Curated Corporate Premium Value Proposition Features Block */
+        .features-container {
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        .feature-card {
+            background: rgba(17, 20, 26, 0.6);
+            border: 1px solid rgba(212, 175, 55, 0.08);
+            padding: 25px 20px;
+            border-radius: 4px;
+            text-align: center;
+        }
+        .feature-icon {
+            font-size: 1.6rem;
+            color: #D4AF37;
+            margin-bottom: 12px;
+        }
+        .feature-card h3 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.3rem;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+            color: #ffffff;
+        }
+        .feature-card p {
+            font-size: 0.85rem;
+            color: #8a92a6;
+            font-weight: 300;
+        }
+
+        /* 4. About Us Philosophy Section Layout */
+        .about-section {
+            background-color: #11141a;
+            padding: 55px 25px;
+            margin-top: 25px;
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, 0.02);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.02);
+        }
+        .about-section p {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 1.25rem;
+            font-style: italic;
+            color: #dddddd;
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        /* 5 & 6. Footer Content Setup */
+        footer {
+            background-color: #0b0c10;
+            padding: 50px 20px 35px 20px;
+            text-align: center;
+        }
+        .footer-contact {
+            margin-bottom: 35px;
+        }
+        .footer-contact a {
+            display: inline-block;
+            margin: 10px 0;
+            font-size: 0.95rem;
+            letter-spacing: 0.5px;
+            color: #e5e5e5;
+            width: 100%;
+        }
+        .footer-contact i {
+            color: #D4AF37;
+            margin-right: 10px;
+        }
+        .quick-links {
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+            border-top: 1px solid rgba(212, 175, 55, 0.1);
+            padding-top: 25px;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #8a92a6;
         }
     </style>
 </head>
-<body class="antialiased">
+<body>
 
-    <header class="p-6 flex justify-between items-center max-w-6xl mx-auto border-b border-white/10">
-        <div class="flex gap-5 text-lg gold-text">
-            <a href="#"><i class="fab fa-facebook-f"></i></a>
-            <a href="#"><i class="fab fa-instagram"></i></a>
-            <a href="#"><i class="fab fa-tiktok"></i></a>
-            <a href="#"><i class="fab fa-telegram-plane"></i></a>
+    <header>
+        <div class="menu-btn" id="menuBtn" onclick="toggleMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
         </div>
-        <div class="text-center">
-            <h1 class="serif text-2xl font-bold tracking-[0.2em] uppercase">TEMER PROPERTIES</h1>
-            <p class="text-[10px] gold-text tracking-[0.3em] mt-1">ተምር ሪል እስቴት</p>
-        </div>
-        <div class="text-2xl cursor-pointer"><i class="fas fa-bars"></i></div>
+        
+        <div class="logo">Lamrot Properties</div>
+        
+        <div class="header-spacer"></div>
+
+        <nav class="nav-links" id="navLinks">
+            <a href="#home" onclick="toggleMenu()">HOME</a>
+            <a href="#listings" onclick="toggleMenu()">PREMIUM LISTINGS</a>
+            <a href="#about" onclick="toggleMenu()">ABOUT US</a>
+        </nav>
     </header>
 
-    <section class="relative px-6 py-16 max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-12">
-        <div class="relative w-72 h-80 flex-shrink-0">
-            <img src="mititi.jpg" alt="Professional Profile" class="profile-frame w-full h-full object-cover rounded-sm">
-        </div>
-        <div class="text-center md:text-left">
-            <h2 class="serif text-3xl mb-6 leading-relaxed">ጥራት ቤቶች ወርክመሪ ቅንጡ መኖሪያን <br><span class="gold-text italic text-2xl">ዕድልዎን ዛሬውኑ ነው፡ ባርሶን ያድቁ</span></h2>
-            <div class="h-px w-20 gold-bg mb-6 mx-auto md:mx-0"></div>
-            <p class="italic text-gray-400 text-lg serif max-w-md">"Philosophy is the philosophy of ensuring the property listings in Addis Ababa."</p>
-        </div>
-    </section>
+    <div id="home"></div>
 
-    <main class="px-6 py-16 max-w-6xl mx-auto">
-        <h3 class="text-center serif text-3xl gold-text uppercase tracking-[0.25em] mb-16">Portfolio</h3>
-        
-        <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
-            <div class="group relative rounded-sm overflow-hidden border border-white/5 transition-transform duration-500 hover:scale-[1.02]">
-                <img src="img1.jpg" class="w-full h-[450px] object-cover">
-                <div class="absolute inset-0 gradient-overlay flex flex-col justify-end p-8 text-center">
-                    <p class="text-2xl font-light tracking-widest mb-1">በ500,000 ብር</p>
-                    <div class="w-12 h-px gold-bg mx-auto mb-3"></div>
-                    <p class="text-xs gold-text uppercase tracking-widest mb-1">Property Details</p>
-                    <p class="text-[10px] text-gray-400 uppercase tracking-widest">Cormorant Addis</p>
-                </div>
-            </div>
-
-            <div class="group relative rounded-sm overflow-hidden border border-white/5 transition-transform duration-500 hover:scale-[1.02]">
-                <img src="img2.jpg" class="w-full h-[450px] object-cover">
-                <div class="absolute inset-0 gradient-overlay flex flex-col justify-end p-8 text-center">
-                    <p class="text-2xl font-light tracking-widest mb-1">በ500,000 ብር</p>
-                    <div class="w-12 h-px gold-bg mx-auto mb-3"></div>
-                    <p class="text-xs gold-text uppercase tracking-widest mb-1">Property Details</p>
-                    <p class="text-[10px] text-gray-400 uppercase tracking-widest">Cormorant Ababa</p>
-                </div>
-            </div>
-
-            <div class="group relative rounded-sm overflow-hidden border border-white/5 transition-transform duration-500 hover:scale-[1.02]">
-                <img src="img3.jpg" class="w-full h-[450px] object-cover">
-                <div class="absolute inset-0 gradient-overlay flex flex-col justify-end p-8 text-center">
-                    <p class="text-2xl font-light tracking-widest mb-1">በ500,000 ብር</p>
-                    <div class="w-12 h-px gold-bg mx-auto mb-3"></div>
-                    <p class="text-xs gold-text uppercase tracking-widest mb-1">Property Details</p>
-                    <p class="text-[10px] text-gray-400 uppercase tracking-widest">Cormorant Boston</p>
-                </div>
+    <section class="hero-section">
+        <div class="profile-container">
+            <img src="Headshot%20mititi.jpg" alt="Lamrot Habtamu" class="headshot">
+            
+            <div class="social-links">
+                <a href="https://www.facebook.com/share/1CpreHHXre/" target="_blank" rel="noopener"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/lamrot_property?igsh=dTY0MHNrZGF3Y2Zt" target="_blank" rel="noopener"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.tiktok.com/@lamrottemer_properties?_r=1&_t=ZS-96PNmmPOxvA" target="_blank" rel="noopener"><i class="fab fa-tiktok"></i></a>
+                <a href="https://t.me/LamrotHabtamu" target="_blank" rel="noopener"><i class="fab fa-telegram-plane"></i></a>
             </div>
         </div>
-    </main>
-
-    <section class="bg-zinc-900/30 py-20 px-6 border-y border-white/5">
-        <div class="max-w-4xl mx-auto text-center">
-            <h4 class="serif text-2xl gold-text mb-8 tracking-widest">ABOUT US</h4>
-            <div class="grid md:grid-cols-2 gap-12 text-sm text-gray-400 leading-relaxed text-justify">
-                <p>We are dedicated to providing premium real estate solutions in the heart of Addis Ababa, focusing on high-end architecture and unparalleled living experiences for our exclusive clientele.</p>
-                <p>ጥራት ቤቶች ወርክመሪ ትላንት መነሻነት ጉዞዎ ዛሬም ነገም ደምቆ እንዲቀጥል ይረዳናል! እኛን ይምረጡ።</p>
-            </div>
+        <div class="hero-text">
+            <h1>Lamrot Properties</h1>
+            <p>Exclusive Real Estate Brokerage</p>
         </div>
     </section>
 
-    <footer class="py-12 px-6">
-        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8 border-t border-white/10 pt-10">
-            <div class="flex items-center gap-3">
-                <i class="fas fa-phone-alt gold-text"></i>
-                <span class="tracking-widest text-sm">+251 912 643 473</span>
+    <section id="listings">
+        <h2 class="section-title">Curated Listings</h2>
+        <div class="listings-grid">
+            
+            <div class="property-card">
+                <div class="property-img-wrapper">
+                    <span class="tag">Exclusive Offer</span>
+                    <img src="Property1%20img1.jpg" alt="Luxury Real Estate Portfolio Asset" class="property-img">
+                </div>
+                <div class="property-details">
+                    <div class="property-price">Premium High-Rise Development</div>
+                    <div class="property-title">Contemporary Executive Apartments with Panoramic Sunset Views</div>
+                    <div class="property-meta">
+                        <i class="fas fa-map-marker-alt" style="color: #D4AF37;"></i> Bole, Addis Ababa
+                    </div>
+                </div>
             </div>
-            <div class="flex items-center gap-3">
-                <i class="far fa-envelope gold-text"></i>
-                <span class="tracking-widest text-sm lowercase">lamrothabtamu8@gmail.com</span>
+
+            <div class="property-card">
+                <div class="property-img-wrapper">
+                    <span class="tag">Prime Location</span>
+                    <img src="Property2%20img2.jpg" alt="Luxury Real Estate Portfolio Asset" class="property-img">
+                </div>
+                <div class="property-details">
+                    <div class="property-price">Architectural Masterpiece</div>
+                    <div class="property-title">Elite High-Density Residential Complexes Built for Luxury Lifestyles</div>
+                    <div class="property-meta">
+                        <i class="fas fa-map-marker-alt" style="color: #D4AF37;"></i> Luxury District, Addis Ababa
+                    </div>
+                </div>
             </div>
-            <div class="text-[10px] uppercase tracking-[0.4em] text-gray-500">Quick-links</div>
+
+            <div class="property-card">
+                <div class="property-img-wrapper">
+                    <span class="tag">Secure Investment</span>
+                    <img src="Property3%20img3.jpg" alt="Luxury Real Estate Portfolio Asset" class="property-img">
+                </div>
+                <div class="property-details">
+                    <div class="property-price">500,000 ETB Down Payment</div>
+                    <div class="property-title">Premium Commercial Shop Options & Strategic Retail Site Placements</div>
+                    <div class="property-meta">
+                        <i class="fas fa-map-marker-alt" style="color: #D4AF37;"></i> Prime Commercial Zones, Ethiopia
+                    </div>
+                </div>
+            </div>
+
         </div>
-        <div class="text-center mt-12 text-[10px] text-gray-600 uppercase tracking-widest">
-            &copy; 2026 Temer Properties. All Rights Reserved.
+    </section>
+
+    <section>
+        <h2 class="section-title">Exclusive Features</h2>
+        <div class="features-container">
+            <div class="feature-card">
+                <i class="fas fa-gem feature-icon"></i>
+                <h3>Prime Location</h3>
+                <p>Meticulously handpicked property distributions situated across Addis Ababa's most coveted economic corridors.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-chart-line feature-icon"></i>
+                <h3>High ROI Yields</h3>
+                <p>Exceptional architectural assets optimizing long-term capital appreciation and consistent investment security.</p>
+            </div>
+            <div class="feature-card">
+                <i class="fas fa-hotel feature-icon"></i>
+                <h3>Luxury Finishes</h3>
+                <p>Elite high-end craft specifications incorporating state-of-the-art modern aesthetics and premium structural components.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about-section">
+        <h2 class="section-title" style="padding-top:0;">Our Philosophy</h2>
+        <p>"We believe that premier real estate is more than just properties—it is about securing legacy, architectural beauty, and absolute lifestyle elegance across Ethiopia's finest locales."</p>
+    </section>
+
+    <footer>
+        <div class="footer-contact">
+            <a href="tel:+251922785816"><i class="fas fa-phone"></i> +251 922 785 816</a>
+            <a href="mailto:lamrothabtamu2524@gmail.com"><i class="fas fa-envelope"></i> lamrothabtamu2524@gmail.com</a>
+        </div>
+
+        <div class="quick-links">
+            <a href="#home">Home</a>
+            <a href="#listings">Listings</a>
+            <a href="#about">About</a>
         </div>
     </footer>
+
+    <script>
+        function toggleMenu() {
+            const navLinks = document.getElementById('navLinks');
+            const menuBtn = document.getElementById('menuBtn');
+            
+            navLinks.classList.toggle('active');
+            menuBtn.classList.toggle('open');
+        }
+    </script>
 
 </body>
 </html>
