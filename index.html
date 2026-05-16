@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>Lamrot Properties</title>
   
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -19,7 +19,7 @@
       background-color: #0b0c10; /* Obsidian Black */
       color: #ffffff;
       font-family: 'Helvetica Neue', Arial, sans-serif;
-      overflow-x: hidden; /* Strictly prevents horizontal shifting/empty side spaces */
+      overflow-x: hidden; /* Fixes horizontal side scroll */
       width: 100%;
     }
 
@@ -46,7 +46,6 @@
       gap: 15px;
     }
 
-    /* Social Media Icons Style */
     .social-icons {
       display: flex;
       gap: 8px;
@@ -63,10 +62,8 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      transition: all 0.3s;
     }
 
-    /* Logo Text styling */
     .logo-text h1 {
       font-size: 18px;
       letter-spacing: 2px;
@@ -78,24 +75,21 @@
     .logo-text h2 {
       font-size: 10px;
       letter-spacing: 3px;
-      color: #c5a880; /* Premium Gold */
+      color: #c5a880; /* Gold */
       font-weight: 400;
-      margin-top: 2px;
+      margin-top: 4px;
     }
 
-    .amharic-sub {
-      font-size: 10px;
-      color: #8b8e96; 
-      display: block;
-      margin-top: 2px;
-    }
-
-    /* Hide the technical checkbox logic */
+    /* Technical menu toggle helper */
     .menu-toggle {
-      display: none;
+      display: none !important;
     }
 
-    /* Desktop Menu Links */
+    /* Desktop Navigation Menu Links */
+    .nav-links {
+      display: flex;
+    }
+
     .nav-links a {
       color: #ffffff;
       text-decoration: none;
@@ -105,7 +99,7 @@
       font-weight: 500;
     }
 
-    /* Desktop Hamburger - Hidden by default */
+    /* Desktop Hamburger Button - Hidden */
     .hamburger {
       display: none;
       cursor: pointer;
@@ -119,10 +113,9 @@
       height: 3px;
       background-color: #c5a880;
       border-radius: 2px;
-      transition: 0.3s;
     }
 
-    /* HERO SECTION / BODY CONTENT */
+    /* HERO AREA */
     .hero-section {
       max-width: 1200px;
       margin: 30px auto;
@@ -163,6 +156,7 @@
       border-radius: 8px;
       background: rgba(255, 255, 255, 0.01);
       max-width: 380px;
+      margin-bottom: 40px;
     }
 
     .quote-text {
@@ -171,20 +165,85 @@
       font-size: 14px;
     }
 
-    /* =========================================================
-       MOBILE RESPONSIVE BREAKPOINT
-       ========================================================= */
-    @media screen and (max-width: 768px) {
+    /* PROPERTY LISTINGS SECTION */
+    .listings-section {
+      max-width: 1200px;
+      margin: 0 auto 50px auto;
+      padding: 0 20px;
+    }
+
+    .section-title {
+      font-size: 20px;
+      color: #c5a880;
+      letter-spacing: 2px;
+      text-align: center;
+      margin-bottom: 30px;
+      font-weight: 500;
+    }
+
+    /* Side-by-Side Responsive Grid Layout */
+    .listings-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 25px;
+    }
+
+    .property-card {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(197, 168, 128, 0.15);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: transform 0.3s, border-color 0.3s;
+    }
+
+    .property-card:hover {
+      border-color: #c5a880;
+      transform: translateY(-5px);
+    }
+
+    .property-img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .property-info {
+      padding: 20px;
+    }
+
+    .property-title {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: #ffffff;
+    }
+
+    .property-price {
+      color: #c5a880;
+      font-size: 16px;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+
+    .property-details {
+      font-size: 14px;
+      color: #a3a3a3;
+      line-height: 1.5;
+    }
+
+    /* ==========================================
+       STRICT MOBILE OVERRIDES (Targets Phone Screens)
+       ========================================== */
+    @media only screen and (max-width: 850px) {
       
-      /* Show the 3 dashes menu button */
       .hamburger {
-        display: flex;
+        display: flex !important;
         z-index: 100;
       }
 
-      /* Move links into a hidden dropdown menu */
       .nav-links {
-        display: none;
+        display: none !important;
         flex-direction: column;
         position: absolute;
         top: 100%;
@@ -204,20 +263,8 @@
         letter-spacing: 2px;
       }
 
-      /* When 3 dashes are tapped, reveal the dropdown menu */
       .menu-toggle:checked ~ .nav-links {
-        display: flex;
-      }
-      
-      /* Animates 3 dashes into an 'X' when clicked */
-      .menu-toggle:checked ~ .hamburger span:nth-child(1) {
-        transform: rotate(45deg) translate(5px, 6px);
-      }
-      .menu-toggle:checked ~ .hamburger span:nth-child(2) {
-        opacity: 0;
-      }
-      .menu-toggle:checked ~ .hamburger span:nth-child(3) {
-        transform: rotate(-45deg) translate(5px, -6px);
+        display: flex !important;
       }
     }
   </style>
@@ -237,8 +284,7 @@
         <div class="logo-text">
           <h1>LAMROT</h1>
           <h2>PROPERTIES</h2>
-          <span class="amharic-sub">የቀን ጌታና</span>
-        </div>
+          </div>
       </div>
 
       <input type="checkbox" id="menu-toggle" class="menu-toggle">
@@ -270,6 +316,41 @@
       </div>
     </div>
   </main>
+
+  <section class="listings-section">
+    <h3 class="section-title">OUR PROPERTIES</h3>
+    
+    <div class="listings-grid">
+      
+      <div class="property-card">
+        <img src="property1.jpg" alt="Luxury Property" class="property-img">
+        <div class="property-info">
+          <h4 class="property-title">Modern Luxury Villa</h4>
+          <p class="property-price">Contact for Price</p>
+          <p class="property-details">Beautiful high-end architectural villa with expansive rooms and premium finishes.</p>
+        </div>
+      </div>
+
+      <div class="property-card">
+        <img src="property2.jpg" alt="Luxury Property" class="property-img">
+        <div class="property-info">
+          <h4 class="property-title">Premium Commercial Space</h4>
+          <p class="property-price">Contact for Price</p>
+          <p class="property-details">Stunning corporate or business location optimized for maximum productivity and premium appearance.</p>
+        </div>
+      </div>
+
+      <div class="property-card">
+        <img src="property3.jpg" alt="Luxury Property" class="property-img">
+        <div class="property-info">
+          <h4 class="property-title">Elegant Apartment Suite</h4>
+          <p class="property-price">Contact for Price</p>
+          <p class="property-details">Exclusive styling options, beautiful metropolitan views, and modern smart security infrastructure.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
 
 </body>
 </html>
