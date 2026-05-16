@@ -15,11 +15,15 @@
       box-sizing: border-box;
     }
 
-    html, body {
-      background-color: #0b0c10; /* Obsidian Black */
+    html {
+      scroll-behavior: smooth; /* Makes the screen smoothly glide down when buttons are pressed */
+    }
+
+    body {
+      background-color: #0b0c10; 
       color: #ffffff;
       font-family: 'Helvetica Neue', Arial, sans-serif;
-      overflow-x: hidden; /* Strict horizontal lock to stop blank spaces */
+      overflow-x: hidden; 
       width: 100%;
     }
 
@@ -28,8 +32,10 @@
       background-color: #0b0c10;
       border-bottom: 1px solid rgba(197, 168, 128, 0.2); 
       padding: 15px 20px;
-      position: relative;
+      position: sticky; /* Keeps the menu locked to the top when scrolling */
+      top: 0;
       width: 100%;
+      z-index: 1000;
     }
 
     .nav-container {
@@ -52,7 +58,7 @@
     }
 
     .social-icons a {
-      color: #c5a880; /* Premium Gold */
+      color: #c5a880; 
       text-decoration: none;
       font-size: 13px;
       width: 28px;
@@ -80,7 +86,6 @@
       margin-top: 4px;
     }
 
-    /* Menu toggle controller */
     .menu-toggle {
       display: none !important;
     }
@@ -97,6 +102,11 @@
       font-size: 13px;
       letter-spacing: 1.5px;
       font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: #c5a880;
     }
 
     /* Mobile Hamburger lines */
@@ -118,8 +128,8 @@
     /* HERO SECTION */
     .hero-section {
       max-width: 1200px;
-      margin: 30px auto;
-      padding: 0 20px;
+      margin: 0 auto;
+      padding: 100px 20px 40px 20px; /* Adjusted padding to account for sticky nav */
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -179,8 +189,8 @@
     /* PROPERTY LISTINGS */
     .listings-section {
       max-width: 1200px;
-      margin: 0 auto 60px auto;
-      padding: 0 20px;
+      margin: 0 auto;
+      padding: 60px 20px;
     }
 
     .listings-grid {
@@ -235,8 +245,8 @@
     /* ABOUT US SECTION */
     .about-section {
       max-width: 800px;
-      margin: 0 auto 60px auto;
-      padding: 0 20px;
+      margin: 0 auto;
+      padding: 60px 20px;
       text-align: center;
     }
 
@@ -321,6 +331,7 @@
         letter-spacing: 2px;
       }
 
+      /* Tapping a link inside the mobile menu closes the dropdown instantly */
       .menu-toggle:checked ~ .nav-links {
         display: flex !important;
       }
@@ -354,15 +365,15 @@
       </label>
 
       <nav class="nav-links">
-        <a href="#">HOME</a>
-        <a href="#">LISTINGS</a>
-        <a href="#">ABOUT US</a>
+        <label for="menu-toggle"><a href="#home">HOME</a></label>
+        <label for="menu-toggle"><a href="#listings">LISTINGS</a></label>
+        <label for="menu-toggle"><a href="#about">ABOUT US</a></label>
       </nav>
       
     </div>
   </header>
 
-  <main class="hero-section">
+  <main class="hero-section" id="home">
     <div class="hero-image-container">
       <img src="mititi.jpg" alt="Lamrot Properties Professional" class="hero-img">
     </div>
@@ -375,7 +386,7 @@
     </div>
   </main>
 
-  <section class="listings-section">
+  <section class="listings-section" id="listings">
     <h3 class="section-title">Our Properties</h3>
     <div class="listings-grid">
       
@@ -409,7 +420,7 @@
     </div>
   </section>
 
-  <section class="about-section">
+  <section class="about-section" id="about">
     <h3 class="section-title">About Us</h3>
     <div class="about-content">
       <p>Welcome to Lamrot Properties. We specialize in providing high-end, premium real estate choices tailored to match an exceptional standard of living. Our absolute dedication ensures that whether you are looking for luxurious residential options or a premium business office layout, we source spaces that reflect luxury, functionality, and outstanding architectural craftsmanship.</p>
