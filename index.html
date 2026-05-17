@@ -17,6 +17,7 @@
 
     html {
       scroll-behavior: smooth;
+      height: auto;
     }
 
     body {
@@ -25,6 +26,10 @@
       font-family: 'Helvetica Neue', Arial, sans-serif;
       overflow-x: hidden; 
       width: 100%;
+      height: auto;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
     }
 
     /* NAVBAR CODE */
@@ -147,7 +152,7 @@
       border-radius: 2px;
     }
 
-    /* Mobile Social Icons */
+    /* Mobile Social Icons Hidden on Desktop */
     .social-icons-mobile {
       display: none;
     }
@@ -162,6 +167,7 @@
       align-items: center;
       justify-content: space-between;
       gap: 50px;
+      flex-shrink: 0;
     }
 
     .hero-image-container {
@@ -224,6 +230,8 @@
       margin: 0 auto;
       padding: 80px 20px;
       display: block;
+      height: auto;
+      clear: both;
     }
 
     .listings-grid {
@@ -231,6 +239,7 @@
       grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
       gap: 30px;
       width: 100%;
+      height: auto;
     }
 
     .property-card {
@@ -240,6 +249,7 @@
       overflow: hidden;
       display: flex;
       flex-direction: column;
+      height: auto;
     }
 
     .property-img {
@@ -254,6 +264,7 @@
       display: flex;
       flex-direction: column;
       flex-grow: 1;
+      height: auto;
     }
 
     .property-title {
@@ -396,6 +407,8 @@
       padding: 80px 20px;
       text-align: center;
       display: block;
+      height: auto;
+      clear: both;
     }
 
     .about-content {
@@ -415,6 +428,9 @@
       padding: 40px 20px;
       text-align: center;
       display: block;
+      height: auto;
+      margin-top: auto; /* Ensures footer sits at bottom cleanly */
+      clear: both;
     }
 
     .footer-contacts {
@@ -474,7 +490,7 @@
         position: static !important;
         transform: none !important;
         text-align: left;
-        margin-right: 15px; /* Spaces naturally away from links */
+        margin-right: 15px; 
       }
 
       .logo-text h1 {
@@ -499,7 +515,7 @@
       .social-icons-mobile {
         display: flex !important;
         gap: 8px;
-        margin-left: auto; /* Pushes links neatly to the far right */
+        margin-left: auto; 
       }
 
       .social-icons-mobile a {
@@ -559,12 +575,14 @@
 
       .listings-section {
         padding: 40px 15px;
+        height: auto;
       }
 
       .listings-grid {
         display: flex;
         flex-direction: column;
         gap: 25px;
+        height: auto;
       }
     }
   </style>
@@ -709,4 +727,46 @@
 
           <div class="action-buttons-row">
             <a href="tel:+251922785816" class="btn-action btn-call"><i class="fas fa-phone-alt"></i> Call</a>
-            <a href="mailto:lamrothabtamu2524@
+            <a href="mailto:lamrothabtamu2524@gmail.com?subject=Inquiry: Bole Executive Suite" class="btn-action btn-email"><i class="fas fa-envelope"></i> Email</a>
+            <a href="https://t.me/LamrotHabtamu" target="_blank" class="btn-action btn-telegram"><i class="fab fa-telegram-plane"></i> Telegram</a>
+          </div>
+
+          <input type="checkbox" id="toggle-p3" class="detail-toggle-chk">
+          <label for="toggle-p3" class="lbl-toggle-details">View Price & Details</label>
+          <div class="expandable-details-content">
+            <div class="inner-details-box">
+              <p class="detail-price-tag">Contact for Price</p>
+              <ul class="deep-specs-list">
+                <li>• Ultra-premium luxury finishes</li>
+                <li>• Integrated smart control options</li>
+                <li>• Panoramic high-rise city overview</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="about-section" id="about">
+    <h3 class="section-title">About Us</h3>
+    <div class="about-content">
+      <p>Welcome to Lamrot Properties. We specialize in providing high-end, premium real estate choices tailored to match an exceptional standard of living. Our absolute dedication ensures that whether you are looking for luxurious residential options or a premium business office layout, we source spaces that reflect luxury, functionality, and outstanding architectural craftsmanship.</p>
+    </div>
+  </section>
+
+  <footer class="main-footer">
+    <div class="footer-contacts">
+      <a href="tel:+251922785816" class="contact-item">
+        <i class="fas fa-phone-alt"></i> +251 922 785 816
+      </a>
+      <a href="mailto:lamrothabtamu2524@gmail.com" class="contact-item">
+        <i class="fas fa-envelope"></i> lamrothabtamu2524@gmail.com
+      </a>
+    </div>
+    <p class="footer-credits">&copy; 2026 LAMROT PROPERTIES. All Rights Reserved.</p>
+  </footer>
+
+</body>
+</html>
