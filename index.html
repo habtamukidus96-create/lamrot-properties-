@@ -16,7 +16,7 @@
     }
 
     html {
-      scroll-behavior: smooth; /* Makes the screen smoothly glide down when buttons are pressed */
+      scroll-behavior: smooth;
     }
 
     body {
@@ -32,7 +32,7 @@
       background-color: #0b0c10;
       border-bottom: 1px solid rgba(197, 168, 128, 0.2); 
       padding: 15px 20px;
-      position: sticky; /* Keeps the menu locked to the top when scrolling */
+      position: sticky; 
       top: 0;
       width: 100%;
       z-index: 1000;
@@ -192,7 +192,7 @@
       text-transform: uppercase;
     }
 
-    /* PROPERTY LISTINGS */
+    /* PROPERTY LISTINGS (Notebook Blueprint Upgrade) */
     .listings-section {
       max-width: 1200px;
       margin: 0 auto;
@@ -201,51 +201,169 @@
 
     .listings-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 25px;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
     }
 
     .property-card {
       background: rgba(255, 255, 255, 0.02);
       border: 1px solid rgba(197, 168, 128, 0.15);
-      border-radius: 12px;
+      border-radius: 14px;
       overflow: hidden;
-      transition: transform 0.3s, border-color 0.3s;
-    }
-
-    .property-card:hover {
-      border-color: #c5a880;
-      transform: translateY(-5px);
+      display: flex;
+      flex-direction: column;
     }
 
     .property-img {
       width: 100%;
-      height: 200px;
+      height: 240px;
       object-fit: cover;
       display: block;
     }
 
     .property-info {
-      padding: 20px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
     }
 
     .property-title {
-      font-size: 18px;
+      font-size: 19px;
       font-weight: 600;
-      margin-bottom: 8px;
-    }
-
-    .property-price {
-      color: #c5a880;
-      font-size: 16px;
-      font-weight: 700;
-      margin-bottom: 12px;
+      margin-bottom: 10px;
+      color: #ffffff;
+      letter-spacing: 0.5px;
     }
 
     .property-details {
       font-size: 14px;
+      color: #d1d1d1;
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+
+    /* Property Specifications Bar */
+    .property-specs {
+      display: flex;
+      justify-content: space-between;
+      background: rgba(197, 168, 128, 0.05);
+      border: 1px solid rgba(197, 168, 128, 0.1);
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: 13px;
+      color: #c5a880;
+      font-weight: 500;
+      margin-bottom: 20px;
+    }
+
+    /* Action Button Row Layout */
+    .action-buttons-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+
+    .btn-action {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 10px 5px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 600;
+      text-decoration: none;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      transition: all 0.2s ease;
+    }
+
+    /* Specific Button Branding Styles */
+    .btn-call {
+      background-color: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #ffffff;
+    }
+    .btn-call:hover {
+      background-color: #ffffff;
+      color: #0b0c10;
+    }
+
+    .btn-email {
+      background-color: rgba(197, 168, 128, 0.05);
+      border: 1px solid rgba(197, 168, 128, 0.3);
+      color: #c5a880;
+    }
+    .btn-email:hover {
+      background-color: #c5a880;
+      color: #0b0c10;
+    }
+
+    .btn-telegram {
+      background-color: rgba(36, 161, 222, 0.08);
+      border: 1px solid rgba(36, 161, 222, 0.4);
+      color: #24a1de;
+    }
+    .btn-telegram:hover {
+      background-color: #24a1de;
+      color: #ffffff;
+    }
+
+    /* Smooth Expansion Box (Hidden initially) */
+    .detail-toggle-chk {
+      display: none;
+    }
+
+    .lbl-toggle-details {
+      display: block;
+      text-align: center;
+      padding: 10px;
+      font-size: 13px;
+      color: #c5a880;
+      border: 1px dashed rgba(197, 168, 128, 0.3);
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 500;
+      transition: background 0.3s;
+    }
+    .lbl-toggle-details:hover {
+      background: rgba(197, 168, 128, 0.05);
+    }
+
+    .expandable-details-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease-out;
+      background: rgba(0, 0, 0, 0.2);
+      border-radius: 8px;
+    }
+
+    .inner-details-box {
+      padding: 15px;
+      border-top: 1px solid rgba(197, 168, 128, 0.1);
+      margin-top: 10px;
+    }
+
+    .detail-price-tag {
+      font-size: 18px;
+      color: #c5a880;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .deep-specs-list {
+      font-size: 13px;
       color: #a3a3a3;
-      line-height: 1.5;
+      list-style: none;
+      line-height: 1.6;
+    }
+
+    /* Logic to show the panel when checked */
+    .detail-toggle-chk:checked ~ .expandable-details-content {
+      max-height: 200px; /* Expands smoothly */
     }
 
     /* ABOUT US SECTION */
@@ -396,29 +514,101 @@
     <div class="listings-grid">
       
       <div class="property-card">
-        <img src="property1.jpg" alt="Luxury Property" class="property-img">
+        <img src="property1.jpg" alt="Awale Three Bedroom Apartment" class="property-img">
         <div class="property-info">
-          <h4 class="property-title">Modern Luxury Villa</h4>
-          <p class="property-price">Contact for Price</p>
-          <p class="property-details">Beautiful high-end architectural villa with expansive rooms and premium finishes.</p>
+          <h4 class="property-title">Awale - Three Bedroom Apartment</h4>
+          <p class="property-details">This three bedroom apartment for sale in Ethiopia offers a spacious and thoughtful design for premium luxury living space.</p>
+          
+          <div class="property-specs">
+            <span><i class="fas fa-bed"></i> Bed: 3</span>
+            <span><i class="fas fa-bath"></i> Bath: 2</span>
+            <span><i class="fas fa-expand-arrows-alt"></i> Size: 157 m²</span>
+          </div>
+
+          <div class="action-buttons-row">
+            <a href="tel:+251922785816" class="btn-action btn-call"><i class="fas fa-phone-alt"></i> Call</a>
+            <a href="mailto:lamrothabtamu2524@gmail.com?subject=Inquiry: Awale 3-Bed Apartment" class="btn-action btn-email"><i class="fas fa-envelope"></i> Email</a>
+            <a href="https://t.me/LamrotHabtamu" target="_blank" class="btn-action btn-telegram"><i class="fab fa-telegram-plane"></i> Telegram</a>
+          </div>
+
+          <input type="checkbox" id="toggle-p1" class="detail-toggle-chk">
+          <label for="toggle-p1" class="lbl-toggle-details">View Price & Details</label>
+          <div class="expandable-details-content">
+            <div class="inner-details-box">
+              <p class="detail-price-tag">Contact for Price</p>
+              <ul class="deep-specs-list">
+                <li>• High-floor scenic window views</li>
+                <li>• 24/7 Dedicated security entry</li>
+                <li>• Standby generator infrastructure</li>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
 
       <div class="property-card">
-        <img src="property2.jpg" alt="Luxury Property" class="property-img">
+        <img src="property2.jpg" alt="Piassa Two Bedroom Apartment" class="property-img">
         <div class="property-info">
-          <h4 class="property-title">Premium Commercial Space</h4>
-          <p class="property-price">Contact for Price</p>
-          <p class="property-details">Stunning corporate or business location optimized for maximum productivity and premium appearance.</p>
+          <h4 class="property-title">Piassa - Two Bedroom Apartment</h4>
+          <p class="property-details">This two bedroom apartment for sale in Ethiopia provides a well-designed & comfortable modern living space in a prime metropolitan hub.</p>
+          
+          <div class="property-specs">
+            <span><i class="fas fa-bed"></i> Bed: 2</span>
+            <span><i class="fas fa-bath"></i> Bath: 1</span>
+            <span><i class="fas fa-expand-arrows-alt"></i> Size: 87 m²</span>
+          </div>
+
+          <div class="action-buttons-row">
+            <a href="tel:+251922785816" class="btn-action btn-call"><i class="fas fa-phone-alt"></i> Call</a>
+            <a href="mailto:lamrothabtamu2524@gmail.com?subject=Inquiry: Piassa 2-Bed Apartment" class="btn-action btn-email"><i class="fas fa-envelope"></i> Email</a>
+            <a href="https://t.me/LamrotHabtamu" target="_blank" class="btn-action btn-telegram"><i class="fab fa-telegram-plane"></i> Telegram</a>
+          </div>
+
+          <input type="checkbox" id="toggle-p2" class="detail-toggle-chk">
+          <label for="toggle-p2" class="lbl-toggle-details">View Price & Details</label>
+          <div class="expandable-details-content">
+            <div class="inner-details-box">
+              <p class="detail-price-tag">Contact for Price</p>
+              <ul class="deep-specs-list">
+                <li>• Located in historic vibrant Piassa</li>
+                <li>• Easy transit accessibility</li>
+                <li>• Secure undercover vehicle space</li>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
 
       <div class="property-card">
-        <img src="property3.jpg" alt="Luxury Property" class="property-img">
+        <img src="property3.jpg" alt="Luxury Property Showcase" class="property-img">
         <div class="property-info">
-          <h4 class="property-title">Elegant Apartment Suite</h4>
-          <p class="property-price">Contact for Price</p>
-          <p class="property-details">Exclusive styling options, beautiful metropolitan views, and modern smart security infrastructure.</p>
+          <h4 class="property-title">Bole - Premium Executive Suite</h4>
+          <p class="property-details">Exclusive high-tier commercial or residential option optimized for high-end styling preferences, modern smart layouts, and exceptional building security.</p>
+          
+          <div class="property-specs">
+            <span><i class="fas fa-bed"></i> Bed: 4</span>
+            <span><i class="fas fa-bath"></i> Bath: 3</span>
+            <span><i class="fas fa-expand-arrows-alt"></i> Size: 210 m²</span>
+          </div>
+
+          <div class="action-buttons-row">
+            <a href="tel:+251922785816" class="btn-action btn-call"><i class="fas fa-phone-alt"></i> Call</a>
+            <a href="mailto:lamrothabtamu2524@gmail.com?subject=Inquiry: Bole Executive Suite" class="btn-action btn-email"><i class="fas fa-envelope"></i> Email</a>
+            <a href="https://t.me/LamrotHabtamu" target="_blank" class="btn-action btn-telegram"><i class="fab fa-telegram-plane"></i> Telegram</a>
+          </div>
+
+          <input type="checkbox" id="toggle-p3" class="detail-toggle-chk">
+          <label for="toggle-p3" class="lbl-toggle-details">View Price & Details</label>
+          <div class="expandable-details-content">
+            <div class="inner-details-box">
+              <p class="detail-price-tag">Contact for Price</p>
+              <ul class="deep-specs-list">
+                <li>• Ultra-premium luxury finishes</li>
+                <li>• Integrated smart control options</li>
+                <li>• Panoramic high-rise city overview</li>
+              </ul>
+            </div>
+          </div>
         </div>
       </div>
 
