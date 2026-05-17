@@ -147,6 +147,11 @@
       border-radius: 2px;
     }
 
+    /* Mobile Social Icons */
+    .social-icons-mobile {
+      display: none;
+    }
+
     /* HERO SECTION */
     .hero-section {
       max-width: 1200px;
@@ -460,7 +465,6 @@
         width: 100%;
       }
       
-      /* Hides desktop layout structural block safely */
       .logo-brand {
         display: none !important; 
       }
@@ -470,7 +474,7 @@
         position: static !important;
         transform: none !important;
         text-align: left;
-        margin-right: auto; /* Pushes hamburger left and spaces naturally */
+        margin-right: 15px; /* Spaces naturally away from links */
       }
 
       .logo-text h1 {
@@ -489,6 +493,26 @@
         display: flex !important;
         z-index: 100;
         order: -1; 
+      }
+
+      /* Mobile Links Restored & Placed next to brand */
+      .social-icons-mobile {
+        display: flex !important;
+        gap: 8px;
+        margin-left: auto; /* Pushes links neatly to the far right */
+      }
+
+      .social-icons-mobile a {
+        color: #c5a880; 
+        text-decoration: none;
+        font-size: 13px;
+        width: 28px;
+        height: 28px;
+        border: 1px solid rgba(197, 168, 128, 0.3);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
 
       /* Hidden responsive link drawer structure */
@@ -518,7 +542,6 @@
         display: flex !important;
       }
 
-      /* Mobile layout block protections */
       .hero-section {
         flex-direction: column;
         text-align: center;
@@ -572,6 +595,13 @@
         <span></span>
         <span></span>
       </label>
+
+      <div class="social-icons-mobile">
+        <a href="https://facebook.com/share/1CpreHHXre/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.instagram.com/lamrot_property?igsh=dTY0MHNrZGF3Y2Zt" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.tiktok.com/@lamrottemer_properties?_r=1&_t=ZS-96PNmmPOxvA" target="_blank"><i class="fab fa-tiktok"></i></a>
+        <a href="https://t.me/LamrotHabtamu" target="_blank"><i class="fab fa-telegram-plane"></i></a>
+      </div>
 
       <nav class="nav-links">
         <label for="menu-toggle"><a href="#home">HOME</a></label>
@@ -679,46 +709,4 @@
 
           <div class="action-buttons-row">
             <a href="tel:+251922785816" class="btn-action btn-call"><i class="fas fa-phone-alt"></i> Call</a>
-            <a href="mailto:lamrothabtamu2524@gmail.com?subject=Inquiry: Bole Executive Suite" class="btn-action btn-email"><i class="fas fa-envelope"></i> Email</a>
-            <a href="https://t.me/LamrotHabtamu" target="_blank" class="btn-action btn-telegram"><i class="fab fa-telegram-plane"></i> Telegram</a>
-          </div>
-
-          <input type="checkbox" id="toggle-p3" class="detail-toggle-chk">
-          <label for="toggle-p3" class="lbl-toggle-details">View Price & Details</label>
-          <div class="expandable-details-content">
-            <div class="inner-details-box">
-              <p class="detail-price-tag">Contact for Price</p>
-              <ul class="deep-specs-list">
-                <li>• Ultra-premium luxury finishes</li>
-                <li>• Integrated smart control options</li>
-                <li>• Panoramic high-rise city overview</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <section class="about-section" id="about">
-    <h3 class="section-title">About Us</h3>
-    <div class="about-content">
-      <p>Welcome to Lamrot Properties. We specialize in providing high-end, premium real estate choices tailored to match an exceptional standard of living. Our absolute dedication ensures that whether you are looking for luxurious residential options or a premium business office layout, we source spaces that reflect luxury, functionality, and outstanding architectural craftsmanship.</p>
-    </div>
-  </section>
-
-  <footer class="main-footer">
-    <div class="footer-contacts">
-      <a href="tel:+251922785816" class="contact-item">
-        <i class="fas fa-phone-alt"></i> +251 922 785 816
-      </a>
-      <a href="mailto:lamrothabtamu2524@gmail.com" class="contact-item">
-        <i class="fas fa-envelope"></i> lamrothabtamu2524@gmail.com
-      </a>
-    </div>
-    <p class="footer-credits">&copy; 2026 LAMROT PROPERTIES. All Rights Reserved.</p>
-  </footer>
-
-</body>
-</html>
+            <a href="mailto:lamrothabtamu2524@
