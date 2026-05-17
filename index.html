@@ -51,7 +51,7 @@
       display: flex;
       align-items: center;
       gap: 30px; 
-      flex: 1; /* Allows centering logic */
+      flex: 1;
     }
 
     .social-icons {
@@ -78,7 +78,7 @@
       color: #0b0c10;
     }
 
-    /* Logic to push brand text to true center of desktop screen */
+    /* True absolute centering for desktop screen */
     .logo-text {
       position: absolute;
       left: 50%;
@@ -446,15 +446,14 @@
       }
       
       .nav-container {
-        justify-content: flex-start; /* Aligns everything left */
+        justify-content: flex-start; 
         gap: 15px;
       }
       
       .logo-brand {
-        display: none; /* Hide desktop specific container */
+        display: none; 
       }
       
-      /* Reset desktop specific absolute centering */
       .logo-text {
         position: static;
         transform: none;
@@ -472,11 +471,10 @@
         margin-top: 4px;
       }
 
-      /* Displays the burger menu before the brand name */
       .hamburger {
         display: flex !important;
         z-index: 100;
-        order: -1; /* Pushes to front */
+        order: -1; 
       }
 
       .nav-links {
@@ -505,11 +503,10 @@
         display: flex !important;
       }
 
-      /* Displays social links after the brand name */
       .social-icons-mobile {
         display: flex;
         gap: 8px;
-        margin-left: auto; /* Pushes to far right */
+        margin-left: auto; 
       }
       
       .social-icons-mobile a {
@@ -549,4 +546,64 @@
       <div class="logo-brand">
         <div class="social-icons">
           <a href="https://facebook.com/share/1CpreHHXre/" target="_blank"><i class="fab fa-facebook-f"></i></a>
-          <a href="
+          <a href="https://www.instagram.com/lamrot_property?igsh=dTY0MHNrZGF3Y2Zt" target="_blank"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.tiktok.com/@lamrottemer_properties?_r=1&_t=ZS-96PNmmPOxvA" target="_blank"><i class="fab fa-tiktok"></i></a>
+          <a href="https://t.me/LamrotHabtamu" target="_blank"><i class="fab fa-telegram-plane"></i></a>
+        </div>
+      </div>
+
+      <div class="logo-text">
+        <h1>LAMROT</h1>
+        <h2>PROPERTIES</h2>
+      </div>
+
+      <input type="checkbox" id="menu-toggle" class="menu-toggle">
+      
+      <label for="menu-toggle" class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </label>
+      
+      <div class="social-icons-mobile">
+        <a href="https://facebook.com/share/1CpreHHXre/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.instagram.com/lamrot_property?igsh=dTY0MHNrZGF3Y2Zt" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.tiktok.com/@lamrottemer_properties?_r=1&_t=ZS-96PNmmPOxvA" target="_blank"><i class="fab fa-tiktok"></i></a>
+        <a href="https://t.me/LamrotHabtamu" target="_blank"><i class="fab fa-telegram-plane"></i></a>
+      </div>
+
+      <nav class="nav-links">
+        <label for="menu-toggle"><a href="#home">HOME</a></label>
+        <label for="menu-toggle"><a href="#listings">LISTINGS</a></label>
+        <label for="menu-toggle"><a href="#about">ABOUT US</a></label>
+      </nav>
+      
+    </div>
+  </header>
+
+  <main class="hero-section" id="home">
+    <div class="hero-image-container">
+      <img src="headshot.jpg" alt="Lamrot Properties Professional" class="hero-img">
+    </div>
+    
+    <div class="hero-content">
+      <h2 class="main-headline">ጥራት ያላቸው የመኖሪያና የንግድ ቤቶችን ዛሬውኑ ያግኙ!</h2>
+      <div class="quote-box">
+        <p class="quote-text">"Philosophy is the philosophy of ensuring the luxury of your life."</p>
+      </div>
+    </div>
+  </main>
+
+  <section class="listings-section" id="listings">
+    <h3 class="section-title">Our Properties</h3>
+    <div class="listings-grid">
+      
+      <div class="property-card">
+        <img src="property1.jpg" alt="Awale Three Bedroom Apartment" class="property-img">
+        <div class="property-info">
+          <h4 class="property-title">Awale - Three Bedroom Apartment</h4>
+          <p class="property-details">This three bedroom apartment for sale in Ethiopia offers a spacious and thoughtful design for premium luxury living space.</p>
+          
+          <div class="property-specs">
+            <span><i class="fas fa-bed"></i> Bed: 3</span>
+            <span><i class="fas fa-
