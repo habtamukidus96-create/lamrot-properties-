@@ -44,13 +44,13 @@
       align-items: center;
       max-width: 1200px;
       margin: 0 auto;
+      width: 100%;
     }
 
     .logo-brand {
       display: flex;
       align-items: center;
-      gap: 40px; 
-      flex-grow: 1;
+      gap: 30px; 
     }
 
     .social-icons {
@@ -77,11 +77,6 @@
       color: #0b0c10;
     }
 
-    /* Premium centered look on desktop screens */
-    .logo-text {
-      margin-left: 8%; 
-    }
-
     .logo-text h1 {
       font-size: 22px; 
       letter-spacing: 4px;
@@ -102,7 +97,7 @@
       display: none !important;
     }
 
-    /* Desktop Navigation Right Side Alignment */
+    /* Desktop Navigation Alignment */
     .nav-links {
       display: flex;
     }
@@ -137,17 +132,16 @@
       border-radius: 2px;
     }
 
-    /* HERO SECTION (Split Desktop Layout Blueprint) */
+    /* HERO SECTION (Fixed Flow Structure) */
     .hero-section {
       max-width: 1200px;
       margin: 0 auto;
-      padding: 120px 20px 60px 20px; 
+      padding: 80px 20px; 
       display: flex;
       flex-direction: row; 
       align-items: center;
       justify-content: space-between;
       gap: 50px;
-      text-align: left;
     }
 
     .hero-image-container {
@@ -155,19 +149,20 @@
       border: 1px solid rgba(197, 168, 128, 0.3);
       padding: 12px;
       border-radius: 16px;
-      display: inline-block;
+      display: block;
       flex-shrink: 0;
     }
 
     .hero-img {
       width: 100%;
-      max-width: 340px; 
+      width: 320px; 
+      height: auto;
       border-radius: 12px;
       display: block;
     }
 
     .hero-content {
-      flex-grow: 1;
+      flex: 1;
       max-width: 650px;
     }
 
@@ -184,7 +179,6 @@
       padding: 20px;
       border-radius: 8px;
       background: rgba(255, 255, 255, 0.01);
-      max-width: 500px;
     }
 
     .quote-text {
@@ -433,27 +427,13 @@
     }
 
     /* ==========================================
-       STRICT MOBILE OVERRIDES (Enforces beautiful stacked flow on phones)
+       RESPONSIVE MEDIA QUERIES
        ========================================== */
     @media only screen and (max-width: 850px) {
-      .logo-brand {
-        gap: 15px;
+      .nav-container {
+        justify-content: space-between;
       }
       
-      .logo-text {
-        margin-left: 0;
-      }
-
-      .logo-text h1 {
-        font-size: 18px;
-        letter-spacing: 2px;
-      }
-
-      .logo-text h2 {
-        font-size: 10px;
-        letter-spacing: 3px;
-      }
-
       .hamburger {
         display: flex !important;
         z-index: 100;
@@ -478,29 +458,23 @@
         display: block;
         font-size: 16px;
         letter-spacing: 2px;
+        margin-left: 0;
       }
 
       .menu-toggle:checked ~ .nav-links {
         display: flex !important;
       }
 
-      /* Stack hero elements on top of each other for phones */
+      /* Stacks elements safely on smaller devices */
       .hero-section {
         flex-direction: column;
         text-align: center;
-        padding-top: 90px;
-        gap: 25px;
+        padding-top: 60px;
+        gap: 30px;
       }
 
       .main-headline {
-        font-size: 22px;
-        max-width: 450px;
-        margin: 0 auto 20px auto;
-      }
-
-      .quote-box {
-        margin: 0 auto 40px auto;
-        max-width: 380px;
+        font-size: 24px;
       }
       
       .hero-img {
@@ -531,3 +505,136 @@
       
       <label for="menu-toggle" class="hamburger">
         <span></span>
+        <span></span>
+        <span></span>
+      </label>
+
+      <nav class="nav-links">
+        <label for="menu-toggle"><a href="#home">HOME</a></label>
+        <label for="menu-toggle"><a href="#listings">LISTINGS</a></label>
+        <label for="menu-toggle"><a href="#about">ABOUT US</a></label>
+      </nav>
+      
+    </div>
+  </header>
+
+  <main class="hero-section" id="home">
+    <div class="hero-image-container">
+      <img src="headshot.jpg" alt="Lamrot Properties Professional" class="hero-img">
+    </div>
+    
+    <div class="hero-content">
+      <h2 class="main-headline">ጥራት ያላቸው የመኖሪያና የንግድ ቤቶችን ዛሬውኑ ያግኙ!</h2>
+      <div class="quote-box">
+        <p class="quote-text">"Philosophy is the philosophy of ensuring the luxury of your life."</p>
+      </div>
+    </div>
+  </main>
+
+  <section class="listings-section" id="listings">
+    <h3 class="section-title">Our Properties</h3>
+    <div class="listings-grid">
+      
+      <div class="property-card">
+        <img src="property1.jpg" alt="Awale Three Bedroom Apartment" class="property-img">
+        <div class="property-info">
+          <h4 class="property-title">Awale - Three Bedroom Apartment</h4>
+          <p class="property-details">This three bedroom apartment for sale in Ethiopia offers a spacious and thoughtful design for premium luxury living space.</p>
+          
+          <div class="property-specs">
+            <span><i class="fas fa-bed"></i> Bed: 3</span>
+            <span><i class="fas fa-bath"></i> Bath: 2</span>
+            <span><i class="fas fa-expand-arrows-alt"></i> Size: 157 m²</span>
+          </div>
+
+          <div class="action-buttons-row">
+            <a href="tel:+251922785816" class="btn-action btn-call"><i class="fas fa-phone-alt"></i> Call</a>
+            <a href="mailto:lamrothabtamu2524@gmail.com?subject=Inquiry: Awale 3-Bed Apartment" class="btn-action btn-email"><i class="fas fa-envelope"></i> Email</a>
+            <a href="https://t.me/LamrotHabtamu" target="_blank" class="btn-action btn-telegram"><i class="fab fa-telegram-plane"></i> Telegram</a>
+          </div>
+
+          <input type="checkbox" id="toggle-p1" class="detail-toggle-chk">
+          <label for="toggle-p1" class="lbl-toggle-details">View Price & Details</label>
+          <div class="expandable-details-content">
+            <div class="inner-details-box">
+              <p class="detail-price-tag">Contact for Price</p>
+              <ul class="deep-specs-list">
+                <li>• High-floor scenic window views</li>
+                <li>• 24/7 Dedicated security entry</li>
+                <li>• Standby generator infrastructure</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="property-card">
+        <img src="property2.jpg" alt="Piassa Two Bedroom Apartment" class="property-img">
+        <div class="property-info">
+          <h4 class="property-title">Piassa - Two Bedroom Apartment</h4>
+          <p class="property-details">This two bedroom apartment for sale in Ethiopia provides a well-designed & comfortable modern living space in a prime metropolitan hub.</p>
+          
+          <div class="property-specs">
+            <span><i class="fas fa-bed"></i> Bed: 2</span>
+            <span><i class="fas fa-bath"></i> Bath: 1</span>
+            <span><i class="fas fa-expand-arrows-alt"></i> Size: 87 m²</span>
+          </div>
+
+          <div class="action-buttons-row">
+            <a href="tel:+251922785816" class="btn-action btn-call"><i class="fas fa-phone-alt"></i> Call</a>
+            <a href="mailto:lamrothabtamu2524@gmail.com?subject=Inquiry: Piassa 2-Bed Apartment" class="btn-action btn-email"><i class="fas fa-envelope"></i> Email</a>
+            <a href="https://t.me/LamrotHabtamu" target="_blank" class="btn-action btn-telegram"><i class="fab fa-telegram-plane"></i> Telegram</a>
+          </div>
+
+          <input type="checkbox" id="toggle-p2" class="detail-toggle-chk">
+          <label for="toggle-p2" class="lbl-toggle-details">View Price & Details</label>
+          <div class="expandable-details-content">
+            <div class="inner-details-box">
+              <p class="detail-price-tag">Contact for Price</p>
+              <ul class="deep-specs-list">
+                <li>• Located in historic vibrant Piassa</li>
+                <li>• Easy transit accessibility</li>
+                <li>• Secure undercover vehicle space</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="property-card">
+        <img src="property3.jpg" alt="Luxury Property Showcase" class="property-img">
+        <div class="property-info">
+          <h4 class="property-title">Bole - Premium Executive Suite</h4>
+          <p class="property-details">Exclusive high-tier commercial or residential option optimized for high-end styling preferences, modern smart layouts, and exceptional building security.</p>
+          
+          <div class="property-specs">
+            <span><i class="fas fa-bed"></i> Bed: 4</span>
+            <span><i class="fas fa-bath"></i> Bath: 3</span>
+            <span><i class="fas fa-expand-arrows-alt"></i> Size: 210 m²</span>
+          </div>
+
+          <div class="action-buttons-row">
+            <a href="tel:+251922785816" class="btn-action btn-call"><i class="fas fa-phone-alt"></i> Call</a>
+            <a href="mailto:lamrothabtamu2524@gmail.com?subject=Inquiry: Bole Executive Suite" class="btn-action btn-email"><i class="fas fa-envelope"></i> Email</a>
+            <a href="https://t.me/LamrotHabtamu" target="_blank" class="btn-action btn-telegram"><i class="fab fa-telegram-plane"></i> Telegram</a>
+          </div>
+
+          <input type="checkbox" id="toggle-p3" class="detail-toggle-chk">
+          <label for="toggle-p3" class="lbl-toggle-details">View Price & Details</label>
+          <div class="expandable-details-content">
+            <div class="inner-details-box">
+              <p class="detail-price-tag">Contact for Price</p>
+              <ul class="deep-specs-list">
+                <li>• Ultra-premium luxury finishes</li>
+                <li>• Integrated smart control options</li>
+                <li>• Panoramic high-rise city overview</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="about-section"
