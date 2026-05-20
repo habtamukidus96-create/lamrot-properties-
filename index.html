@@ -610,6 +610,10 @@
         order: -1; 
       }
 
+      .hamburger span {
+        transition: transform 0.3s, opacity 0.3s;
+      }
+
       .social-icons-mobile {
         display: flex !important;
         gap: 8px;
@@ -651,8 +655,19 @@
         margin-left: 0;
       }
 
-      .menu-toggle:checked ~ .nav-links {
+      #menu-toggle-open:checked ~ .nav-links {
         display: flex !important;
+      }
+      
+      /* Hamburger animations when menu is open */
+      #menu-toggle-open:checked ~ .hamburger span:nth-child(1) {
+        transform: translateY(8px) rotate(45deg);
+      }
+      #menu-toggle-open:checked ~ .hamburger span:nth-child(2) {
+        opacity: 0;
+      }
+      #menu-toggle-open:checked ~ .hamburger span:nth-child(3) {
+        transform: translateY(-8px) rotate(-45deg);
       }
 
       .hero-section {
@@ -734,9 +749,9 @@
         <h2>PROPERTIES</h2>
       </div>
 
-      <input type="checkbox" id="menu-toggle" class="menu-toggle">
-      
-      <label for="menu-toggle" class="hamburger">
+      <input type="checkbox" id="menu-toggle-open" class="menu-toggle">
+
+      <label for="menu-toggle-open" class="hamburger">
         <span></span>
         <span></span>
         <span></span>
@@ -750,9 +765,9 @@
       </div>
 
       <nav class="nav-links">
-        <label for="menu-toggle"><a href="#home">HOME</a></label>
-        <label for="menu-toggle"><a href="#listings">LISTINGS</a></label>
-        <label for="menu-toggle"><a href="#about">ABOUT US</a></label>
+        <a href="#home">HOME</a>
+        <a href="#listings">LISTINGS</a>
+        <a href="#about">ABOUT US</a>
       </nav>
       
     </div>
@@ -774,6 +789,8 @@
   <section class="listings-section" id="listings">
     <h3 class="section-title">Our Listings</h3>
     
+    <input type="radio" name="details-group" id="close-all-details" class="detail-toggle-chk" checked>
+
     <div class="listings-grid">
       
       <div class="property-card">
@@ -791,8 +808,10 @@
             <a href="mailto:lamrothabtamu2524@gmail.com?subject=Inquiry: Aware 121m²" class="btn-action btn-email"><i class="fas fa-envelope"></i> Email</a>
             <a href="https://t.me/LamrotHabtamu" target="_blank" class="btn-action btn-telegram"><i class="fab fa-telegram-plane"></i> Telegram</a>
           </div>
-          <input type="checkbox" id="toggle-p1" class="detail-toggle-chk">
+          
+          <input type="radio" name="details-group" id="toggle-p1" class="detail-toggle-chk">
           <label for="toggle-p1" class="lbl-toggle-details">View Price & Details</label>
+          
           <div class="expandable-details-content">
             <div class="inner-details-box">
               <p class="detail-price-tag">Price: 12,900,000 ETB</p>
@@ -805,6 +824,7 @@
                 <li><i class="fas fa-shield-alt"></i> 24/7 Monitored Gate Security: Guard post + HD CCTV</li>
                 <li class="discount-highlight"><i class="fas fa-tags"></i> For discount contact Me!</li>
               </ul>
+              <label for="close-all-details" style="display:block; text-align:center; margin-top:12px; font-size:12px; color:#aaa; cursor:pointer;"><i class="fas fa-chevron-up"></i> Close Box</label>
             </div>
           </div>
         </div>
@@ -825,8 +845,10 @@
             <a href="mailto:lamrothabtamu2524@gmail.com?subject=Inquiry: Bulgaria 68m²" class="btn-action btn-email"><i class="fas fa-envelope"></i> Email</a>
             <a href="https://t.me/LamrotHabtamu" target="_blank" class="btn-action btn-telegram"><i class="fab fa-telegram-plane"></i> Telegram</a>
           </div>
-          <input type="checkbox" id="toggle-p2" class="detail-toggle-chk">
+          
+          <input type="radio" name="details-group" id="toggle-p2" class="detail-toggle-chk">
           <label for="toggle-p2" class="lbl-toggle-details">View Price & Details</label>
+          
           <div class="expandable-details-content">
             <div class="inner-details-box">
               <p class="detail-price-tag">Price: 7,820,000 ETB</p>
@@ -839,6 +861,7 @@
                 <li><i class="fas fa-shield-alt"></i> 24/7 Monitored Gate Security: Complete secured checkpoint</li>
                 <li class="discount-highlight"><i class="fas fa-tags"></i> For discount contact Me!</li>
               </ul>
+              <label for="close-all-details" style="display:block; text-align:center; margin-top:12px; font-size:12px; color:#aaa; cursor:pointer;"><i class="fas fa-chevron-up"></i> Close Box</label>
             </div>
           </div>
         </div>
@@ -859,8 +882,10 @@
             <a href="mailto:lamrothabtamu2524@gmail.com?subject=Inquiry: Piassa Lycee 132m²" class="btn-action btn-email"><i class="fas fa-envelope"></i> Email</a>
             <a href="https://t.me/LamrotHabtamu" target="_blank" class="btn-action btn-telegram"><i class="fab fa-telegram-plane"></i> Telegram</a>
           </div>
-          <input type="checkbox" id="toggle-p3" class="detail-toggle-chk">
+          
+          <input type="radio" name="details-group" id="toggle-p3" class="detail-toggle-chk">
           <label for="toggle-p3" class="lbl-toggle-details">View Price & Details</label>
+          
           <div class="expandable-details-content">
             <div class="inner-details-box">
               <p class="detail-price-tag">Price: 15,180,000 ETB</p>
@@ -873,6 +898,7 @@
                 <li><i class="fas fa-shield-alt"></i> 24/7 Monitored Gate Security: Professional watchmen + electronic key access</li>
                 <li class="discount-highlight"><i class="fas fa-tags"></i> For discount contact Me!</li>
               </ul>
+              <label for="close-all-details" style="display:block; text-align:center; margin-top:12px; font-size:12px; color:#aaa; cursor:pointer;"><i class="fas fa-chevron-up"></i> Close Box</label>
             </div>
           </div>
         </div>
@@ -895,8 +921,8 @@
             <a href="mailto:lamrothabtamu2524@gmail.com" class="btn-email btn-action">Email</a>
             <a href="https://t.me/LamrotHabtamu" class="btn-telegram btn-action">Telegram</a>
           </div>
-          <input type="checkbox" id="toggle-p4" class="detail-toggle-chk"><label for="toggle-p4" class="lbl-toggle-details">View Details</label>
-          <div class="expandable-details-content"><div class="inner-details-box"><p class="detail-price-tag">Price: 14,000,000 ETB</p><p class="detail-dp-tag">Down Payment (20%): 2,800,000 ETB</p><ul class="deep-specs-list"><li><i class="fas fa-clipboard-list"></i> <strong>The Process:</strong> 2,800,000 ETB down payment bank transfer, remaining balance across installments.</li><li><i class="fas fa-wifi"></i> WiFi: Full property signal coverage</li><li><i class="fas fa-elevator"></i> Elevator: Smooth low-noise infrastructure</li><li><i class="fas fa-bolt"></i> Standby Generator: Automated commercial generator</li><li><i class="fas fa-shield-alt"></i> 24/7 Monitored Gate Security: Strict compound oversight</li><li class="discount-highlight"><i class="fas fa-tags"></i> For discount contact Me!</li></ul></div></div>
+          <input type="radio" name="details-group" id="toggle-p4" class="detail-toggle-chk"><label for="toggle-p4" class="lbl-toggle-details">View Details</label>
+          <div class="expandable-details-content"><div class="inner-details-box"><p class="detail-price-tag">Price: 14,000,000 ETB</p><p class="detail-dp-tag">Down Payment (20%): 2,800,000 ETB</p><ul class="deep-specs-list"><li><i class="fas fa-clipboard-list"></i> <strong>The Process:</strong> 2,800,000 ETB down payment bank transfer, remaining balance across installments.</li><li><i class="fas fa-wifi"></i> WiFi: Full property signal coverage</li><li><i class="fas fa-elevator"></i> Elevator: Smooth low-noise infrastructure</li><li><i class="fas fa-bolt"></i> Standby Generator: Automated commercial generator</li><li><i class="fas fa-shield-alt"></i> 24/7 Monitored Gate Security: Strict compound oversight</li><li class="discount-highlight"><i class="fas fa-tags"></i> For discount contact Me!</li></ul><label for="close-all-details" style="display:block; text-align:center; margin-top:12px; font-size:12px; color:#aaa; cursor:pointer;"><i class="fas fa-chevron-up"></i> Close Box</label></div></div>
         </div>
       </div>
 
@@ -911,8 +937,8 @@
             <a href="mailto:lamrothabtamu2524@gmail.com" class="btn-email btn-action">Email</a>
             <a href="https://t.me/LamrotHabtamu" class="btn-telegram btn-action">Telegram</a>
           </div>
-          <input type="checkbox" id="toggle-p5" class="detail-toggle-chk"><label for="toggle-p5" class="lbl-toggle-details">View Details</label>
-          <div class="expandable-details-content"><div class="inner-details-box"><p class="detail-price-tag">Price: 14,400,000 ETB</p><p class="detail-dp-tag">Down Payment (20%): 2,880,000 ETB</p><ul class="deep-specs-list"><li><i class="fas fa-clipboard-list"></i> <strong>The Process:</strong> 2,880,000 ETB down payment bank transfer, remaining balance across installments.</li><li><i class="fas fa-wifi"></i> WiFi: Connected high-throughput lines</li><li><i class="fas fa-elevator"></i> Elevator: High-speed mechanical lifts</li><li><i class="fas fa-bolt"></i> Standby Generator: 24-volt auto-start system</li><li><i class="fas fa-shield-alt"></i> 24/7 Monitored Gate Security: Armed security perimeter</li><li class="discount-highlight"><i class="fas fa-tags"></i> For discount contact Me!</li></ul></div></div>
+          <input type="radio" name="details-group" id="toggle-p5" class="detail-toggle-chk"><label for="toggle-p5" class="lbl-toggle-details">View Details</label>
+          <div class="expandable-details-content"><div class="inner-details-box"><p class="detail-price-tag">Price: 14,400,000 ETB</p><p class="detail-dp-tag">Down Payment (20%): 2,880,000 ETB</p><ul class="deep-specs-list"><li><i class="fas fa-clipboard-list"></i> <strong>The Process:</strong> 2,880,000 ETB down payment bank transfer, remaining balance across installments.</li><li><i class="fas fa-wifi"></i> WiFi: Connected high-throughput lines</li><li><i class="fas fa-elevator"></i> Elevator: High-speed mechanical lifts</li><li><i class="fas fa-bolt"></i> Standby Generator: 24-volt auto-start system</li><li><i class="fas fa-shield-alt"></i> 24/7 Monitored Gate Security: Armed security perimeter</li><li class="discount-highlight"><i class="fas fa-tags"></i> For discount contact Me!</li></ul><label for="close-all-details" style="display:block; text-align:center; margin-top:12px; font-size:12px; color:#aaa; cursor:pointer;"><i class="fas fa-chevron-up"></i> Close Box</label></div></div>
         </div>
       </div>
 
@@ -927,8 +953,8 @@
             <a href="mailto:lamrothabtamu2524@gmail.com" class="btn-email btn-action">Email</a>
             <a href="https://t.me/LamrotHabtamu" class="btn-telegram btn-action">Telegram</a>
           </div>
-          <input type="checkbox" id="toggle-p6" class="detail-toggle-chk"><label for="toggle-p6" class="lbl-toggle-details">View Details</label>
-          <div class="expandable-details-content"><div class="inner-details-box"><p class="detail-price-tag">Price: 14,900,000 ETB</p><p class="detail-dp-tag">Down Payment (20%): 2,980,000 ETB</p><ul class="deep-specs-list"><li><i class="fas fa-clipboard-list"></i> <strong>The Process:</strong> 2,980,000 ETB down payment bank transfer, remaining balance across installments.</li><li><i class="fas fa-wifi"></i> WiFi: Next-gen wireless nodes</li><li><i class="fas fa-elevator"></i> Elevator: Luxury-class mirror elevator cabin</li><li><i class="fas fa-bolt"></i> Standby Generator: Continuous heavy power backup</li><li><i class="fas fa-shield-alt"></i> 24/7 Monitored Gate Security: Biometric guard post</li><li class="discount-highlight"><i class="fas fa-tags"></i> For discount contact Me!</li></ul></div></div>
+          <input type="radio" name="details-group" id="toggle-p6" class="detail-toggle-chk"><label for="toggle-p6" class="lbl-toggle-details">View Details</label>
+          <div class="expandable-details-content"><div class="inner-details-box"><p class="detail-price-tag">Price: 14,900,000 ETB</p><p class="detail-dp-tag">Down Payment (20%): 2,980,000 ETB</p><ul class="deep-specs-list"><li><i class="fas fa-clipboard-list"></i> <strong>The Process:</strong> 2,980,000 ETB down payment bank transfer, remaining balance across installments.</li><li><i class="fas fa-wifi"></i> WiFi: Next-gen wireless nodes</li><li><i class="fas fa-elevator"></i> Elevator: Luxury-class mirror elevator cabin</li><li><i class="fas fa-bolt"></i> Standby Generator: Continuous heavy power backup</li><li><i class="fas fa-shield-alt"></i> 24/7 Monitored Gate Security: Biometric guard post</li><li class="discount-highlight"><i class="fas fa-tags"></i> For discount contact Me!</li></ul><label for="close-all-details" style="display:block; text-align:center; margin-top:12px; font-size:12px; color:#aaa; cursor:pointer;"><i class="fas fa-chevron-up"></i> Close Box</label></div></div>
         </div>
       </div>
 
@@ -943,8 +969,8 @@
             <a href="mailto:lamrothabtamu2524@gmail.com" class="btn-email btn-action">Email</a>
             <a href="https://t.me/LamrotHabtamu" class="btn-telegram btn-action">Telegram</a>
           </div>
-          <input type="checkbox" id="toggle-p7" class="detail-toggle-chk"><label for="toggle-p7" class="lbl-toggle-details">View Details</label>
-          <div class="expandable-details-content"><div class="inner-details-box"><p class="detail-price-tag">Price: 15,100,000 ETB</p><p class="detail-dp-tag">Down Payment (20%): 3,020,000 ETB</p><ul class="deep-specs-list"><li><i class="fas fa-clipboard-list"></i> <strong>The Process:</strong> 3,020,000 ETB down payment bank transfer, remaining balance across installments.</li><li><i class="fas fa-wifi"></i> WiFi: Fiber infrastructure to all rooms</li><li><i class="fas fa-elevator"></i> Elevator: Dual secure elevator blocks</li><li><i class="fas fa-bolt"></i> Standby Generator: Zero-second delay power switch</li><li><i class="fas fa-shield-alt"></i> 24/7 Monitored Gate Security: Manned gate operations</li><li class="discount-highlight"><i class="fas fa-tags"></i> For discount contact Me!</li></ul></div></div>
+          <input type="radio" name="details-group" id="toggle-p7" class="detail-toggle-chk"><label for="toggle-p7" class="lbl-toggle-details">View Details</label>
+          <div class="expandable-details-content"><div class="inner-details-box"><p class="detail-price-tag">Price: 15,100,000 ETB</p><p class="detail-dp-tag">Down Payment (20%): 3,020,000 ETB</p><ul class="deep-specs-list"><li><i class="fas fa-clipboard-list"></i> <strong>The Process:</strong> 3,020,000 ETB down payment bank transfer, remaining balance across installments.</li><li><i class="fas fa-wifi"></i> WiFi: Fiber infrastructure to all rooms</li><li><i class="fas fa-elevator"></i> Elevator: Dual secure elevator blocks</li><li><i class="fas fa-bolt"></i> Standby Generator: Zero-second delay power switch</li><li><i class="fas fa-shield-alt"></i> 24/7 Monitored Gate Security: Manned gate operations</li><li class="discount-highlight"><i class="fas fa-tags"></i> For discount contact Me!</li></ul><label for="close-all-details" style="display:block; text-align:center; margin-top:12px; font-size:12px; color:#aaa; cursor:pointer;"><i class="fas fa-chevron-up"></i> Close Box</label></div></div>
         </div>
       </div>
 
@@ -959,8 +985,8 @@
             <a href="mailto:lamrothabtamu2524@gmail.com" class="btn-email btn-action">Email</a>
             <a href="https://t.me/LamrotHabtamu" class="btn-telegram btn-action">Telegram</a>
           </div>
-          <input type="checkbox" id="toggle-p8" class="detail-toggle-chk"><label for="toggle-p8" class="lbl-toggle-details">View Details</label>
-          <div class="expandable-details-content"><div class="inner-details-box"><p class="detail-price-tag">Price: 15,300,000 ETB</p><p class="detail-dp-tag">Down Payment (20%): 3,060,000 ETB</p><ul class="deep-specs-list"><li><i class="fas fa-clipboard-list"></i> <strong>The Process:</strong> 3,060,000 ETB down payment bank transfer, remaining balance across installments.</li><li><i class="fas fa-wifi"></i> WiFi: Independent access points</li><li><i class="fas fa-elevator"></i> Elevator: Multi-landing speed lifts</li><li><i class="fas fa-bolt"></i> Standby Generator: Emergency industrial generator engine</li><li><i class="fas fa-shield-alt"></i> 24/7 Monitored Gate Security: Complete fenced tracking</li><li class="discount-highlight"><i class="fas fa-tags"></i> For discount contact Me!</li></ul></div></div>
+          <input type="radio" name="details-group" id="toggle-p8" class="detail-toggle-chk"><label for="toggle-p8" class="lbl-toggle-details">View Details</label>
+          <div class="expandable-details-content"><div class="inner-details-box"><p class="detail-price-tag">Price: 15,300,000 ETB</p><p class="detail-dp-tag">Down Payment (20%): 3,060,000 ETB</p><ul class="deep-specs-list"><li><i class="fas fa-clipboard-list"></i> <strong>The Process:</strong> 3,060,000 ETB down payment bank transfer, remaining balance across installments.</li><li><i class="fas fa-wifi"></i> WiFi: Independent access points</li><li><i class="fas fa-elevator"></i> Elevator: Multi-landing speed lifts</li><li><i class="fas fa-bolt"></i> Standby Generator: Emergency industrial generator engine</li><li><i class="fas fa-shield-alt"></i> 24/7 Monitored Gate Security: Complete fenced tracking</li><li class="discount-highlight"><i class="fas fa-tags"></i> For discount contact Me!</li></ul><label for="close-all-details" style="display:block; text-align:center; margin-top:12px; font-size:12px; color:#aaa; cursor:pointer;"><i class="fas fa-chevron-up"></i> Close Box</label></div></div>
         </div>
       </div>
 
@@ -975,8 +1001,8 @@
             <a href="mailto:lamrothabtamu2524@gmail.com" class="btn-email btn-action">Email</a>
             <a href="https://t.me/LamrotHabtamu" class="btn-telegram btn-action">Telegram</a>
           </div>
-          <input type="checkbox" id="toggle-p9" class="detail-toggle-chk"><label for="toggle-p9" class="lbl-toggle-details">View Details</label>
-          <div class="expandable-details-content"><div class="inner-details-box"><p class="detail-price-tag">Price: 15,600,000 ETB</p><p class="detail-dp-tag">Down Payment (20%): 3,120,000 ETB</p><ul class="deep-specs-list"><li><i class="fas fa-clipboard-list"></i> <strong>The Process:</strong> 3,120,000 ETB down payment bank transfer, remaining balance across installments.</li><li><i class="fas fa-wifi"></i> WiFi: Advanced building-managed networks</li><li><i class="fas fa-elevator"></i> Elevator: High-efficiency smooth rail lifters</li><li><i class="fas fa-bolt"></i> Standby Generator: Localized diesel fallback generator</li><li><i class="fas fa-shield-alt"></i> 24/7 Monitored Gate Security: Elite patrol officers on duty</li><li class="discount-highlight"><i class="fas fa-tags"></i> For discount contact Me!</li></ul></div></div>
+          <input type="radio" name="details-group" id="toggle-p9" class="detail-toggle-chk"><label for="toggle-p9" class="lbl-toggle-details">View Details</label>
+          <div class="expandable-details-content"><div class="inner-details-box"><p class="detail-price-tag">Price: 15,600,000 ETB</p><p class="detail-dp-tag">Down Payment (20%): 3,120,000 ETB</p><ul class="deep-specs-list"><li><i class="fas fa-clipboard-list"></i> <strong>The Process:</strong> 3,120,000 ETB down payment bank transfer, remaining balance across installments.</li><li><i class="fas fa-wifi"></i> WiFi: Advanced building-managed networks</li><li><i class="fas fa-elevator"></i> Elevator: High-efficiency smooth rail lifters</li><li><i class="fas fa-bolt"></i> Standby Generator: Localized diesel fallback generator</li><li><i class="fas fa-shield-alt"></i> 24/7 Monitored Gate Security: Elite patrol officers on duty</li><li class="discount-highlight"><i class="fas fa-tags"></i> For discount contact Me!</li></ul><label for="close-all-details" style="display:block; text-align:center; margin-top:12px; font-size:12px; color:#aaa; cursor:pointer;"><i class="fas fa-chevron-up"></i> Close Box</label></div></div>
         </div>
       </div>
 
@@ -991,8 +1017,8 @@
             <a href="mailto:lamrothabtamu2524@gmail.com" class="btn-email btn-action">Email</a>
             <a href="https://t.me/LamrotHabtamu" class="btn-telegram btn-action">Telegram</a>
           </div>
-          <input type="checkbox" id="toggle-p10" class="detail-toggle-chk"><label for="toggle-p10" class="lbl-toggle-details">View Details</label>
-          <div class="expandable-details-content"><div class="inner-details-box"><p class="detail-price-tag">Price: 16,000,000 ETB</p><p class="detail-dp-tag">Down Payment (20%): 3,200,000 ETB</p><ul class="deep-specs-list"><li><i class="fas fa-clipboard-list"></i> <strong>The Process:</strong> 3,200,000 ETB down payment bank transfer, remaining balance across installments.</li><li><i class="fas fa-wifi"></i> WiFi: Symmetrical ultra-fast fiber feeds</li><li><i class="fas fa-elevator"></i> Elevator: Electronic secure key elevators</li><li><i class="fas fa-bolt"></i> Standby Generator: Auto-grid fallback matrix</li><li><i class="fas fa-shield-alt"></i> 24/7 Monitored Gate Security: Round-the-clock entry inspection</li><li class="discount-highlight"><i class="fas fa-tags"></i> For discount contact Me!</li></ul></div></div>
+          <input type="radio" name="details-group" id="toggle-p10" class="detail-toggle-chk"><label for="toggle-p10" class="lbl-toggle-details">View Details</label>
+          <div class="expandable-details-content"><div class="inner-details-box"><p class="detail-price-tag">Price: 16,000,000 ETB</p><p class="detail-dp-tag">Down Payment (20%): 3,200,000 ETB</p><ul class="deep-specs-list"><li><i class="fas fa-clipboard-list"></i> <strong>The Process:</strong> 3,200,000 ETB down payment bank transfer, remaining balance across installments.</li><li><i class="fas fa-wifi"></i> WiFi: Symmetrical ultra-fast fiber feeds</li><li><i class="fas fa-elevator"></i> Elevator: Electronic secure key elevators</li><li><i class="fas fa-bolt"></i> Standby Generator: Auto-grid fallback matrix</li><li><i class="fas fa-shield-alt"></i> 24/7 Monitored Gate Security: Round-the-clock entry inspection</li><li class="discount-highlight"><i class="fas fa-tags"></i> For discount contact Me!</li></ul><label for="close-all-details" style="display:block; text-align:center; margin-top:12px; font-size:12px; color:#aaa; cursor:pointer;"><i class="fas fa-chevron-up"></i> Close Box</label></div></div>
         </div>
       </div>
 
@@ -1007,8 +1033,8 @@
             <a href="mailto:lamrothabtamu2524@gmail.com" class="btn-email btn-action">Email</a>
             <a href="https://t.me/LamrotHabtamu" class="btn-telegram btn-action">Telegram</a>
           </div>
-          <input type="checkbox" id="toggle-p11" class="detail-toggle-chk"><label for="toggle-p11" class="lbl-toggle-details">View Details</label>
-          <div class="expandable-details-content"><div class="inner-details-box"><p class="detail-price-tag">Price: 16,700,000 ETB</p><p class="detail-dp-tag">Down Payment (20%): 3,340,000 ETB</p><ul class="deep-specs-list"><li><i class="fas fa-clipboard-list"></i> <strong>The Process:</strong> 3,340,000 ETB down payment bank transfer, remaining balance across installments.</li><li><i class="fas fa-wifi"></i> WiFi: Gig-speed dedicated data ports</li><li><i class="fas fa-elevator"></i> Elevator: VIP residential layout elevator cabins</li><li><i class="fas fa-bolt"></i> Standby Generator: High-load commercial generator support</li><li><i class="fas fa-shield-alt"></i> 24/7 Monitored Gate Security: Triple-redundant gate security posts</li><li class="discount-highlight"><i class="fas fa-tags"></i> For discount contact Me!</li></ul></div></div>
+          <input type="radio" name="details-group" id="toggle-p11" class="detail-toggle-chk"><label for="toggle-p11" class="lbl-toggle-details">View Details</label>
+          <div class="expandable-details-content"><div class="inner-details-box"><p class="detail-price-tag">Price: 16,700,000 ETB</p><p class="detail-dp-tag">Down Payment (20%): 3,340,000 ETB</p><ul class="deep-specs-list"><li><i class="fas fa-clipboard-list"></i> <strong>The Process:</strong> 3,340,000 ETB down payment bank transfer, remaining balance across installments.</li><li><i class="fas fa-wifi"></i> WiFi: Gig-speed dedicated data ports</li><li><i class="fas fa-elevator"></i> Elevator: VIP residential layout elevator cabins</li><li><i class="fas fa-bolt"></i> Standby Generator: High-load commercial generator support</li><li><i class="fas fa-shield-alt"></i> 24/7 Monitored Gate Security: Triple-redundant gate security posts</li><li class="discount-highlight"><i class="fas fa-tags"></i> For discount contact Me!</li></ul><label for="close-all-details" style="display:block; text-align:center; margin-top:12px; font-size:12px; color:#aaa; cursor:pointer;"><i class="fas fa-chevron-up"></i> Close Box</label></div></div>
         </div>
       </div>
 
@@ -1023,8 +1049,8 @@
             <a href="mailto:lamrothabtamu2524@gmail.com" class="btn-email btn-action">Email</a>
             <a href="https://t.me/LamrotHabtamu" class="btn-telegram btn-action">Telegram</a>
           </div>
-          <input type="checkbox" id="toggle-p12" class="detail-toggle-chk"><label for="toggle-p12" class="lbl-toggle-details">View Details</label>
-          <div class="expandable-details-content"><div class="inner-details-box"><p class="detail-price-tag">Price: 8,280,000 ETB</p><p class="detail-dp-tag">Down Payment (20%): 1,656,000 ETB</p><ul class="deep-specs-list"><li><i class="fas fa-clipboard-list"></i> <strong>The Process:</strong> 1,656,000 ETB down payment bank transfer, remaining balance across installments.</li><li><i class="fas fa-wifi"></i> WiFi: High-speed residential setup ready</li><li><i class="fas fa-elevator"></i> Elevator: Central high-efficiency elevator system</li><li><i class="fas fa-bolt"></i> Standby Generator: Emergency backup grid integration</li><li><i class="fas fa-shield-alt"></i> 24/7 Monitored Gate Security: Complete CCTV tracking coverage</li><li class="discount-highlight"><i class="fas fa-tags"></i> For discount contact Me!</li></ul></div></div>
+          <input type="radio" name="details-group" id="toggle-p12" class="detail-toggle-chk"><label for="toggle-p12" class="lbl-toggle-details">View Details</label>
+          <div class="expandable-details-content"><div class="inner-details-box"><p class="detail-price-tag">Price: 8,280,000 ETB</p><p class="detail-dp-tag">Down Payment (20%): 1,656,000 ETB</p><ul class="deep-specs-list"><li><i class="fas fa-clipboard-list"></i> <strong>The Process:</strong> 1,656,000 ETB down payment bank transfer, remaining balance across installments.</li><li><i class="fas fa-wifi"></i> WiFi: High-speed residential setup ready</li><li><i class="fas fa-elevator"></i> Elevator: Central high-efficiency elevator system</li><li><i class="fas fa-bolt"></i> Standby Generator: Emergency backup grid integration</li><li><i class="fas fa-shield-alt"></i> 24/7 Monitored Gate Security: Complete CCTV tracking coverage</li><li class="discount-highlight"><i class="fas fa-tags"></i> For discount contact Me!</li></ul><label for="close-all-details" style="display:block; text-align:center; margin-top:12px; font-size:12px; color:#aaa; cursor:pointer;"><i class="fas fa-chevron-up"></i> Close Box</label></div></div>
         </div>
       </div>
 
@@ -1039,8 +1065,8 @@
             <a href="mailto:lamrothabtamu2524@gmail.com" class="btn-email btn-action">Email</a>
             <a href="https://t.me/LamrotHabtamu" class="btn-telegram btn-action">Telegram</a>
           </div>
-          <input type="checkbox" id="toggle-p13" class="detail-toggle-chk"><label for="toggle-p13" class="lbl-toggle-details">View Details</label>
-          <div class="expandable-details-content"><div class="inner-details-box"><p class="detail-price-tag">Price: 9,315,000 ETB</p><p class="detail-dp-tag">Down Payment (20%): 1,863,000 ETB</p><ul class="deep-specs-list"><li><i class="fas fa-clipboard-list"></i> <strong>The Process:</strong> 1,863,000 ETB down payment bank transfer, remaining balance across installments.</li><li><i class="fas fa-wifi"></i> WiFi: High-speed wireless system ready</li><li><i class="fas fa-elevator"></i> Elevator: Dual vertical transport elevator shafts</li><li><i class="fas fa-bolt"></i> Standby Generator: Automated commercial backup generator</li><li><i class="fas fa-shield-alt"></i> 24/7 Monitored Gate Security: Active guard patrolling routine</li><li class="discount-highlight"><i class="fas fa-tags"></i> For discount contact Me!</li></ul></div></div>
+          <input type="radio" name="details-group" id="toggle-p13" class="detail-toggle-chk"><label for="toggle-p13" class="lbl-toggle-details">View Details</label>
+          <div class="expandable-details-content"><div class="inner-details-box"><p class="detail-price-tag">Price: 9,315,000 ETB</p><p class="detail-dp-tag">Down Payment (20%): 1,863,000 ETB</p><ul class="deep-specs-list"><li><i class="fas fa-clipboard-list"></i> <strong>The Process:</strong> 1,863,000 ETB down payment bank transfer, remaining balance across installments.</li><li><i class="fas fa-wifi"></i> WiFi: High-speed wireless system ready</li><li><i class="fas fa-elevator"></i> Elevator: Dual vertical transport elevator shafts</li><li><i class="fas fa-bolt"></i> Standby Generator: Automated commercial backup generator</li><li><i class="fas fa-shield-alt"></i> 24/7 Monitored Gate Security: Active guard patrolling routine</li><li class="discount-highlight"><i class="fas fa-tags"></i> For discount contact Me!</li></ul><label for="close-all-details" style="display:block; text-align:center; margin-top:12px; font-size:12px; color:#aaa; cursor:pointer;"><i class="fas fa-chevron-up"></i> Close Box</label></div></div>
         </div>
       </div>
 
@@ -1055,8 +1081,8 @@
             <a href="mailto:lamrothabtamu2524@gmail.com" class="btn-email btn-action">Email</a>
             <a href="https://t.me/LamrotHabtamu" class="btn-telegram btn-action">Telegram</a>
           </div>
-          <input type="checkbox" id="toggle-p14" class="detail-toggle-chk"><label for="toggle-p14" class="lbl-toggle-details">View Details</label>
-          <div class="expandable-details-content"><div class="inner-details-box"><p class="detail-price-tag">Price: 10,005,000 ETB</p><p class="detail-dp-tag">Down Payment (20%): 2,001,000 ETB</p><ul class="deep-specs-list"><li><i class="fas fa-clipboard-list"></i> <strong>The Process:</strong> 2,001,000 ETB down payment bank transfer, remaining balance across installments.</li><li><i class="fas fa-wifi"></i> WiFi: Broadband internet infrastructure pre-wired</li><li><i class="fas fa-elevator"></i> Elevator: Smooth low-decibel cabin lift</li><li><i class="fas fa-bolt"></i> Standby Generator: Emergency continuous electricity systems</li><li><i class="fas fa-shield-alt"></i> 24/7 Monitored Gate Security: Complete private security gatehouse</li><li class="discount-highlight"><i class="fas fa-tags"></i> For discount contact Me!</li></ul></div></div>
+          <input type="radio" name="details-group" id="toggle-p14" class="detail-toggle-chk"><label for="toggle-p14" class="lbl-toggle-details">View Details</label>
+          <div class="expandable-details-content"><div class="inner-details-box"><p class="detail-price-tag">Price: 10,005,000 ETB</p><p class="detail-dp-tag">Down Payment (20%): 2,001,000 ETB</p><ul class="deep-specs-list"><li><i class="fas fa-clipboard-list"></i> <strong>The Process:</strong> 2,001,000 ETB down payment bank transfer, remaining balance across installments.</li><li><i class="fas fa-wifi"></i> WiFi: Broadband internet infrastructure pre-wired</li><li><i class="fas fa-elevator"></i> Elevator: Smooth low-decibel cabin lift</li><li><i class="fas fa-bolt"></i> Standby Generator: Emergency continuous electricity systems</li><li><i class="fas fa-shield-alt"></i> 24/7 Monitored Gate Security: Complete private security gatehouse</li><li class="discount-highlight"><i class="fas fa-tags"></i> For discount contact Me!</li></ul><label for="close-all-details" style="display:block; text-align:center; margin-top:12px; font-size:12px; color:#aaa; cursor:pointer;"><i class="fas fa-chevron-up"></i> Close Box</label></div></div>
         </div>
       </div>
 
@@ -1071,8 +1097,8 @@
             <a href="mailto:lamrothabtamu2524@gmail.com" class="btn-email btn-action">Email</a>
             <a href="https://t.me/LamrotHabtamu" class="btn-telegram btn-action">Telegram</a>
           </div>
-          <input type="checkbox" id="toggle-p15" class="detail-toggle-chk"><label for="toggle-p15" class="lbl-toggle-details">View Details</label>
-          <div class="expandable-details-content"><div class="inner-details-box"><p class="detail-price-tag">Price: 10,350,000 ETB</p><p class="detail-dp-tag">Down Payment (20%): 2,070,000 ETB</p><ul class="deep-specs-list"><li><i class="fas fa-clipboard-list"></i> <strong>The Process:</strong> 2,070,000 ETB down payment bank transfer, remaining balance across installments.</li><li><i class="fas fa-wifi"></i> WiFi: Symmetrical ultra-fast network options</li><li><i class="fas fa-elevator"></i> Elevator: Modern interior electronic lift</li><li><i class="fas fa-bolt"></i> Standby Generator: Instant backup alternator infrastructure</li><li><i class="fas fa-shield-alt"></i> 24/7 Monitored Gate Security: Round-the-clock secured compound tracking</li><li class="discount-highlight"><i class="fas fa-tags"></i> For discount contact Me!</li></ul></div></div>
+          <input type="radio" name="details-group" id="toggle-p15" class="detail-toggle-chk"><label for="toggle-p15" class="lbl-toggle-details">View Details</label>
+          <div class="expandable-details-content"><div class="inner-details-box"><p class="detail-price-tag">Price: 10,350,000 ETB</p><p class="detail-dp-tag">Down Payment (20%): 2,070,000 ETB</p><ul class="deep-specs-list"><li><i class="fas fa-clipboard-list"></i> <strong>The Process:</strong> 2,070,000 ETB down payment bank transfer, remaining balance across installments.</li><li><i class="fas fa-wifi"></i> WiFi: Symmetrical ultra-fast network options</li><li><i class="fas fa-elevator"></i> Elevator: Modern interior electronic lift</li><li><i class="fas fa-bolt"></i> Standby Generator: Instant backup alternator infrastructure</li><li><i class="fas fa-shield-alt"></i> 24/7 Monitored Gate Security: Round-the-clock secured compound tracking</li><li class="discount-highlight"><i class="fas fa-tags"></i> For discount contact Me!</li></ul><label for="close-all-details" style="display:block; text-align:center; margin-top:12px; font-size:12px; color:#aaa; cursor:pointer;"><i class="fas fa-chevron-up"></i> Close Box</label></div></div>
         </div>
       </div>
 
@@ -1087,8 +1113,8 @@
             <a href="mailto:lamrothabtamu2524@gmail.com" class="btn-email btn-action">Email</a>
             <a href="https://t.me/LamrotHabtamu" class="btn-telegram btn-action">Telegram</a>
           </div>
-          <input type="checkbox" id="toggle-p16" class="detail-toggle-chk"><label for="toggle-p16" class="lbl-toggle-details">View Details</label>
-          <div class="expandable-details-content"><div class="inner-details-box"><p class="detail-price-tag">Price: 13,915,000 ETB</p><p class="detail-dp-tag">Down Payment (20%): 2,783,000 ETB</p><ul class="deep-specs-list"><li><i class="fas fa-clipboard-list"></i> <strong>The Process:</strong> 2,783,000 ETB down payment bank transfer, remaining balance across installments.</li><li><i class="fas fa-wifi"></i> WiFi: Pre-connected high-speed fiber channels</li><li><i class="fas fa-elevator"></i> Elevator: High-speed spacious cargo/passenger elevator</li><li><i class="fas fa-bolt"></i> Standby Generator: Full automated commercial generator network</li><li><i class="fas fa-shield-alt"></i> 24/7 Monitored Gate Security: Intercom and manned security posts</li><li class="discount-highlight"><i class="fas fa-tags"></i> For discount contact Me!</li></ul></div></div>
+          <input type="radio" name="details-group" id="toggle-p16" class="detail-toggle-chk"><label for="toggle-p16" class="lbl-toggle-details">View Details</label>
+          <div class="expandable-details-content"><div class="inner-details-box"><p class="detail-price-tag">Price: 13,915,000 ETB</p><p class="detail-dp-tag">Down Payment (20%): 2,783,000 ETB</p><ul class="deep-specs-list"><li><i class="fas fa-clipboard-list"></i> <strong>The Process:</strong> 2,783,000 ETB down payment bank transfer, remaining balance across installments.</li><li><i class="fas fa-wifi"></i> WiFi: Pre-connected high-speed fiber channels</li><li><i class="fas fa-elevator"></i> Elevator: High-speed spacious cargo/passenger elevator</li><li><i class="fas fa-bolt"></i> Standby Generator: Full automated commercial generator network</li><li><i class="fas fa-shield-alt"></i> 24/7 Monitored Gate Security: Intercom and manned security posts</li><li class="discount-highlight"><i class="fas fa-tags"></i> For discount contact Me!</li></ul><label for="close-all-details" style="display:block; text-align:center; margin-top:12px; font-size:12px; color:#aaa; cursor:pointer;"><i class="fas fa-chevron-up"></i> Close Box</label></div></div>
         </div>
       </div>
 
@@ -1103,8 +1129,8 @@
             <a href="mailto:lamrothabtamu2524@gmail.com" class="btn-email btn-action">Email</a>
             <a href="https://t.me/LamrotHabtamu" class="btn-telegram btn-action">Telegram</a>
           </div>
-          <input type="checkbox" id="toggle-p17" class="detail-toggle-chk"><label for="toggle-p17" class="lbl-toggle-details">View Details</label>
-          <div class="expandable-details-content"><div class="inner-details-box"><p class="detail-price-tag">Price: 15,640,000 ETB</p><p class="detail-dp-tag">Down Payment (10%): 1,564,000 ETB</p><ul class="deep-specs-list"><li><i class="fas fa-clipboard-list"></i> <strong>The Process:</strong> 1,564,000 ETB down payment bank transfer, remaining balance across installments.</li><li><i class="fas fa-wifi"></i> WiFi: Top-tier fiber data routing installed</li><li><i class="fas fa-elevator"></i> Elevator: Premium silent mechanical elevators</li><li><i class="fas fa-bolt"></i> Standby Generator: Industrial heavy backup systems</li><li><i class="fas fa-shield-alt"></i> 24/7 Monitored Gate Security: Full electronic access entry gates</li><li class="discount-highlight"><i class="fas fa-tags"></i> For discount contact Me!</li></ul></div></div>
+          <input type="radio" name="details-group" id="toggle-p17" class="detail-toggle-chk"><label for="toggle-p17" class="lbl-toggle-details">View Details</label>
+          <div class="expandable-details-content"><div class="inner-details-box"><p class="detail-price-tag">Price: 15,640,000 ETB</p><p class="detail-dp-tag">Down Payment (10%): 1,564,000 ETB</p><ul class="deep-specs-list"><li><i class="fas fa-clipboard-list"></i> <strong>The Process:</strong> 1,564,000 ETB down payment bank transfer, remaining balance across installments.</li><li><i class="fas fa-wifi"></i> WiFi: Top-tier fiber data routing installed</li><li><i class="fas fa-elevator"></i> Elevator: Premium silent mechanical elevators</li><li><i class="fas fa-bolt"></i> Standby Generator: Industrial heavy backup systems</li><li><i class="fas fa-shield-alt"></i> 24/7 Monitored Gate Security: Full electronic access entry gates</li><li class="discount-highlight"><i class="fas fa-tags"></i> For discount contact Me!</li></ul><label for="close-all-details" style="display:block; text-align:center; margin-top:12px; font-size:12px; color:#aaa; cursor:pointer;"><i class="fas fa-chevron-up"></i> Close Box</label></div></div>
         </div>
       </div>
 
@@ -1119,8 +1145,8 @@
             <a href="mailto:lamrothabtamu2524@gmail.com" class="btn-email btn-action">Email</a>
             <a href="https://t.me/LamrotHabtamu" class="btn-telegram btn-action">Telegram</a>
           </div>
-          <input type="checkbox" id="toggle-p18" class="detail-toggle-chk"><label for="toggle-p18" class="lbl-toggle-details">View Details</label>
-          <div class="expandable-details-content"><div class="inner-details-box"><p class="detail-price-tag">Price: 16,330,000 ETB</p><p class="detail-dp-tag">Down Payment (10%): 1,633,000 ETB</p><ul class="deep-specs-list"><li><i class="fas fa-clipboard-list"></i> <strong>The Process:</strong> 1,633,000 ETB down payment bank transfer, remaining balance across installments.</li><li><i class="fas fa-wifi"></i> WiFi: Enterprise-grade high throughput connections</li><li><i class="fas fa-elevator"></i> Elevator: Automated luxury lift platforms</li><li><i class="fas fa-bolt"></i> Standby Generator: Uninterrupted continuous energy module</li><li><i class="fas fa-shield-alt"></i> 24/7 Monitored Gate Security: Complete secured checkpoint station</li><li class="discount-highlight"><i class="fas fa-tags"></i> For discount contact Me!</li></ul></div></div>
+          <input type="radio" name="details-group" id="toggle-p18" class="detail-toggle-chk"><label for="toggle-p18" class="lbl-toggle-details">View Details</label>
+          <div class="expandable-details-content"><div class="inner-details-box"><p class="detail-price-tag">Price: 16,330,000 ETB</p><p class="detail-dp-tag">Down Payment (10%): 1,633,000 ETB</p><ul class="deep-specs-list"><li><i class="fas fa-clipboard-list"></i> <strong>The Process:</strong> 1,633,000 ETB down payment bank transfer, remaining balance across installments.</li><li><i class="fas fa-wifi"></i> WiFi: Enterprise-grade high throughput connections</li><li><i class="fas fa-elevator"></i> Elevator: Automated luxury lift platforms</li><li><i class="fas fa-bolt"></i> Standby Generator: Uninterrupted continuous energy module</li><li><i class="fas fa-shield-alt"></i> 24/7 Monitored Gate Security: Complete secured checkpoint station</li><li class="discount-highlight"><i class="fas fa-tags"></i> For discount contact Me!</li></ul><label for="close-all-details" style="display:block; text-align:center; margin-top:12px; font-size:12px; color:#aaa; cursor:pointer;"><i class="fas fa-chevron-up"></i> Close Box</label></div></div>
         </div>
       </div>
 
@@ -1135,8 +1161,8 @@
             <a href="mailto:lamrothabtamu2524@gmail.com" class="btn-email btn-action">Email</a>
             <a href="https://t.me/LamrotHabtamu" class="btn-telegram btn-action">Telegram</a>
           </div>
-          <input type="checkbox" id="toggle-p19" class="detail-toggle-chk"><label for="toggle-p19" class="lbl-toggle-details">View Details</label>
-          <div class="expandable-details-content"><div class="inner-details-box"><p class="detail-price-tag">Price: 9,200,000 ETB</p><p class="detail-dp-tag">Down Payment (10%): 920,000 ETB</p><ul class="deep-specs-list"><li><i class="fas fa-clipboard-list"></i> <strong>The Process:</strong> 920,000 ETB down payment bank transfer, remaining balance across installments.</li><li><i class="fas fa-wifi"></i> WiFi: Smart connection ready modules</li><li><i class="fas fa-elevator"></i> Elevator: High efficiency elevator installation</li><li><i class="fas fa-bolt"></i> Standby Generator: High throughput backup alternator unit</li><li><i class="fas fa-shield-alt"></i> 24/7 Monitored Gate Security: 24/7 professional entry verification gates</li><li class="discount-highlight"><i class="fas fa-tags"></i> For discount contact Me!</li></ul></div></div>
+          <input type="radio" name="details-group" id="toggle-p19" class="detail-toggle-chk"><label for="toggle-p19" class="lbl-toggle-details">View Details</label>
+          <div class="expandable-details-content"><div class="inner-details-box"><p class="detail-price-tag">Price: 9,200,000 ETB</p><p class="detail-dp-tag">Down Payment (10%): 920,000 ETB</p><ul class="deep-specs-list"><li><i class="fas fa-clipboard-list"></i> <strong>The Process:</strong> 920,000 ETB down payment bank transfer, remaining balance across installments.</li><li><i class="fas fa-wifi"></i> WiFi: Smart connection ready modules</li><li><i class="fas fa-elevator"></i> Elevator: High efficiency elevator installation</li><li><i class="fas fa-bolt"></i> Standby Generator: High throughput backup alternator unit</li><li><i class="fas fa-shield-alt"></i> 24/7 Monitored Gate Security: 24/7 professional entry verification gates</li><li class="discount-highlight"><i class="fas fa-tags"></i> For discount contact Me!</li></ul><label for="close-all-details" style="display:block; text-align:center; margin-top:12px; font-size:12px; color:#aaa; cursor:pointer;"><i class="fas fa-chevron-up"></i> Close Box</label></div></div>
         </div>
       </div>
 
@@ -1181,6 +1207,36 @@
 
     </div>
   </footer>
+
+  <script>
+    const mobileMenuCheckbox = document.getElementById('menu-toggle-open');
+    const resetDetailsRadio = document.getElementById('close-all-details');
+
+    // 1. Automatically close 3-dash mobile menu when any navigation link is clicked
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        mobileMenuCheckbox.checked = false;
+      });
+    });
+
+    // 2. Automatically close open Property Details when user clicks outside cards or scrolls down
+    document.addEventListener('click', (e) => {
+      // Check if user clicked completely outside a property card and didn't click a toggle label
+      if (!e.target.closest('.property-card') && !e.target.closest('.lbl-toggle-details')) {
+        resetDetailsRadio.checked = true;
+      }
+    });
+
+    // 3. Close open boxes on swipe/scroll movement to prevent visual blocking
+    let scrollTimeout;
+    window.addEventListener('scroll', () => {
+      clearTimeout(scrollTimeout);
+      scrollTimeout = setTimeout(() => {
+        // Optional: comment out the line below if you don't want it closing dynamically on scroll stops
+        resetDetailsRadio.checked = true; 
+      }, 150);
+    });
+  </script>
 
 </body>
 </html>
