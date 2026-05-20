@@ -1,772 +1,292 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Lamrot Properties</title>
-  
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
-  <style>
-    /* Reset and Base Styles */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-      height: auto;
-    }
-
-    body {
-      background-color: #0b0c10; 
-      color: #ffffff;
-      font-family: 'Helvetica Neue', Arial, sans-serif;
-      overflow-x: hidden; 
-      width: 100%;
-      height: auto;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-    }
-
-    /* NAVBAR CODE */
-    .navbar {
-      background-color: #0b0c10;
-      border-bottom: 1px solid rgba(197, 168, 128, 0.2); 
-      padding: 18px 20px;
-      position: sticky; 
-      top: 0;
-      width: 100%;
-      z-index: 1000;
-    }
-
-    .nav-container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      max-width: 1200px;
-      margin: 0 auto;
-      width: 100%;
-      position: relative;
-    }
-
-    .logo-brand {
-      display: flex;
-      align-items: center;
-      gap: 30px; 
-      flex: 1;
-    }
-
-    .social-icons {
-      display: flex;
-      gap: 10px;
-    }
-
-    .social-icons a {
-      color: #c5a880; 
-      text-decoration: none;
-      font-size: 14px;
-      width: 32px;
-      height: 32px;
-      border: 1px solid rgba(197, 168, 128, 0.4);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.3s;
-    }
-
-    .social-icons a:hover {
-      background-color: #c5a880;
-      color: #0b0c10;
-    }
-
-    /* Absolute centering layout rule for Desktop */
-    .logo-text {
-      position: absolute;
-      left: 50%;
-      transform: translateX(-50%);
-      text-align: center;
-      pointer-events: auto;
-      z-index: 5;
-    }
-
-    .logo-text h1 {
-      font-size: 22px; 
-      letter-spacing: 4px;
-      font-weight: 700;
-      color: #ffffff;
-      line-height: 1;
-    }
-
-    .logo-text h2 {
-      font-size: 11px;
-      letter-spacing: 5px;
-      color: #c5a880; 
-      font-weight: 400;
-      margin-top: 5px;
-    }
-
-    .menu-toggle {
-      display: none !important;
-    }
-
-    /* Desktop Navigation Alignment */
-    .nav-links {
-      display: flex;
-      flex: 1;
-      justify-content: flex-end;
-      align-items: center;
-    }
-
-    .nav-links a {
-      color: #ffffff;
-      text-decoration: none;
-      margin-left: 30px;
-      font-size: 13px;
-      letter-spacing: 1.5px;
-      font-weight: 500;
-      transition: color 0.3s;
-    }
-
-    .nav-links a:hover {
-      color: #c5a880;
-    }
-
-    /* Mobile Hamburger lines */
-    .hamburger {
-      display: none;
-      cursor: pointer;
-      flex-direction: column;
-      gap: 5px;
-    }
-
-    .hamburger span {
-      display: block;
-      width: 25px;
-      height: 3px;
-      background-color: #c5a880;
-      border-radius: 2px;
-    }
-
-    /* Mobile Social Icons Hidden on Desktop */
-    .social-icons-mobile {
-      display: none;
-    }
-
-    /* HERO SECTION */
-    .hero-section {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 100px 20px 80px 20px; 
-      display: flex;
-      flex-direction: row; 
-      align-items: center;
-      justify-content: space-between;
-      gap: 50px;
-      flex-shrink: 0;
-    }
-
-    .hero-image-container {
-      position: relative;
-      border: 1px solid rgba(197, 168, 128, 0.3);
-      padding: 12px;
-      border-radius: 16px;
-      display: block;
-      flex-shrink: 0;
-    }
-
-    .hero-img {
-      width: 320px; 
-      height: auto;
-      border-radius: 12px;
-      display: block;
-    }
-
-    .hero-content {
-      flex: 1;
-      max-width: 650px;
-    }
-
-    .main-headline {
-      font-size: 32px; 
-      line-height: 1.5;
-      margin-bottom: 25px;
-      font-weight: 600;
-      color: #ffffff;
-    }
-
-    .quote-box {
-      border: 1px solid rgba(197, 168, 128, 0.2);
-      padding: 20px;
-      border-radius: 8px;
-      background: rgba(255, 255, 255, 0.01);
-    }
-
-    .quote-text {
-      font-style: italic;
-      color: #c5a880;
-      font-size: 15px;
-      line-height: 1.6;
-    }
-
-    /* SECTION BASICS */
-    .section-title {
-      font-size: 22px;
-      color: #c5a880;
-      letter-spacing: 2px;
-      text-align: center;
-      margin-bottom: 45px;
-      font-weight: 500;
-      text-transform: uppercase;
-    }
-
-    /* PROPERTY LISTINGS */
-    .listings-section {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 80px 20px;
-      display: block;
-      height: auto;
-      clear: both;
-    }
-
-    .listings-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
-      gap: 30px;
-      width: 100%;
-      height: auto;
-    }
-
-    .property-card {
-      background: rgba(255, 255, 255, 0.02);
-      border: 1px solid rgba(197, 168, 128, 0.15);
-      border-radius: 14px;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      height: auto;
-    }
-
-    .property-img {
-      width: 100%;
-      height: 240px;
-      object-fit: cover;
-      display: block;
-    }
-
-    .property-info {
-      padding: 24px;
-      display: flex;
-      flex-direction: column;
-      flex-grow: 1;
-      height: auto;
-    }
-
-    .property-title {
-      font-size: 19px;
-      font-weight: 600;
-      margin-bottom: 10px;
-      color: #ffffff;
-      letter-spacing: 0.5px;
-    }
-
-    .property-details {
-      font-size: 14px;
-      color: #d1d1d1;
-      line-height: 1.6;
-      margin-bottom: 16px;
-    }
-
-    .property-specs {
-      display: flex;
-      justify-content: space-between;
-      background: rgba(197, 168, 128, 0.05);
-      border: 1px solid rgba(197, 168, 128, 0.1);
-      padding: 10px 14px;
-      border-radius: 8px;
-      font-size: 13px;
-      color: #c5a880;
-      font-weight: 500;
-      margin-bottom: 20px;
-    }
-
-    .action-buttons-row {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-      margin-bottom: 18px;
-    }
-
-    .btn-action {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 6px;
-      padding: 10px 5px;
-      border-radius: 8px;
-      font-size: 12px;
-      font-weight: 600;
-      text-decoration: none;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      transition: all 0.2s ease;
-    }
-
-    .btn-call {
-      background-color: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      color: #ffffff;
-    }
-    .btn-call:hover {
-      background-color: #ffffff;
-      color: #0b0c10;
-    }
-
-    .btn-email {
-      background-color: rgba(197, 168, 128, 0.05);
-      border: 1px solid rgba(197, 168, 128, 0.3);
-      color: #c5a880;
-    }
-    .btn-email:hover {
-      background-color: #c5a880;
-      color: #0b0c10;
-    }
-
-    .btn-telegram {
-      background-color: rgba(36, 161, 222, 0.08);
-      border: 1px solid rgba(36, 161, 222, 0.4);
-      color: #24a1de;
-    }
-    .btn-telegram:hover {
-      background-color: #24a1de;
-      color: #ffffff;
-    }
-
-    .detail-toggle-chk {
-      display: none;
-    }
-
-    .lbl-toggle-details {
-      display: block;
-      text-align: center;
-      padding: 10px;
-      font-size: 13px;
-      color: #c5a880;
-      border: 1px dashed rgba(197, 168, 128, 0.3);
-      border-radius: 8px;
-      cursor: pointer;
-      font-weight: 500;
-      transition: background 0.3s;
-    }
-    .lbl-toggle-details:hover {
-      background: rgba(197, 168, 128, 0.05);
-    }
-
-    .expandable-details-content {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.4s ease-out;
-      background: rgba(0, 0, 0, 0.2);
-      border-radius: 8px;
-    }
-
-    .inner-details-box {
-      padding: 15px;
-      border-top: 1px solid rgba(197, 168, 128, 0.1);
-      margin-top: 10px;
-    }
-
-    .detail-price-tag {
-      font-size: 18px;
-      color: #c5a880;
-      font-weight: 700;
-      margin-bottom: 8px;
-    }
-
-    .deep-specs-list {
-      font-size: 13px;
-      color: #a3a3a3;
-      list-style: none;
-      line-height: 1.6;
-    }
-
-    .detail-toggle-chk:checked ~ .expandable-details-content {
-      max-height: 500px; 
-    }
-
-    /* ABOUT US SECTION */
-    .about-section {
-      max-width: 800px;
-      margin: 0 auto;
-      padding: 80px 20px;
-      text-align: center;
-      display: block;
-      height: auto;
-      clear: both;
-    }
-
-    .about-content {
-      background: rgba(255, 255, 255, 0.01);
-      border: 1px solid rgba(197, 168, 128, 0.1);
-      padding: 30px 20px;
-      border-radius: 12px;
-      line-height: 1.8;
-      color: #d1d1d1;
-      font-size: 15px;
-    }
-
-    /* FOOTER AND CONTACTS */
-    .main-footer {
-      background-color: #06070a;
-      border-top: 1px solid rgba(197, 168, 128, 0.15);
-      padding: 40px 20px;
-      text-align: center;
-      display: block;
-      height: auto;
-      margin-top: auto; /* Ensures footer sits at bottom cleanly */
-      clear: both;
-    }
-
-    .footer-contacts {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 15px;
-      margin-bottom: 25px;
-    }
-
-    .contact-item {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      color: #ffffff;
-      text-decoration: none;
-      font-size: 15px;
-      transition: color 0.3s;
-    }
-
-    .contact-item i {
-      color: #c5a880;
-    }
-
-    .contact-item:hover {
-      color: #c5a880;
-    }
-
-    .footer-credits {
-      font-size: 12px;
-      color: #666666;
-      letter-spacing: 1px;
-    }
-
-    /* ==========================================
-       RESPONSIVE MEDIA QUERIES (MOBILE FIXES)
-       ========================================== */
-    @media only screen and (max-width: 850px) {
-      .navbar {
-        padding: 15px 15px;
-      }
-      
-      .nav-container {
-        display: flex;
-        justify-content: flex-start; 
-        align-items: center;
-        gap: 15px;
-        width: 100%;
-      }
-      
-      .logo-brand {
-        display: none !important; 
-      }
-      
-      /* Mobile override for the Centering rule */
-      .logo-text {
-        position: static !important;
-        transform: none !important;
-        text-align: left;
-        margin-right: 15px; 
-      }
-
-      .logo-text h1 {
-        font-size: 18px;
-        letter-spacing: 2px;
-      }
-
-      .logo-text h2 {
-        font-size: 10px;
-        letter-spacing: 3px;
-        margin-top: 4px;
-      }
-
-      /* Forces three dashes to display first at the front of the line */
-      .hamburger {
-        display: flex !important;
-        z-index: 100;
-        order: -1; 
-      }
-
-      /* Mobile Links Restored & Placed next to brand */
-      .social-icons-mobile {
-        display: flex !important;
-        gap: 8px;
-        margin-left: auto; 
-      }
-
-      .social-icons-mobile a {
-        color: #c5a880; 
-        text-decoration: none;
-        font-size: 13px;
-        width: 28px;
-        height: 28px;
-        border: 1px solid rgba(197, 168, 128, 0.3);
-        border-radius: 50%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-
-      /* Hidden responsive link drawer structure */
-      .nav-links {
-        display: none !important;
-        flex-direction: column;
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        background-color: #0b0c10;
-        border-bottom: 1px solid rgba(197, 168, 128, 0.2);
-        padding: 20px 0;
-        text-align: center;
-        z-index: 99;
-      }
-
-      .nav-links a {
-        margin: 15px 0;
-        display: block;
-        font-size: 16px;
-        letter-spacing: 2px;
-        margin-left: 0;
-      }
-
-      .menu-toggle:checked ~ .nav-links {
-        display: flex !important;
-      }
-
-      .hero-section {
-        flex-direction: column;
-        text-align: center;
-        padding-top: 60px;
-        gap: 30px;
-      }
-
-      .main-headline {
-        font-size: 24px;
-      }
-      
-      .hero-img {
-        max-width: 280px;
-      }
-
-      .listings-section {
-        padding: 40px 15px;
-        height: auto;
-      }
-
-      .listings-grid {
-        display: flex;
-        flex-direction: column;
-        gap: 25px;
-        height: auto;
-      }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lamrot Properties</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-weight/6.4.0/css/all.min.css">
+    <style>
+        /* Smooth transition for details modal */
+        .modal {
+            transition: opacity 0.25s ease;
+        }
+        body.modal-active {
+            overflow: hidden;
+        }
+    </style>
 </head>
-<body>
+<body class="bg-gray-50 font-sans text-gray-800">
 
-  <header class="navbar">
-    <div class="nav-container">
-      
-      <div class="logo-brand">
-        <div class="social-icons">
-          <a href="https://facebook.com/share/1CpreHHXre/" target="_blank"><i class="fab fa-facebook-f"></i></a>
-          <a href="https://www.instagram.com/lamrot_property?igsh=dTY0MHNrZGF3Y2Zt" target="_blank"><i class="fab fa-instagram"></i></a>
-          <a href="https://www.tiktok.com/@lamrottemer_properties?_r=1&_t=ZS-96PNmmPOxvA" target="_blank"><i class="fab fa-tiktok"></i></a>
-          <a href="https://t.me/LamrotHabtamu" target="_blank"><i class="fab fa-telegram-plane"></i></a>
-        </div>
-      </div>
-
-      <div class="logo-text">
-        <h1>LAMROT</h1>
-        <h2>PROPERTIES</h2>
-      </div>
-
-      <input type="checkbox" id="menu-toggle" class="menu-toggle">
-      
-      <label for="menu-toggle" class="hamburger">
-        <span></span>
-        <span></span>
-        <span></span>
-      </label>
-
-      <div class="social-icons-mobile">
-        <a href="https://facebook.com/share/1CpreHHXre/" target="_blank"><i class="fab fa-facebook-f"></i></a>
-        <a href="https://www.instagram.com/lamrot_property?igsh=dTY0MHNrZGF3Y2Zt" target="_blank"><i class="fab fa-instagram"></i></a>
-        <a href="https://www.tiktok.com/@lamrottemer_properties?_r=1&_t=ZS-96PNmmPOxvA" target="_blank"><i class="fab fa-tiktok"></i></a>
-        <a href="https://t.me/LamrotHabtamu" target="_blank"><i class="fab fa-telegram-plane"></i></a>
-      </div>
-
-      <nav class="nav-links">
-        <label for="menu-toggle"><a href="#home">HOME</a></label>
-        <label for="menu-toggle"><a href="#listings">LISTINGS</a></label>
-        <label for="menu-toggle"><a href="#about">ABOUT US</a></label>
-      </nav>
-      
-    </div>
-  </header>
-
-  <main class="hero-section" id="home">
-    <div class="hero-image-container">
-      <img src="headshot.jpg" alt="Lamrot Properties Professional" class="hero-img">
-    </div>
-    
-    <div class="hero-content">
-      <h2 class="main-headline">ጥራት ያላቸው የመኖሪያና የንግድ ቤቶችን ዛሬውኑ ያግኙ!</h2>
-      <div class="quote-box">
-        <p class="quote-text">"Philosophy is the philosophy of ensuring the luxury of your life."</p>
-      </div>
-    </div>
-  </main>
-
-  <section class="listings-section" id="listings">
-    <h3 class="section-title">Our Properties</h3>
-    <div class="listings-grid">
-      
-      <div class="property-card">
-        <img src="property1.jpg" alt="Awale Three Bedroom Apartment" class="property-img">
-        <div class="property-info">
-          <h4 class="property-title">Awale - Three Bedroom Apartment</h4>
-          <p class="property-details">This three bedroom apartment for sale in Ethiopia offers a spacious and thoughtful design for premium luxury living space.</p>
-          
-          <div class="property-specs">
-            <span><i class="fas fa-bed"></i> Bed: 3</span>
-            <span><i class="fas fa-bath"></i> Bath: 2</span>
-            <span><i class="fas fa-expand-arrows-alt"></i> Size: 157 m²</span>
-          </div>
-
-          <div class="action-buttons-row">
-            <a href="tel:+251922785816" class="btn-action btn-call"><i class="fas fa-phone-alt"></i> Call</a>
-            <a href="mailto:lamrothabtamu2524@gmail.com?subject=Inquiry: Awale 3-Bed Apartment" class="btn-action btn-email"><i class="fas fa-envelope"></i> Email</a>
-            <a href="https://t.me/LamrotHabtamu" target="_blank" class="btn-action btn-telegram"><i class="fab fa-telegram-plane"></i> Telegram</a>
-          </div>
-
-          <input type="checkbox" id="toggle-p1" class="detail-toggle-chk">
-          <label for="toggle-p1" class="lbl-toggle-details">View Price & Details</label>
-          <div class="expandable-details-content">
-            <div class="inner-details-box">
-              <p class="detail-price-tag">Contact for Price</p>
-              <ul class="deep-specs-list">
-                <li>• High-floor scenic window views</li>
-                <li>• 24/7 Dedicated security entry</li>
-                <li>• Standby generator infrastructure</li>
-              </ul>
+    <header class="bg-white shadow-sm sticky top-0 z-40">
+        <div class="max-w-6xl mx-auto px-4 py-4 flex flex-col sm:flex-row justify-between items-center gap-4">
+            <div class="flex items-center gap-3">
+                <div class="bg-blue-600 text-white p-2.5 rounded-lg shadow-md">
+                    <i class="fas fa-building text-xl"></i>
+                </div>
+                <div>
+                    <h1 class="text-2xl font-bold text-gray-900 tracking-tight">Lamrot Properties</h1>
+                    <p class="text-xs text-gray-500 font-medium">Premium Real Estate Listings</p>
+                </div>
             </div>
-          </div>
+            <a href="tel:+251922785816" class="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold px-5 py-2.5 rounded-full shadow-sm text-sm transition duration-200">
+                <i class="fas fa-phone-alt"></i>
+                <span>+251 922 785 816</span>
+            </a>
         </div>
-      </div>
+    </header>
 
-      <div class="property-card">
-        <img src="property2.jpg" alt="Piassa Two Bedroom Apartment" class="property-img">
-        <div class="property-info">
-          <h4 class="property-title">Piassa - Two Bedroom Apartment</h4>
-          <p class="property-details">This two bedroom apartment for sale in Ethiopia provides a well-designed & comfortable modern living space in a prime metropolitan hub.</p>
-          
-          <div class="property-specs">
-            <span><i class="fas fa-bed"></i> Bed: 2</span>
-            <span><i class="fas fa-bath"></i> Bath: 1</span>
-            <span><i class="fas fa-expand-arrows-alt"></i> Size: 87 m²</span>
-          </div>
+    <section class="bg-gradient-to-r from-blue-900 to-slate-800 text-white py-12 px-4 text-center">
+        <div class="max-w-3xl mx-auto">
+            <h2 class="text-3xl font-extrabold sm:text-4xl mb-3">Find Your Next Home</h2>
+            <p class="text-blue-200 text-base max-w-xl mx-auto">Explore our premium apartment listings across prime locations with flexible downpayment choices.</p>
+        </div>
+    </section>
 
-          <div class="action-buttons-row">
-            <a href="tel:+251922785816" class="btn-action btn-call"><i class="fas fa-phone-alt"></i> Call</a>
-            <a href="mailto:lamrothabtamu2524@gmail.com?subject=Inquiry: Piassa 2-Bed Apartment" class="btn-action btn-email"><i class="fas fa-envelope"></i> Email</a>
-            <a href="https://t.me/LamrotHabtamu" target="_blank" class="btn-action btn-telegram"><i class="fab fa-telegram-plane"></i> Telegram</a>
-          </div>
+    <main class="max-w-6xl mx-auto px-4 py-10">
+        <div class="border-b border-gray-200 pb-5 mb-8">
+            <h3 class="text-xl font-bold text-gray-900 flex items-center gap-2">
+                <i class="fas fa-home text-blue-600"></i> Current Listings
+            </h3>
+        </div>
 
-          <input type="checkbox" id="toggle-p2" class="detail-toggle-chk">
-          <label for="toggle-p2" class="lbl-toggle-details">View Price & Details</label>
-          <div class="expandable-details-content">
-            <div class="inner-details-box">
-              <p class="detail-price-tag">Contact for Price</p>
-              <ul class="deep-specs-list">
-                <li>• Located in historic vibrant Piassa</li>
-                <li>• Easy transit accessibility</li>
-                <li>• Secure undercover vehicle space</li>
-              </ul>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+
+            <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition duration-300 flex flex-col">
+                <div class="relative h-56 bg-gray-200">
+                    <img src="Aware1.jpg" alt="Aware Location" class="w-full h-full object-cover">
+                    <div class="absolute top-4 left-4 bg-blue-600 text-white text-xs font-bold uppercase tracking-wider px-3 py-1.5 rounded-md shadow-sm">
+                        20% Downpayment
+                    </div>
+                </div>
+                <div class="p-6 flex flex-col flex-grow">
+                    <div class="flex items-center gap-1.5 text-blue-600 text-xs font-semibold uppercase tracking-wider mb-2">
+                        <i class="fas fa-map-marker-alt"></i> Bole
+                    </div>
+                    <h4 class="text-xl font-bold text-gray-900 mb-1">Aware Apartments</h4>
+                    <p class="text-gray-500 text-sm mb-4">Premium 3-Bedroom units in a high-demand, serene residential area.</p>
+                    
+                    <div class="flex items-center gap-4 text-sm text-gray-600 font-medium mb-6 bg-gray-50 p-3 rounded-xl">
+                        <span class="flex items-center gap-1.5"><i class="fas fa-bed text-blue-500"></i> 3 Bed</span>
+                        <span class="text-gray-300">|</span>
+                        <span class="flex items-center gap-1.5"><i class="fas fa-bath text-blue-500"></i> 2 Bath</span>
+                        <span class="text-gray-300">|</span>
+                        <span class="flex items-center gap-1.5"><i class="fas fa-ruler-combined text-blue-500"></i> 121 - 157 m²</span>
+                    </div>
+
+                    <button onclick="openModal('modal-aware')" class="mt-auto w-full text-center bg-gray-900 hover:bg-gray-800 text-white font-semibold py-3 px-4 rounded-xl shadow-sm transition duration-200 text-sm">
+                        View Details
+                    </button>
+                </div>
             </div>
-          </div>
-        </div>
-      </div>
 
-      <div class="property-card">
-        <img src="property3.jpg" alt="Luxury Property Showcase" class="property-img">
-        <div class="property-info">
-          <h4 class="property-title">Bole - Premium Executive Suite</h4>
-          <p class="property-details">Exclusive high-tier commercial or residential option optimized for high-end styling preferences, modern smart layouts, and exceptional building security.</p>
-          
-          <div class="property-specs">
-            <span><i class="fas fa-bed"></i> Bed: 4</span>
-            <span><i class="fas fa-bath"></i> Bath: 3</span>
-            <span><i class="fas fa-expand-arrows-alt"></i> Size: 210 m²</span>
-          </div>
+            <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition duration-300 flex flex-col">
+                <div class="relative h-56 bg-gray-200">
+                    <img src="property1.jpg" alt="Piassa Lycee Location" class="w-full h-full object-cover">
+                    <div class="absolute top-4 left-4 bg-emerald-600 text-white text-xs font-bold uppercase tracking-wider px-3 py-1.5 rounded-md shadow-sm">
+                        10% Downpayment
+                    </div>
+                </div>
+                <div class="p-6 flex flex-col flex-grow">
+                    <div class="flex items-center gap-1.5 text-blue-600 text-xs font-semibold uppercase tracking-wider mb-2">
+                        <i class="fas fa-map-marker-alt"></i> Arada
+                    </div>
+                    <h4 class="text-xl font-bold text-gray-900 mb-1">Piassa Lycee</h4>
+                    <p class="text-gray-500 text-sm mb-4">Centrally located luxury spaces, featuring flexible 2 and 3-Bedroom layouts.</p>
+                    
+                    <div class="flex items-center gap-4 text-sm text-gray-600 font-medium mb-6 bg-gray-50 p-3 rounded-xl">
+                        <span class="flex items-center gap-1.5"><i class="fas fa-bed text-blue-500"></i> 2 - 3 Bed</span>
+                        <span class="text-gray-300">|</span>
+                        <span class="flex items-center gap-1.5"><i class="fas fa-bath text-blue-500"></i> 2 Bath</span>
+                        <span class="text-gray-300">|</span>
+                        <span class="flex items-center gap-1.5"><i class="fas fa-ruler-combined text-blue-500"></i> 80 - 142 m²</span>
+                    </div>
 
-          <div class="action-buttons-row">
-            <a href="tel:+251922785816" class="btn-action btn-call"><i class="fas fa-phone-alt"></i> Call</a>
-            <a href="mailto:lamrothabtamu2524@gmail.com?subject=Inquiry: Bole Executive Suite" class="btn-action btn-email"><i class="fas fa-envelope"></i> Email</a>
-            <a href="https://t.me/LamrotHabtamu" target="_blank" class="btn-action btn-telegram"><i class="fab fa-telegram-plane"></i> Telegram</a>
-          </div>
-
-          <input type="checkbox" id="toggle-p3" class="detail-toggle-chk">
-          <label for="toggle-p3" class="lbl-toggle-details">View Price & Details</label>
-          <div class="expandable-details-content">
-            <div class="inner-details-box">
-              <p class="detail-price-tag">Contact for Price</p>
-              <ul class="deep-specs-list">
-                <li>• Ultra-premium luxury finishes</li>
-                <li>• Integrated smart control options</li>
-                <li>• Panoramic high-rise city overview</li>
-              </ul>
+                    <button onclick="openModal('modal-piassa')" class="mt-auto w-full text-center bg-gray-900 hover:bg-gray-800 text-white font-semibold py-3 px-4 rounded-xl shadow-sm transition duration-200 text-sm">
+                        View Details
+                    </button>
+                </div>
             </div>
-          </div>
+
+            <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition duration-300 flex flex-col">
+                <div class="relative h-56 bg-gray-200">
+                    <img src="Bulgaria1.jpg" alt="Bulgaria Location" class="w-full h-full object-cover">
+                    <div class="absolute top-4 left-4 bg-blue-600 text-white text-xs font-bold uppercase tracking-wider px-3 py-1.5 rounded-md shadow-sm">
+                        20% Downpayment
+                    </div>
+                </div>
+                <div class="p-6 flex flex-col flex-grow">
+                    <div class="flex items-center gap-1.5 text-blue-600 text-xs font-semibold uppercase tracking-wider mb-2">
+                        <i class="fas fa-map-marker-alt"></i> Kirkos
+                    </div>
+                    <h4 class="text-xl font-bold text-gray-900 mb-1">Bulgaria Area</h4>
+                    <p class="text-gray-500 text-sm mb-4">Diverse layout configurations spanning modern 1, 2, and 3-Bedroom units.</p>
+                    
+                    <div class="flex items-center gap-4 text-sm text-gray-600 font-medium mb-6 bg-gray-50 p-3 rounded-xl">
+                        <span class="flex items-center gap-1.5"><i class="fas fa-bed text-blue-500"></i> 1 - 3 Bed</span>
+                        <span class="text-gray-300">|</span>
+                        <span class="flex items-center gap-1.5"><i class="fas fa-bath text-blue-500"></i> 1 - 2 Bath</span>
+                        <span class="text-gray-300">|</span>
+                        <span class="flex items-center gap-1.5"><i class="fas fa-ruler-combined text-blue-500"></i> 68 - 121 m²</span>
+                    </div>
+
+                    <button onclick="openModal('modal-bulgaria')" class="mt-auto w-full text-center bg-gray-900 hover:bg-gray-800 text-white font-semibold py-3 px-4 rounded-xl shadow-sm transition duration-200 text-sm">
+                        View Details
+                    </button>
+                </div>
+            </div>
+
         </div>
-      </div>
+    </main>
 
-    </div>
-  </section>
+    <footer class="bg-gray-900 text-gray-400 py-12 px-4 mt-16 border-t border-gray-800">
+        <div class="max-w-4xl mx-auto text-center">
+            <h4 class="text-white text-xl font-bold mb-2">Have questions about the catalog?</h4>
+            <p class="text-sm mb-6 max-w-md mx-auto">Get in touch directly via Phone or Telegram for full walkthroughs, inquiries, and custom package structures.</p>
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
+                <a href="tel:+251922785816" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-xl shadow-sm transition">
+                    <i class="fas fa-phone-alt"></i> Call +251 922 785 816
+                </a>
+                <a href="https://t.me/LamrotHabtamu" target="_blank" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-sky-500 hover:bg-sky-600 text-white font-semibold px-6 py-3 rounded-xl shadow-sm transition">
+                    <i class="fab fa-telegram-plane"></i> Telegram Channel
+                </a>
+            </div>
+            <p class="text-xs text-gray-600 mt-10">&copy; 2026 Lamrot Properties. All Rights Reserved.</p>
+        </div>
+    </footer>
 
-  <section class="about-section" id="about">
-    <h3 class="section-title">About Us</h3>
-    <div class="about-content">
-      <p>Welcome to Lamrot Properties. We specialize in providing high-end, premium real estate choices tailored to match an exceptional standard of living. Our absolute dedication ensures that whether you are looking for luxurious residential options or a premium business office layout, we source spaces that reflect luxury, functionality, and outstanding architectural craftsmanship.</p>
+    <div id="modal-aware" class="modal opacity-0 pointer-events-none fixed w-full h-full top-0 left-0 flex items-center justify-center z-50">
+        <div class="modal-overlay absolute w-full h-full bg-gray-900 opacity-50" onclick="closeModal('modal-aware')"></div>
+        <div class="modal-container bg-white w-11/12 max-w-2xl mx-auto rounded-2xl shadow-xl z-50 overflow-y-auto max-h-[90vh]">
+            <div class="p-6 border-b border-gray-100 flex justify-between items-center sticky top-0 bg-white">
+                <div>
+                    <h3 class="text-xl font-bold text-gray-900">Aware - Inventory Details</h3>
+                    <p class="text-xs text-blue-600 font-semibold uppercase tracking-wider">All Units: 3 Bedroom &bull; 2 Bathroom &bull; 20% DP</p>
+                </div>
+                <button onclick="closeModal('modal-aware')" class="text-gray-400 hover:text-gray-600 text-2xl p-2">&times;</button>
+            </div>
+            <div class="p-6 space-y-4">
+                <div class="bg-amber-50 border border-amber-200 text-amber-900 rounded-xl p-4 text-center font-semibold text-sm">
+                    <i class="fas fa-percentage text-amber-600 mr-1"></i> For discounts, contact me!
+                </div>
+                <div class="overflow-x-auto border border-gray-100 rounded-xl">
+                    <table class="w-full text-left border-collapse text-sm">
+                        <thead>
+                            <tr class="bg-gray-50 text-gray-500 uppercase text-xs font-bold border-b border-gray-100">
+                                <th class="p-4">Unit Size</th>
+                                <th class="p-4">Full Price</th>
+                                <th class="p-4 text-right">Downpayment (20%)</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-100 font-medium text-gray-700">
+                            <tr><td class="p-4 font-bold text-gray-900">121 m²</td><td class="p-4">12,900,000 Birr</td><td class="p-4 text-right text-blue-600">2,580,000 Birr</td></tr>
+                            <tr><td class="p-4 font-bold text-gray-900">131 m²</td><td class="p-4">14,000,000 Birr</td><td class="p-4 text-right text-blue-600">2,800,000 Birr</td></tr>
+                            <tr><td class="p-4 font-bold text-gray-900">135 m²</td><td class="p-4">14,400,000 Birr</td><td class="p-4 text-right text-blue-600">2,880,000 Birr</td></tr>
+                            <tr><td class="p-4 font-bold text-gray-900">140 m²</td><td class="p-4">14,900,000 Birr</td><td class="p-4 text-right text-blue-600">2,980,000 Birr</td></tr>
+                            <tr><td class="p-4 font-bold text-gray-900">142 m²</td><td class="p-4">15,100,000 Birr</td><td class="p-4 text-right text-blue-600">3,020,000 Birr</td></tr>
+                            <tr><td class="p-4 font-bold text-gray-900">145 m²</td><td class="p-4">15,300,000 Birr</td><td class="p-4 text-right text-blue-600">3,060,000 Birr</td></tr>
+                            <tr><td class="p-4 font-bold text-gray-900">146 m²</td><td class="p-4">15,600,000 Birr</td><td class="p-4 text-right text-blue-600">3,120,000 Birr</td></tr>
+                            <tr><td class="p-4 font-bold text-gray-900">150 m²</td><td class="p-4">16,000,000 Birr</td><td class="p-4 text-right text-blue-600">3,200,000 Birr</td></tr>
+                            <tr><td class="p-4 font-bold text-gray-900">157 m²</td><td class="p-4">16,700,000 Birr</td><td class="p-4 text-right text-blue-600">3,340,000 Birr</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
     </div>
-  </section>
 
-  <footer class="main-footer">
-    <div class="footer-contacts">
-      <a href="tel:+251922785816" class="contact-item">
-        <i class="fas fa-phone-alt"></i> +251 922 785 816
-      </a>
-      <a href="mailto:lamrothabtamu2524@gmail.com" class="contact-item">
-        <i class="fas fa-envelope"></i> lamrothabtamu2524@gmail.com
-      </a>
+    <div id="modal-piassa" class="modal opacity-0 pointer-events-none fixed w-full h-full top-0 left-0 flex items-center justify-center z-50">
+        <div class="modal-overlay absolute w-full h-full bg-gray-900 opacity-50" onclick="closeModal('modal-piassa')"></div>
+        <div class="modal-container bg-white w-11/12 max-w-2xl mx-auto rounded-2xl shadow-xl z-50 overflow-y-auto max-h-[90vh]">
+            <div class="p-6 border-b border-gray-100 flex justify-between items-center sticky top-0 bg-white">
+                <div>
+                    <h3 class="text-xl font-bold text-gray-900">Piassa Lycee - Inventory Details</h3>
+                    <p class="text-xs text-emerald-600 font-semibold uppercase tracking-wider">All Units: 2 Bathrooms &bull; 10% DP</p>
+                </div>
+                <button onclick="closeModal('modal-piassa')" class="text-gray-400 hover:text-gray-600 text-2xl p-2">&times;</button>
+            </div>
+            <div class="p-6 space-y-4">
+                <div class="bg-amber-50 border border-amber-200 text-amber-900 rounded-xl p-4 text-center font-semibold text-sm">
+                    <i class="fas fa-percentage text-amber-600 mr-1"></i> For discounts, contact me!
+                </div>
+                <div class="overflow-x-auto border border-gray-100 rounded-xl">
+                    <table class="w-full text-left border-collapse text-sm">
+                        <thead>
+                            <tr class="bg-gray-50 text-gray-500 uppercase text-xs font-bold border-b border-gray-100">
+                                <th class="p-4">Type / Size</th>
+                                <th class="p-4">Full Price</th>
+                                <th class="p-4 text-right">Downpayment (10%)</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-100 font-medium text-gray-700">
+                            <tr class="bg-slate-50/50"><td colspan="3" class="p-3 text-xs font-bold text-gray-400 uppercase tracking-wider">3 Bedroom Options</td></tr>
+                            <tr><td class="p-4 font-bold text-gray-900">132 m²</td><td class="p-4">15,180,000 Birr</td><td class="p-4 text-right text-emerald-600">1,518,000 Birr</td></tr>
+                            <tr><td class="p-4 font-bold text-gray-900">136 m²</td><td class="p-4">15,640,000 Birr</td><td class="p-4 text-right text-emerald-600">1,564,000 Birr</td></tr>
+                            <tr><td class="p-4 font-bold text-gray-900">142 m²</td><td class="p-4">16,330,000 Birr</td><td class="p-4 text-right text-emerald-600">1,633,000 Birr</td></tr>
+                            <tr class="bg-slate-50/50"><td colspan="3" class="p-3 text-xs font-bold text-gray-400 uppercase tracking-wider">2 Bedroom Options</td></tr>
+                            <tr><td class="p-4 font-bold text-gray-900">80 m²</td><td class="p-4">9,200,000 Birr</td><td class="p-4 text-right text-emerald-600">920,000 Birr</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
     </div>
-    <p class="footer-credits">&copy; 2026 LAMROT PROPERTIES. All Rights Reserved.</p>
-  </footer>
+
+    <div id="modal-bulgaria" class="modal opacity-0 pointer-events-none fixed w-full h-full top-0 left-0 flex items-center justify-center z-50">
+        <div class="modal-overlay absolute w-full h-full bg-gray-900 opacity-50" onclick="closeModal('modal-bulgaria')"></div>
+        <div class="modal-container bg-white w-11/12 max-w-2xl mx-auto rounded-2xl shadow-xl z-50 overflow-y-auto max-h-[90vh]">
+            <div class="p-6 border-b border-gray-100 flex justify-between items-center sticky top-0 bg-white">
+                <div>
+                    <h3 class="text-xl font-bold text-gray-900">Bulgaria - Inventory Details</h3>
+                    <p class="text-xs text-blue-600 font-semibold uppercase tracking-wider">All Units: 20% DP Structures</p>
+                </div>
+                <button onclick="closeModal('modal-bulgaria')" class="text-gray-400 hover:text-gray-600 text-2xl p-2">&times;</button>
+            </div>
+            <div class="p-6 space-y-4">
+                <div class="bg-amber-50 border border-amber-200 text-amber-900 rounded-xl p-4 text-center font-semibold text-sm">
+                    <i class="fas fa-percentage text-amber-600 mr-1"></i> For discounts, contact me!
+                </div>
+                <div class="overflow-x-auto border border-gray-100 rounded-xl">
+                    <table class="w-full text-left border-collapse text-sm">
+                        <thead>
+                            <tr class="bg-gray-50 text-gray-500 uppercase text-xs font-bold border-b border-gray-100">
+                                <th class="p-4">Configuration</th>
+                                <th class="p-4">Full Price</th>
+                                <th class="p-4 text-right">Downpayment (20%)</th>
+                            </tr>
+                        </thead>
+                        <tbody class="divide-y divide-gray-100 font-medium text-gray-700">
+                            <tr class="bg-slate-50/50"><td colspan="3" class="p-3 text-xs font-bold text-gray-400 uppercase tracking-wider">1 Bedroom &bull; 1 Bath</td></tr>
+                            <tr><td class="p-4 font-bold text-gray-900">68 m²</td><td class="p-4">7,820,000 Birr</td><td class="p-4 text-right text-blue-600">1,564,000 Birr</td></tr>
+                            <tr><td class="p-4 font-bold text-gray-900">72 m²</td><td class="p-4">8,280,000 Birr</td><td class="p-4 text-right text-blue-600">1,656,000 Birr</td></tr>
+                            
+                            <tr class="bg-slate-50/50"><td colspan="3" class="p-3 text-xs font-bold text-gray-400 uppercase tracking-wider">2 Bedroom &bull; 2 Bath</td></tr>
+                            <tr><td class="p-4 font-bold text-gray-900">81 m²</td><td class="p-4">9,315,000 Birr</td><td class="p-4 text-right text-blue-600">1,863,000 Birr</td></tr>
+                            <tr><td class="p-4 font-bold text-gray-900">87 m²</td><td class="p-4">10,005,000 Birr</td><td class="p-4 text-right text-blue-600">2,001,000 Birr</td></tr>
+                            <tr><td class="p-4 font-bold text-gray-900">90 m²</td><td class="p-4">10,350,000 Birr</td><td class="p-4 text-right text-blue-600">2,070,000 Birr</td></tr>
+                            
+                            <tr class="bg-slate-50/50"><td colspan="3" class="p-3 text-xs font-bold text-gray-400 uppercase tracking-wider">3 Bedroom &bull; 2 Bath</td></tr>
+                            <tr><td class="p-4 font-bold text-gray-900">121 m²</td><td class="p-4">13,915,000 Birr</td><td class="p-4 text-right text-blue-600">2,783,000 Birr</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function openModal(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.classList.remove('opacity-0', 'pointer-events-none');
+            document.body.classList.add('modal-active');
+        }
+
+        function closeModal(modalId) {
+            const modal = document.getElementById(modalId);
+            modal.classList.add('opacity-0', 'pointer-events-none');
+            document.body.classList.remove('modal-active');
+        }
+    </script>
 
 </body>
 </html>
