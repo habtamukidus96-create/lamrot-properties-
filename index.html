@@ -2,12 +2,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Lamrot Properties</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-weight/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        /* Smooth transition for details modal */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+        body {
+            font-family: 'Poppins', sans-serif;
+        }
         .modal {
             transition: opacity 0.25s ease;
         }
@@ -16,121 +19,133 @@
         }
     </style>
 </head>
-<body class="bg-gray-50 font-sans text-gray-800">
+<body class="bg-slate-900 text-slate-100 min-h-screen flex flex-col">
 
-    <header class="bg-white shadow-sm sticky top-0 z-40">
-        <div class="max-w-6xl mx-auto px-4 py-4 flex flex-col sm:flex-row justify-between items-center gap-4">
+    <nav class="bg-slate-900/80 backdrop-blur-md border-b border-slate-800 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 h-20 flex justify-between items-center">
             <div class="flex items-center gap-3">
-                <div class="bg-blue-600 text-white p-2.5 rounded-lg shadow-md">
+                <div class="bg-gradient-to-tr from-cyan-500 to-blue-600 text-white p-2.5 rounded-xl shadow-lg shadow-cyan-500/20">
                     <i class="fas fa-building text-xl"></i>
                 </div>
                 <div>
-                    <h1 class="text-2xl font-bold text-gray-900 tracking-tight">Lamrot Properties</h1>
-                    <p class="text-xs text-gray-500 font-medium">Premium Real Estate Listings</p>
+                    <span class="text-xl font-bold tracking-tight bg-gradient-to-r from-white via-slate-200 to-slate-400 bg-clip-text text-transparent">Lamrot Properties</span>
+                    <div class="text-[10px] text-cyan-400 font-semibold tracking-widest uppercase">Real Estate</div>
                 </div>
             </div>
-            <a href="tel:+251922785816" class="inline-flex items-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold px-5 py-2.5 rounded-full shadow-sm text-sm transition duration-200">
-                <i class="fas fa-phone-alt"></i>
-                <span>+251 922 785 816</span>
+            
+            <a href="tel:+251922785816" class="flex items-center gap-2 bg-slate-800 hover:bg-slate-700 border border-slate-700 hover:border-slate-600 text-white font-medium px-4 py-2.5 rounded-xl text-sm transition-all duration-200 shadow-sm">
+                <i class="fas fa-phone-alt text-cyan-400 text-xs"></i>
+                <span class="hidden sm:inline">+251 922 785 816</span>
             </a>
         </div>
-    </header>
+    </nav>
 
-    <section class="bg-gradient-to-r from-blue-900 to-slate-800 text-white py-12 px-4 text-center">
-        <div class="max-w-3xl mx-auto">
-            <h2 class="text-3xl font-extrabold sm:text-4xl mb-3">Find Your Next Home</h2>
-            <p class="text-blue-200 text-base max-w-xl mx-auto">Explore our premium apartment listings across prime locations with flexible downpayment choices.</p>
-        </div>
-    </section>
-
-    <main class="max-w-6xl mx-auto px-4 py-10">
-        <div class="border-b border-gray-200 pb-5 mb-8">
-            <h3 class="text-xl font-bold text-gray-900 flex items-center gap-2">
-                <i class="fas fa-home text-blue-600"></i> Current Listings
-            </h3>
+    <main class="flex-grow max-w-7xl mx-auto px-4 py-10 w-full">
+        
+        <div class="mb-12 text-center sm:text-left">
+            <h2 class="text-2xl font-bold tracking-tight text-white flex items-center justify-center sm:justify-start gap-2.5">
+                <span class="w-1.5 h-6 bg-cyan-500 rounded-full inline-block"></span>
+                Listings
+            </h2>
+            <p class="text-slate-400 text-sm mt-1.5 max-w-xl">Explore our exclusive, premium apartments available across prime residential locations.</p>
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 
-            <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition duration-300 flex flex-col">
-                <div class="relative h-56 bg-gray-200">
-                    <img src="Aware1.jpg" alt="Aware Location" class="w-full h-full object-cover">
-                    <div class="absolute top-4 left-4 bg-blue-600 text-white text-xs font-bold uppercase tracking-wider px-3 py-1.5 rounded-md shadow-sm">
+            <div class="bg-slate-800/50 border border-slate-700/60 rounded-3xl overflow-hidden hover:border-cyan-500/40 transition-all duration-300 shadow-xl flex flex-col group">
+                <div class="relative h-64 overflow-hidden bg-slate-900">
+                    <img src="Aware1.jpg" alt="Aware" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    <div class="absolute top-4 left-4 bg-slate-900/80 backdrop-blur-md border border-slate-700 text-cyan-400 text-[11px] font-bold uppercase tracking-wider px-3 py-1.5 rounded-xl">
                         20% Downpayment
                     </div>
                 </div>
                 <div class="p-6 flex flex-col flex-grow">
-                    <div class="flex items-center gap-1.5 text-blue-600 text-xs font-semibold uppercase tracking-wider mb-2">
-                        <i class="fas fa-map-marker-alt"></i> Bole
-                    </div>
-                    <h4 class="text-xl font-bold text-gray-900 mb-1">Aware Apartments</h4>
-                    <p class="text-gray-500 text-sm mb-4">Premium 3-Bedroom units in a high-demand, serene residential area.</p>
+                    <div class="text-cyan-400 text-xs font-bold uppercase tracking-wider mb-1">Bole District</div>
+                    <h3 class="text-xl font-bold text-white mb-2">Aware Apartments</h3>
+                    <p class="text-slate-400 text-sm mb-6 leading-relaxed">Premium 3-Bedroom units situated in a high-demand, calm and serene residential area.</p>
                     
-                    <div class="flex items-center gap-4 text-sm text-gray-600 font-medium mb-6 bg-gray-50 p-3 rounded-xl">
-                        <span class="flex items-center gap-1.5"><i class="fas fa-bed text-blue-500"></i> 3 Bed</span>
-                        <span class="text-gray-300">|</span>
-                        <span class="flex items-center gap-1.5"><i class="fas fa-bath text-blue-500"></i> 2 Bath</span>
-                        <span class="text-gray-300">|</span>
-                        <span class="flex items-center gap-1.5"><i class="fas fa-ruler-combined text-blue-500"></i> 121 - 157 m²</span>
+                    <div class="grid grid-cols-3 gap-2 py-3 px-4 bg-slate-900/40 border border-slate-800 rounded-2xl text-center text-xs font-medium text-slate-300 mb-6 mt-auto">
+                        <div>
+                            <div class="text-cyan-400 mb-1"><i class="fas fa-bed"></i></div>
+                            <div>3 Bed</div>
+                        </div>
+                        <div class="border-x border-slate-800">
+                            <div class="text-cyan-400 mb-1"><i class="fas fa-bath"></i></div>
+                            <div>2 Bath</div>
+                        </div>
+                        <div>
+                            <div class="text-cyan-400 mb-1"><i class="fas fa-ruler-combined"></i></div>
+                            <div>121-157 m²</div>
+                        </div>
                     </div>
 
-                    <button onclick="openModal('modal-aware')" class="mt-auto w-full text-center bg-gray-900 hover:bg-gray-800 text-white font-semibold py-3 px-4 rounded-xl shadow-sm transition duration-200 text-sm">
+                    <button onclick="openModal('modal-aware')" class="w-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-semibold py-3.5 px-4 rounded-2xl shadow-lg shadow-cyan-500/10 transition-all duration-200 text-sm tracking-wide">
                         View Details
                     </button>
                 </div>
             </div>
 
-            <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition duration-300 flex flex-col">
-                <div class="relative h-56 bg-gray-200">
-                    <img src="property1.jpg" alt="Piassa Lycee Location" class="w-full h-full object-cover">
-                    <div class="absolute top-4 left-4 bg-emerald-600 text-white text-xs font-bold uppercase tracking-wider px-3 py-1.5 rounded-md shadow-sm">
+            <div class="bg-slate-800/50 border border-slate-700/60 rounded-3xl overflow-hidden hover:border-cyan-500/40 transition-all duration-300 shadow-xl flex flex-col group">
+                <div class="relative h-64 overflow-hidden bg-slate-900">
+                    <img src="property1.jpg" alt="Piassa Lycee" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    <div class="absolute top-4 left-4 bg-slate-900/80 backdrop-blur-md border border-slate-700 text-emerald-400 text-[11px] font-bold uppercase tracking-wider px-3 py-1.5 rounded-xl">
                         10% Downpayment
                     </div>
                 </div>
                 <div class="p-6 flex flex-col flex-grow">
-                    <div class="flex items-center gap-1.5 text-blue-600 text-xs font-semibold uppercase tracking-wider mb-2">
-                        <i class="fas fa-map-marker-alt"></i> Arada
-                    </div>
-                    <h4 class="text-xl font-bold text-gray-900 mb-1">Piassa Lycee</h4>
-                    <p class="text-gray-500 text-sm mb-4">Centrally located luxury spaces, featuring flexible 2 and 3-Bedroom layouts.</p>
+                    <div class="text-cyan-400 text-xs font-bold uppercase tracking-wider mb-1">Arada District</div>
+                    <h3 class="text-xl font-bold text-white mb-2">Piassa Lycee</h3>
+                    <p class="text-slate-400 text-sm mb-6 leading-relaxed">Centrally located urban luxury options, featuring beautifully designed flexible layouts.</p>
                     
-                    <div class="flex items-center gap-4 text-sm text-gray-600 font-medium mb-6 bg-gray-50 p-3 rounded-xl">
-                        <span class="flex items-center gap-1.5"><i class="fas fa-bed text-blue-500"></i> 2 - 3 Bed</span>
-                        <span class="text-gray-300">|</span>
-                        <span class="flex items-center gap-1.5"><i class="fas fa-bath text-blue-500"></i> 2 Bath</span>
-                        <span class="text-gray-300">|</span>
-                        <span class="flex items-center gap-1.5"><i class="fas fa-ruler-combined text-blue-500"></i> 80 - 142 m²</span>
+                    <div class="grid grid-cols-3 gap-2 py-3 px-4 bg-slate-900/40 border border-slate-800 rounded-2xl text-center text-xs font-medium text-slate-300 mb-6 mt-auto">
+                        <div>
+                            <div class="text-cyan-400 mb-1"><i class="fas fa-bed"></i></div>
+                            <div>2-3 Bed</div>
+                        </div>
+                        <div class="border-x border-slate-800">
+                            <div class="text-cyan-400 mb-1"><i class="fas fa-bath"></i></div>
+                            <div>2 Bath</div>
+                        </div>
+                        <div>
+                            <div class="text-cyan-400 mb-1"><i class="fas fa-ruler-combined"></i></div>
+                            <div>80-142 m²</div>
+                        </div>
                     </div>
 
-                    <button onclick="openModal('modal-piassa')" class="mt-auto w-full text-center bg-gray-900 hover:bg-gray-800 text-white font-semibold py-3 px-4 rounded-xl shadow-sm transition duration-200 text-sm">
+                    <button onclick="openModal('modal-piassa')" class="w-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-semibold py-3.5 px-4 rounded-2xl shadow-lg shadow-cyan-500/10 transition-all duration-200 text-sm tracking-wide">
                         View Details
                     </button>
                 </div>
             </div>
 
-            <div class="bg-white rounded-2xl shadow-sm border border-gray-100 overflow-hidden hover:shadow-md transition duration-300 flex flex-col">
-                <div class="relative h-56 bg-gray-200">
-                    <img src="Bulgaria1.jpg" alt="Bulgaria Location" class="w-full h-full object-cover">
-                    <div class="absolute top-4 left-4 bg-blue-600 text-white text-xs font-bold uppercase tracking-wider px-3 py-1.5 rounded-md shadow-sm">
+            <div class="bg-slate-800/50 border border-slate-700/60 rounded-3xl overflow-hidden hover:border-cyan-500/40 transition-all duration-300 shadow-xl flex flex-col group">
+                <div class="relative h-64 overflow-hidden bg-slate-900">
+                    <img src="Bulgaria1.jpg" alt="Bulgaria" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                    <div class="absolute top-4 left-4 bg-slate-900/80 backdrop-blur-md border border-slate-700 text-cyan-400 text-[11px] font-bold uppercase tracking-wider px-3 py-1.5 rounded-xl">
                         20% Downpayment
                     </div>
                 </div>
                 <div class="p-6 flex flex-col flex-grow">
-                    <div class="flex items-center gap-1.5 text-blue-600 text-xs font-semibold uppercase tracking-wider mb-2">
-                        <i class="fas fa-map-marker-alt"></i> Kirkos
-                    </div>
-                    <h4 class="text-xl font-bold text-gray-900 mb-1">Bulgaria Area</h4>
-                    <p class="text-gray-500 text-sm mb-4">Diverse layout configurations spanning modern 1, 2, and 3-Bedroom units.</p>
+                    <div class="text-cyan-400 text-xs font-bold uppercase tracking-wider mb-1">Kirkos District</div>
+                    <h3 class="text-xl font-bold text-white mb-2">Bulgaria Area</h3>
+                    <p class="text-slate-400 text-sm mb-6 leading-relaxed">Modern, premium apartments featuring diverse configurations to suit your space needs.</p>
                     
-                    <div class="flex items-center gap-4 text-sm text-gray-600 font-medium mb-6 bg-gray-50 p-3 rounded-xl">
-                        <span class="flex items-center gap-1.5"><i class="fas fa-bed text-blue-500"></i> 1 - 3 Bed</span>
-                        <span class="text-gray-300">|</span>
-                        <span class="flex items-center gap-1.5"><i class="fas fa-bath text-blue-500"></i> 1 - 2 Bath</span>
-                        <span class="text-gray-300">|</span>
-                        <span class="flex items-center gap-1.5"><i class="fas fa-ruler-combined text-blue-500"></i> 68 - 121 m²</span>
+                    <div class="grid grid-cols-3 gap-2 py-3 px-4 bg-slate-900/40 border border-slate-800 rounded-2xl text-center text-xs font-medium text-slate-300 mb-6 mt-auto">
+                        <div>
+                            <div class="text-cyan-400 mb-1"><i class="fas fa-bed"></i></div>
+                            <div>1-3 Bed</div>
+                        </div>
+                        <div class="border-x border-slate-800">
+                            <div class="text-cyan-400 mb-1"><i class="fas fa-bath"></i></div>
+                            <div>1-2 Bath</div>
+                        </div>
+                        <div>
+                            <div class="text-cyan-400 mb-1"><i class="fas fa-ruler-combined"></i></div>
+                            <div>68-121 m²</div>
+                        </div>
                     </div>
 
-                    <button onclick="openModal('modal-bulgaria')" class="mt-auto w-full text-center bg-gray-900 hover:bg-gray-800 text-white font-semibold py-3 px-4 rounded-xl shadow-sm transition duration-200 text-sm">
+                    <button onclick="openModal('modal-bulgaria')" class="w-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-semibold py-3.5 px-4 rounded-2xl shadow-lg shadow-cyan-500/10 transition-all duration-200 text-sm tracking-wide">
                         View Details
                     </button>
                 </div>
@@ -139,55 +154,55 @@
         </div>
     </main>
 
-    <footer class="bg-gray-900 text-gray-400 py-12 px-4 mt-16 border-t border-gray-800">
-        <div class="max-w-4xl mx-auto text-center">
-            <h4 class="text-white text-xl font-bold mb-2">Have questions about the catalog?</h4>
-            <p class="text-sm mb-6 max-w-md mx-auto">Get in touch directly via Phone or Telegram for full walkthroughs, inquiries, and custom package structures.</p>
-            <div class="flex flex-col sm:flex-row justify-center items-center gap-4">
-                <a href="tel:+251922785816" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white font-semibold px-6 py-3 rounded-xl shadow-sm transition">
-                    <i class="fas fa-phone-alt"></i> Call +251 922 785 816
+    <footer class="bg-slate-950 border-t border-slate-850 py-12 px-4 text-center mt-auto">
+        <div class="max-w-3xl mx-auto">
+            <h4 class="text-white font-semibold text-lg mb-2">Inquiries & Private Walkthroughs</h4>
+            <p class="text-slate-400 text-sm mb-6 max-w-md mx-auto">Get in touch directly through Phone or Telegram for full catalog breakdowns and special tailored offers.</p>
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-3.5 max-w-md mx-auto">
+                <a href="tel:+251922785816" class="w-full inline-flex items-center justify-center gap-2 bg-slate-800 hover:bg-slate-700 border border-slate-700 text-white font-semibold px-6 py-3.5 rounded-2xl shadow-md transition-all">
+                    <i class="fas fa-phone-alt text-cyan-400"></i> Call Office
                 </a>
-                <a href="https://t.me/LamrotHabtamu" target="_blank" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-sky-500 hover:bg-sky-600 text-white font-semibold px-6 py-3 rounded-xl shadow-sm transition">
+                <a href="https://t.me/LamrotHabtamu" target="_blank" class="w-full inline-flex items-center justify-center gap-2 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-semibold px-6 py-3.5 rounded-2xl shadow-lg shadow-cyan-500/10 transition-all">
                     <i class="fab fa-telegram-plane"></i> Telegram Channel
                 </a>
             </div>
-            <p class="text-xs text-gray-600 mt-10">&copy; 2026 Lamrot Properties. All Rights Reserved.</p>
+            <div class="text-xs text-slate-600 mt-10">&copy; 2026 Lamrot Properties. All Rights Reserved.</div>
         </div>
     </footer>
 
     <div id="modal-aware" class="modal opacity-0 pointer-events-none fixed w-full h-full top-0 left-0 flex items-center justify-center z-50">
-        <div class="modal-overlay absolute w-full h-full bg-gray-900 opacity-50" onclick="closeModal('modal-aware')"></div>
-        <div class="modal-container bg-white w-11/12 max-w-2xl mx-auto rounded-2xl shadow-xl z-50 overflow-y-auto max-h-[90vh]">
-            <div class="p-6 border-b border-gray-100 flex justify-between items-center sticky top-0 bg-white">
+        <div class="modal-overlay absolute w-full h-full bg-slate-950/80 backdrop-blur-sm" onclick="closeModal('modal-aware')"></div>
+        <div class="modal-container bg-slate-900 border border-slate-800 w-11/12 max-w-2xl mx-auto rounded-3xl shadow-2xl z-50 overflow-y-auto max-h-[85vh]">
+            <div class="p-6 border-b border-slate-800 flex justify-between items-center bg-slate-900 sticky top-0 z-10">
                 <div>
-                    <h3 class="text-xl font-bold text-gray-900">Aware - Inventory Details</h3>
-                    <p class="text-xs text-blue-600 font-semibold uppercase tracking-wider">All Units: 3 Bedroom &bull; 2 Bathroom &bull; 20% DP</p>
+                    <h3 class="text-xl font-bold text-white">Aware - Unit Catalog</h3>
+                    <p class="text-[11px] text-cyan-400 font-bold uppercase tracking-wider mt-0.5">3 Bedroom &bull; 2 Bathroom &bull; 20% Downpayment</p>
                 </div>
-                <button onclick="closeModal('modal-aware')" class="text-gray-400 hover:text-gray-600 text-2xl p-2">&times;</button>
+                <button onclick="closeModal('modal-aware')" class="text-slate-400 hover:text-white text-2xl p-2 transition-colors">&times;</button>
             </div>
-            <div class="p-6 space-y-4">
-                <div class="bg-amber-50 border border-amber-200 text-amber-900 rounded-xl p-4 text-center font-semibold text-sm">
-                    <i class="fas fa-percentage text-amber-600 mr-1"></i> For discounts, contact me!
+            <div class="p-6 space-y-5">
+                <div class="bg-gradient-to-r from-amber-500/10 to-orange-500/10 border border-amber-500/20 text-amber-300 rounded-2xl p-4 text-center font-medium text-sm">
+                    <i class="fas fa-tags text-amber-400 mr-2"></i> For discounts, contact me!
                 </div>
-                <div class="overflow-x-auto border border-gray-100 rounded-xl">
+                <div class="overflow-x-auto border border-slate-800 rounded-2xl bg-slate-950/40">
                     <table class="w-full text-left border-collapse text-sm">
                         <thead>
-                            <tr class="bg-gray-50 text-gray-500 uppercase text-xs font-bold border-b border-gray-100">
+                            <tr class="bg-slate-950 text-slate-400 uppercase text-[10px] font-bold tracking-wider border-b border-slate-800">
                                 <th class="p-4">Unit Size</th>
                                 <th class="p-4">Full Price</th>
                                 <th class="p-4 text-right">Downpayment (20%)</th>
                             </tr>
                         </thead>
-                        <tbody class="divide-y divide-gray-100 font-medium text-gray-700">
-                            <tr><td class="p-4 font-bold text-gray-900">121 m²</td><td class="p-4">12,900,000 Birr</td><td class="p-4 text-right text-blue-600">2,580,000 Birr</td></tr>
-                            <tr><td class="p-4 font-bold text-gray-900">131 m²</td><td class="p-4">14,000,000 Birr</td><td class="p-4 text-right text-blue-600">2,800,000 Birr</td></tr>
-                            <tr><td class="p-4 font-bold text-gray-900">135 m²</td><td class="p-4">14,400,000 Birr</td><td class="p-4 text-right text-blue-600">2,880,000 Birr</td></tr>
-                            <tr><td class="p-4 font-bold text-gray-900">140 m²</td><td class="p-4">14,900,000 Birr</td><td class="p-4 text-right text-blue-600">2,980,000 Birr</td></tr>
-                            <tr><td class="p-4 font-bold text-gray-900">142 m²</td><td class="p-4">15,100,000 Birr</td><td class="p-4 text-right text-blue-600">3,020,000 Birr</td></tr>
-                            <tr><td class="p-4 font-bold text-gray-900">145 m²</td><td class="p-4">15,300,000 Birr</td><td class="p-4 text-right text-blue-600">3,060,000 Birr</td></tr>
-                            <tr><td class="p-4 font-bold text-gray-900">146 m²</td><td class="p-4">15,600,000 Birr</td><td class="p-4 text-right text-blue-600">3,120,000 Birr</td></tr>
-                            <tr><td class="p-4 font-bold text-gray-900">150 m²</td><td class="p-4">16,000,000 Birr</td><td class="p-4 text-right text-blue-600">3,200,000 Birr</td></tr>
-                            <tr><td class="p-4 font-bold text-gray-900">157 m²</td><td class="p-4">16,700,000 Birr</td><td class="p-4 text-right text-blue-600">3,340,000 Birr</td></tr>
+                        <tbody class="divide-y divide-slate-800/60 font-medium text-slate-300">
+                            <tr><td class="p-4 font-bold text-white">121 m²</td><td class="p-4">12,900,000 Birr</td><td class="p-4 text-right text-cyan-400 font-bold">2,580,000 Birr</td></tr>
+                            <tr><td class="p-4 font-bold text-white">131 m²</td><td class="p-4">14,000,000 Birr</td><td class="p-4 text-right text-cyan-400 font-bold">2,800,000 Birr</td></tr>
+                            <tr><td class="p-4 font-bold text-white">135 m²</td><td class="p-4">14,400,000 Birr</td><td class="p-4 text-right text-cyan-400 font-bold">2,880,000 Birr</td></tr>
+                            <tr><td class="p-4 font-bold text-white">140 m²</td><td class="p-4">14,900,000 Birr</td><td class="p-4 text-right text-cyan-400 font-bold">2,980,000 Birr</td></tr>
+                            <tr><td class="p-4 font-bold text-white">142 m²</td><td class="p-4">15,100,000 Birr</td><td class="p-4 text-right text-cyan-400 font-bold">3,020,000 Birr</td></tr>
+                            <tr><td class="p-4 font-bold text-white">145 m²</td><td class="p-4">15,300,000 Birr</td><td class="p-4 text-right text-cyan-400 font-bold">3,060,000 Birr</td></tr>
+                            <tr><td class="p-4 font-bold text-white">146 m²</td><td class="p-4">15,600,000 Birr</td><td class="p-4 text-right text-cyan-400 font-bold">3,120,000 Birr</td></tr>
+                            <tr><td class="p-4 font-bold text-white">150 m²</td><td class="p-4">16,000,000 Birr</td><td class="p-4 text-right text-cyan-400 font-bold">3,200,000 Birr</td></tr>
+                            <tr><td class="p-4 font-bold text-white">157 m²</td><td class="p-4">16,700,000 Birr</td><td class="p-4 text-right text-cyan-400 font-bold">3,340,000 Birr</td></tr>
                         </tbody>
                     </table>
                 </div>
@@ -196,35 +211,35 @@
     </div>
 
     <div id="modal-piassa" class="modal opacity-0 pointer-events-none fixed w-full h-full top-0 left-0 flex items-center justify-center z-50">
-        <div class="modal-overlay absolute w-full h-full bg-gray-900 opacity-50" onclick="closeModal('modal-piassa')"></div>
-        <div class="modal-container bg-white w-11/12 max-w-2xl mx-auto rounded-2xl shadow-xl z-50 overflow-y-auto max-h-[90vh]">
-            <div class="p-6 border-b border-gray-100 flex justify-between items-center sticky top-0 bg-white">
+        <div class="modal-overlay absolute w-full h-full bg-slate-950/80 backdrop-blur-sm" onclick="closeModal('modal-piassa')"></div>
+        <div class="modal-container bg-slate-900 border border-slate-800 w-11/12 max-w-2xl mx-auto rounded-3xl shadow-2xl z-50 overflow-y-auto max-h-[85vh]">
+            <div class="p-6 border-b border-slate-800 flex justify-between items-center bg-slate-900 sticky top-0 z-10">
                 <div>
-                    <h3 class="text-xl font-bold text-gray-900">Piassa Lycee - Inventory Details</h3>
-                    <p class="text-xs text-emerald-600 font-semibold uppercase tracking-wider">All Units: 2 Bathrooms &bull; 10% DP</p>
+                    <h3 class="text-xl font-bold text-white">Piassa Lycee - Unit Catalog</h3>
+                    <p class="text-[11px] text-emerald-400 font-bold uppercase tracking-wider mt-0.5">2 Bathrooms &bull; 10% Downpayment</p>
                 </div>
-                <button onclick="closeModal('modal-piassa')" class="text-gray-400 hover:text-gray-600 text-2xl p-2">&times;</button>
+                <button onclick="closeModal('modal-piassa')" class="text-slate-400 hover:text-white text-2xl p-2 transition-colors">&times;</button>
             </div>
-            <div class="p-6 space-y-4">
-                <div class="bg-amber-50 border border-amber-200 text-amber-900 rounded-xl p-4 text-center font-semibold text-sm">
-                    <i class="fas fa-percentage text-amber-600 mr-1"></i> For discounts, contact me!
+            <div class="p-6 space-y-5">
+                <div class="bg-gradient-to-r from-amber-500/10 to-orange-500/10 border border-amber-500/20 text-amber-300 rounded-2xl p-4 text-center font-medium text-sm">
+                    <i class="fas fa-tags text-amber-400 mr-2"></i> For discounts, contact me!
                 </div>
-                <div class="overflow-x-auto border border-gray-100 rounded-xl">
+                <div class="overflow-x-auto border border-slate-800 rounded-2xl bg-slate-950/40">
                     <table class="w-full text-left border-collapse text-sm">
                         <thead>
-                            <tr class="bg-gray-50 text-gray-500 uppercase text-xs font-bold border-b border-gray-100">
-                                <th class="p-4">Type / Size</th>
+                            <tr class="bg-slate-950 text-slate-400 uppercase text-[10px] font-bold tracking-wider border-b border-slate-800">
+                                <th class="p-4">Configuration / Size</th>
                                 <th class="p-4">Full Price</th>
                                 <th class="p-4 text-right">Downpayment (10%)</th>
                             </tr>
                         </thead>
-                        <tbody class="divide-y divide-gray-100 font-medium text-gray-700">
-                            <tr class="bg-slate-50/50"><td colspan="3" class="p-3 text-xs font-bold text-gray-400 uppercase tracking-wider">3 Bedroom Options</td></tr>
-                            <tr><td class="p-4 font-bold text-gray-900">132 m²</td><td class="p-4">15,180,000 Birr</td><td class="p-4 text-right text-emerald-600">1,518,000 Birr</td></tr>
-                            <tr><td class="p-4 font-bold text-gray-900">136 m²</td><td class="p-4">15,640,000 Birr</td><td class="p-4 text-right text-emerald-600">1,564,000 Birr</td></tr>
-                            <tr><td class="p-4 font-bold text-gray-900">142 m²</td><td class="p-4">16,330,000 Birr</td><td class="p-4 text-right text-emerald-600">1,633,000 Birr</td></tr>
-                            <tr class="bg-slate-50/50"><td colspan="3" class="p-3 text-xs font-bold text-gray-400 uppercase tracking-wider">2 Bedroom Options</td></tr>
-                            <tr><td class="p-4 font-bold text-gray-900">80 m²</td><td class="p-4">9,200,000 Birr</td><td class="p-4 text-right text-emerald-600">920,000 Birr</td></tr>
+                        <tbody class="divide-y divide-slate-800/60 font-medium text-slate-300">
+                            <tr class="bg-slate-900/80"><td colspan="3" class="p-3 text-[10px] font-bold text-slate-400 uppercase tracking-widest bg-slate-950/60 border-y border-slate-800/80">3 Bedroom Layouts</td></tr>
+                            <tr><td class="p-4 font-bold text-white">132 m²</td><td class="p-4">15,180,000 Birr</td><td class="p-4 text-right text-emerald-400 font-bold">1,518,000 Birr</td></tr>
+                            <tr><td class="p-4 font-bold text-white">136 m²</td><td class="p-4">15,640,000 Birr</td><td class="p-4 text-right text-emerald-400 font-bold">1,564,000 Birr</td></tr>
+                            <tr><td class="p-4 font-bold text-white">142 m²</td><td class="p-4">16,330,000 Birr</td><td class="p-4 text-right text-emerald-400 font-bold">1,633,000 Birr</td></tr>
+                            <tr class="bg-slate-900/80"><td colspan="3" class="p-3 text-[10px] font-bold text-slate-400 uppercase tracking-widest bg-slate-950/60 border-y border-slate-800/80">2 Bedroom Layouts</td></tr>
+                            <tr><td class="p-4 font-bold text-white">80 m²</td><td class="p-4">9,200,000 Birr</td><td class="p-4 text-right text-emerald-400 font-bold">920,000 Birr</td></tr>
                         </tbody>
                     </table>
                 </div>
@@ -233,40 +248,40 @@
     </div>
 
     <div id="modal-bulgaria" class="modal opacity-0 pointer-events-none fixed w-full h-full top-0 left-0 flex items-center justify-center z-50">
-        <div class="modal-overlay absolute w-full h-full bg-gray-900 opacity-50" onclick="closeModal('modal-bulgaria')"></div>
-        <div class="modal-container bg-white w-11/12 max-w-2xl mx-auto rounded-2xl shadow-xl z-50 overflow-y-auto max-h-[90vh]">
-            <div class="p-6 border-b border-gray-100 flex justify-between items-center sticky top-0 bg-white">
+        <div class="modal-overlay absolute w-full h-full bg-slate-950/80 backdrop-blur-sm" onclick="closeModal('modal-bulgaria')"></div>
+        <div class="modal-container bg-slate-900 border border-slate-800 w-11/12 max-w-2xl mx-auto rounded-3xl shadow-2xl z-50 overflow-y-auto max-h-[85vh]">
+            <div class="p-6 border-b border-slate-800 flex justify-between items-center bg-slate-900 sticky top-0 z-10">
                 <div>
-                    <h3 class="text-xl font-bold text-gray-900">Bulgaria - Inventory Details</h3>
-                    <p class="text-xs text-blue-600 font-semibold uppercase tracking-wider">All Units: 20% DP Structures</p>
+                    <h3 class="text-xl font-bold text-white">Bulgaria - Unit Catalog</h3>
+                    <p class="text-[11px] text-cyan-400 font-bold uppercase tracking-wider mt-0.5">20% Downpayment Structure</p>
                 </div>
-                <button onclick="closeModal('modal-bulgaria')" class="text-gray-400 hover:text-gray-600 text-2xl p-2">&times;</button>
+                <button onclick="closeModal('modal-bulgaria')" class="text-slate-400 hover:text-white text-2xl p-2 transition-colors">&times;</button>
             </div>
-            <div class="p-6 space-y-4">
-                <div class="bg-amber-50 border border-amber-200 text-amber-900 rounded-xl p-4 text-center font-semibold text-sm">
-                    <i class="fas fa-percentage text-amber-600 mr-1"></i> For discounts, contact me!
+            <div class="p-6 space-y-5">
+                <div class="bg-gradient-to-r from-amber-500/10 to-orange-500/10 border border-amber-500/20 text-amber-300 rounded-2xl p-4 text-center font-medium text-sm">
+                    <i class="fas fa-tags text-amber-400 mr-2"></i> For discounts, contact me!
                 </div>
-                <div class="overflow-x-auto border border-gray-100 rounded-xl">
+                <div class="overflow-x-auto border border-slate-800 rounded-2xl bg-slate-950/40">
                     <table class="w-full text-left border-collapse text-sm">
                         <thead>
-                            <tr class="bg-gray-50 text-gray-500 uppercase text-xs font-bold border-b border-gray-100">
-                                <th class="p-4">Configuration</th>
+                            <tr class="bg-slate-950 text-slate-400 uppercase text-[10px] font-bold tracking-wider border-b border-slate-800">
+                                <th class="p-4">Type & Size</th>
                                 <th class="p-4">Full Price</th>
                                 <th class="p-4 text-right">Downpayment (20%)</th>
                             </tr>
                         </thead>
-                        <tbody class="divide-y divide-gray-100 font-medium text-gray-700">
-                            <tr class="bg-slate-50/50"><td colspan="3" class="p-3 text-xs font-bold text-gray-400 uppercase tracking-wider">1 Bedroom &bull; 1 Bath</td></tr>
-                            <tr><td class="p-4 font-bold text-gray-900">68 m²</td><td class="p-4">7,820,000 Birr</td><td class="p-4 text-right text-blue-600">1,564,000 Birr</td></tr>
-                            <tr><td class="p-4 font-bold text-gray-900">72 m²</td><td class="p-4">8,280,000 Birr</td><td class="p-4 text-right text-blue-600">1,656,000 Birr</td></tr>
+                        <tbody class="divide-y divide-slate-800/60 font-medium text-slate-300">
+                            <tr class="bg-slate-900/80"><td colspan="3" class="p-3 text-[10px] font-bold text-slate-400 uppercase tracking-widest bg-slate-950/60 border-y border-slate-800/80">1 Bedroom &bull; 1 Bathroom</td></tr>
+                            <tr><td class="p-4 font-bold text-white">68 m²</td><td class="p-4">7,820,000 Birr</td><td class="p-4 text-right text-cyan-400 font-bold">1,564,000 Birr</td></tr>
+                            <tr><td class="p-4 font-bold text-white">72 m²</td><td class="p-4">8,280,000 Birr</td><td class="p-4 text-right text-cyan-400 font-bold">1,656,000 Birr</td></tr>
                             
-                            <tr class="bg-slate-50/50"><td colspan="3" class="p-3 text-xs font-bold text-gray-400 uppercase tracking-wider">2 Bedroom &bull; 2 Bath</td></tr>
-                            <tr><td class="p-4 font-bold text-gray-900">81 m²</td><td class="p-4">9,315,000 Birr</td><td class="p-4 text-right text-blue-600">1,863,000 Birr</td></tr>
-                            <tr><td class="p-4 font-bold text-gray-900">87 m²</td><td class="p-4">10,005,000 Birr</td><td class="p-4 text-right text-blue-600">2,001,000 Birr</td></tr>
-                            <tr><td class="p-4 font-bold text-gray-900">90 m²</td><td class="p-4">10,350,000 Birr</td><td class="p-4 text-right text-blue-600">2,070,000 Birr</td></tr>
+                            <tr class="bg-slate-900/80"><td colspan="3" class="p-3 text-[10px] font-bold text-slate-400 uppercase tracking-widest bg-slate-950/60 border-y border-slate-800/80">2 Bedroom &bull; 2 Bathroom</td></tr>
+                            <tr><td class="p-4 font-bold text-white">81 m²</td><td class="p-4">9,315,000 Birr</td><td class="p-4 text-right text-cyan-400 font-bold">1,863,000 Birr</td></tr>
+                            <tr><td class="p-4 font-bold text-white">87 m²</td><td class="p-4">10,005,000 Birr</td><td class="p-4 text-right text-cyan-400 font-bold">2,001,000 Birr</td></tr>
+                            <tr><td class="p-4 font-bold text-white">90 m²</td><td class="p-4">10,350,000 Birr</td><td class="p-4 text-right text-cyan-400 font-bold">2,070,000 Birr</td></tr>
                             
-                            <tr class="bg-slate-50/50"><td colspan="3" class="p-3 text-xs font-bold text-gray-400 uppercase tracking-wider">3 Bedroom &bull; 2 Bath</td></tr>
-                            <tr><td class="p-4 font-bold text-gray-900">121 m²</td><td class="p-4">13,915,000 Birr</td><td class="p-4 text-right text-blue-600">2,783,000 Birr</td></tr>
+                            <tr class="bg-slate-900/80"><td colspan="3" class="p-3 text-[10px] font-bold text-slate-400 uppercase tracking-widest bg-slate-950/60 border-y border-slate-800/80">3 Bedroom &bull; 2 Bathroom</td></tr>
+                            <tr><td class="p-4 font-bold text-white">121 m²</td><td class="p-4">13,915,000 Birr</td><td class="p-4 text-right text-cyan-400 font-bold">2,783,000 Birr</td></tr>
                         </tbody>
                     </table>
                 </div>
