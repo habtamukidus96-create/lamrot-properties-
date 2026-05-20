@@ -1,307 +1,1169 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Lamrot Properties</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
-        body {
-            font-family: 'Poppins', sans-serif;
-        }
-        .modal {
-            transition: opacity 0.25s ease;
-        }
-        body.modal-active {
-            overflow: hidden;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Lamrot Properties</title>
+  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+  <style>
+    /* Reset and Base Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      height: auto;
+    }
+
+    body {
+      background-color: #0b0c10; 
+      color: #ffffff;
+      font-family: 'Helvetica Neue', Arial, sans-serif;
+      overflow-x: hidden; 
+      width: 100%;
+      height: auto;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* NAVBAR CODE */
+    .navbar {
+      background-color: #0b0c10;
+      border-bottom: 1px solid rgba(197, 168, 128, 0.2); 
+      padding: 18px 20px;
+      position: sticky; 
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+      width: 100%;
+      position: relative;
+    }
+
+    .logo-brand {
+      display: flex;
+      align-items: center;
+      gap: 30px; 
+      flex: 1;
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 10px;
+    }
+
+    .social-icons a {
+      color: #c5a880; 
+      text-decoration: none;
+      font-size: 14px;
+      width: 32px;
+      height: 32px;
+      border: 1px solid rgba(197, 168, 128, 0.4);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s;
+    }
+
+    .social-icons a:hover {
+      background-color: #c5a880;
+      color: #0b0c10;
+    }
+
+    /* Centering layout rule for Desktop */
+    .logo-text {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      text-align: center;
+      pointer-events: auto;
+      z-index: 5;
+    }
+
+    .logo-text h1 {
+      font-size: 22px; 
+      letter-spacing: 4px;
+      font-weight: 700;
+      color: #ffffff;
+      line-height: 1;
+    }
+
+    .logo-text h2 {
+      font-size: 11px;
+      letter-spacing: 5px;
+      color: #c5a880; 
+      font-weight: 400;
+      margin-top: 5px;
+    }
+
+    .menu-toggle {
+      display: none !important;
+    }
+
+    /* Desktop Navigation Alignment */
+    .nav-links {
+      display: flex;
+      flex: 1;
+      justify-content: flex-end;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: #ffffff;
+      text-decoration: none;
+      margin-left: 30px;
+      font-size: 13px;
+      letter-spacing: 1.5px;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: #c5a880;
+    }
+
+    /* Mobile Hamburger lines */
+    .hamburger {
+      display: none;
+      cursor: pointer;
+      flex-direction: column;
+      gap: 5px;
+    }
+
+    .hamburger span {
+      display: block;
+      width: 25px;
+      height: 3px;
+      background-color: #c5a880;
+      border-radius: 2px;
+    }
+
+    .social-icons-mobile {
+      display: none;
+    }
+
+    /* HERO SECTION */
+    .hero-section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 100px 20px 80px 20px; 
+      display: flex;
+      flex-direction: row; 
+      align-items: center;
+      justify-content: space-between;
+      gap: 50px;
+      flex-shrink: 0;
+    }
+
+    .hero-image-container {
+      position: relative;
+      border: 1px solid rgba(197, 168, 128, 0.3);
+      padding: 12px;
+      border-radius: 16px;
+      display: block;
+      flex-shrink: 0;
+    }
+
+    .hero-img {
+      width: 320px; 
+      height: auto;
+      border-radius: 12px;
+      display: block;
+    }
+
+    .hero-content {
+      flex: 1;
+      max-width: 650px;
+    }
+
+    .main-headline {
+      font-size: 34px; 
+      line-height: 1.5;
+      margin-bottom: 25px;
+      font-weight: 600;
+      color: #ffffff;
+    }
+
+    .quote-box {
+      border: 1px solid rgba(197, 168, 128, 0.2);
+      padding: 20px;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.01);
+    }
+
+    .quote-text {
+      font-style: italic;
+      color: #c5a880;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    /* SECTION TITLE BASICS */
+    .section-title {
+      font-size: 22px;
+      color: #c5a880;
+      letter-spacing: 2px;
+      text-align: center;
+      margin-bottom: 45px;
+      font-weight: 500;
+      text-transform: uppercase;
+    }
+
+    /* PROPERTY LISTINGS */
+    .listings-section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 80px 20px;
+      display: block;
+      height: auto;
+      clear: both;
+    }
+
+    .listings-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+      gap: 30px;
+      width: 100%;
+      height: auto;
+    }
+
+    .property-card {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(197, 168, 128, 0.15);
+      border-radius: 14px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      height: auto;
+    }
+
+    /* Smooth CSS grid visibility toggle system for the remaining 16 items */
+    .hidden-listings-wrapper {
+      display: none;
+    }
+
+    .view-more-checkbox {
+      display: none;
+    }
+
+    .view-more-checkbox:checked ~ .hidden-listings-wrapper {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+      gap: 30px;
+      width: 100%;
+      margin-top: 30px;
+    }
+
+    .btn-view-more-label {
+      display: block;
+      width: 240px;
+      margin: 50px auto 0 auto;
+      padding: 15px 20px;
+      text-align: center;
+      background: transparent;
+      border: 1px solid #c5a880;
+      color: #c5a880;
+      border-radius: 8px;
+      font-size: 14px;
+      font-weight: 600;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .btn-view-more-label:hover {
+      background: #c5a880;
+      color: #0b0c10;
+    }
+
+    /* Hide view more label completely once checked open */
+    .view-more-checkbox:checked ~ .btn-view-more-label {
+      display: none;
+    }
+
+    .property-img {
+      width: 100%;
+      height: 240px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .property-info {
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+      height: auto;
+    }
+
+    .property-title {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 10px;
+      color: #ffffff;
+      letter-spacing: 0.5px;
+    }
+
+    .property-details {
+      font-size: 13px;
+      color: #d1d1d1;
+      line-height: 1.6;
+      margin-bottom: 16px;
+    }
+
+    .property-specs {
+      display: flex;
+      justify-content: space-between;
+      background: rgba(197, 168, 128, 0.05);
+      border: 1px solid rgba(197, 168, 128, 0.1);
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: 13px;
+      color: #c5a880;
+      font-weight: 500;
+      margin-bottom: 20px;
+    }
+
+    .action-buttons-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+
+    .btn-action {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      padding: 10px 5px;
+      border-radius: 8px;
+      font-size: 12px;
+      font-weight: 600;
+      text-decoration: none;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      transition: all 0.2s ease;
+    }
+
+    .btn-call {
+      background-color: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #ffffff;
+    }
+    .btn-call:hover {
+      background-color: #ffffff;
+      color: #0b0c10;
+    }
+
+    .btn-email {
+      background-color: rgba(197, 168, 128, 0.05);
+      border: 1px solid rgba(197, 168, 128, 0.3);
+      color: #c5a880;
+    }
+    .btn-email:hover {
+      background-color: #c5a880;
+      color: #0b0c10;
+    }
+
+    .btn-telegram {
+      background-color: rgba(36, 161, 222, 0.08);
+      border: 1px solid rgba(36, 161, 222, 0.4);
+      color: #24a1de;
+    }
+    .btn-telegram:hover {
+      background-color: #24a1de;
+      color: #ffffff;
+    }
+
+    .detail-toggle-chk {
+      display: none;
+    }
+
+    .lbl-toggle-details {
+      display: block;
+      text-align: center;
+      padding: 10px;
+      font-size: 13px;
+      color: #c5a880;
+      border: 1px dashed rgba(197, 168, 128, 0.3);
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 500;
+      transition: background 0.3s;
+    }
+    .lbl-toggle-details:hover {
+      background: rgba(197, 168, 128, 0.05);
+    }
+
+    .expandable-details-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease-out;
+      background: rgba(0, 0, 0, 0.2);
+      border-radius: 8px;
+    }
+
+    .inner-details-box {
+      padding: 15px;
+      border-top: 1px solid rgba(197, 168, 128, 0.1);
+      margin-top: 10px;
+    }
+
+    .detail-price-tag {
+      font-size: 17px;
+      color: #ffffff;
+      font-weight: 600;
+      margin-bottom: 5px;
+    }
+
+    .detail-dp-tag {
+      font-size: 14px;
+      color: #c5a880;
+      font-weight: 500;
+      margin-bottom: 8px;
+    }
+
+    .deep-specs-list {
+      font-size: 13px;
+      color: #a3a3a3;
+      list-style: none;
+      line-height: 1.6;
+    }
+
+    .detail-toggle-chk:checked ~ .expandable-details-content {
+      max-height: 500px; 
+    }
+
+    /* ABOUT US SECTION */
+    .about-section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 80px 20px;
+      display: block;
+      height: auto;
+      clear: both;
+    }
+
+    .about-split-container {
+      display: flex;
+      align-items: stretch;
+      gap: 40px;
+      background: rgba(255, 255, 255, 0.01);
+      border: 1px solid rgba(197, 168, 128, 0.15);
+      border-radius: 12px;
+      padding: 40px;
+    }
+
+    .about-column {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .about-column p {
+      line-height: 1.8;
+      color: #d1d1d1;
+      font-size: 14px;
+    }
+
+    .about-divider {
+      width: 1px;
+      background: rgba(197, 168, 128, 0.25);
+      align-self: inherit;
+    }
+
+    /* FOOTER AND CONTACTS */
+    .main-footer {
+      background-color: #06070a;
+      border-top: 1px solid rgba(197, 168, 128, 0.15);
+      padding: 40px 20px;
+      display: block;
+      height: auto;
+      margin-top: auto; 
+      clear: both;
+    }
+
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+    }
+
+    .footer-contacts {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 12px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 15px;
+      transition: color 0.3s;
+    }
+
+    .contact-item i {
+      color: #c5a880;
+    }
+
+    .contact-item:hover {
+      color: #c5a880;
+    }
+
+    .footer-logo-brand {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 5px;
+    }
+
+    .lp-monogram {
+      font-size: 32px;
+      font-weight: 800;
+      color: #c5a880;
+      letter-spacing: -2px;
+      line-height: 1;
+      font-family: 'Times New Roman', Times, serif;
+      border-bottom: 1px solid rgba(197, 168, 128, 0.4);
+      padding-bottom: 2px;
+    }
+
+    .footer-credits {
+      font-size: 11px;
+      color: #555555;
+      letter-spacing: 1px;
+    }
+
+    /* ==========================================
+       RESPONSIVE MEDIA QUERIES (MOBILE FIXES)
+       ========================================== */
+    @media only screen and (max-width: 850px) {
+      .navbar {
+        padding: 15px 15px;
+      }
+      
+      .nav-container {
+        display: flex;
+        justify-content: flex-start; 
+        align-items: center;
+        gap: 15px;
+        width: 100%;
+      }
+      
+      .logo-brand {
+        display: none !important; 
+      }
+      
+      .logo-text {
+        position: static !important;
+        transform: none !important;
+        text-align: left;
+        margin-right: 15px; 
+      }
+
+      .logo-text h1 {
+        font-size: 18px;
+        letter-spacing: 2px;
+      }
+
+      .logo-text h2 {
+        font-size: 10px;
+        letter-spacing: 3px;
+        margin-top: 4px;
+      }
+
+      .hamburger {
+        display: flex !important;
+        z-index: 100;
+        order: -1; 
+      }
+
+      .social-icons-mobile {
+        display: flex !important;
+        gap: 8px;
+        margin-left: auto; 
+      }
+
+      .social-icons-mobile a {
+        color: #c5a880; 
+        text-decoration: none;
+        font-size: 13px;
+        width: 28px;
+        height: 28px;
+        border: 1px solid rgba(197, 168, 128, 0.3);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .nav-links {
+        display: none !important;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        background-color: #0b0c10;
+        border-bottom: 1px solid rgba(197, 168, 128, 0.2);
+        padding: 20px 0;
+        text-align: center;
+        z-index: 99;
+      }
+
+      .nav-links a {
+        margin: 15px 0;
+        display: block;
+        font-size: 16px;
+        letter-spacing: 2px;
+        margin-left: 0;
+      }
+
+      .menu-toggle:checked ~ .nav-links {
+        display: flex !important;
+      }
+
+      .hero-section {
+        flex-direction: column;
+        text-align: center;
+        padding-top: 60px;
+        gap: 30px;
+      }
+
+      .main-headline {
+        font-size: 26px;
+      }
+      
+      .hero-img {
+        max-width: 280px;
+      }
+
+      .listings-section {
+        padding: 40px 15px;
+        height: auto;
+      }
+
+      .listings-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+        height: auto;
+      }
+
+      .view-more-checkbox:checked ~ .hidden-listings-wrapper {
+        display: flex;
+        flex-direction: column;
+        gap: 25px;
+      }
+
+      .about-split-container {
+        flex-direction: column;
+        padding: 24px 20px;
+        gap: 25px;
+      }
+
+      .about-divider {
+        width: 100%;
+        height: 1px;
+      }
+
+      .footer-container {
+        flex-direction: column;
+        gap: 25px;
+        text-align: center;
+      }
+
+      .footer-contacts {
+        align-items: center;
+      }
+
+      .footer-logo-brand {
+        align-items: center;
+      }
+    }
+  </style>
 </head>
-<body class="bg-slate-900 text-slate-100 min-h-screen flex flex-col">
+<body>
 
-    <nav class="bg-slate-900/80 backdrop-blur-md border-b border-slate-800 sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 h-20 flex justify-between items-center">
-            <div class="flex items-center gap-3">
-                <div class="bg-gradient-to-tr from-cyan-500 to-blue-600 text-white p-2.5 rounded-xl shadow-lg shadow-cyan-500/20">
-                    <i class="fas fa-building text-xl"></i>
-                </div>
-                <div>
-                    <span class="text-xl font-bold tracking-tight bg-gradient-to-r from-white via-slate-200 to-slate-400 bg-clip-text text-transparent">Lamrot Properties</span>
-                    <div class="text-[10px] text-cyan-400 font-semibold tracking-widest uppercase">Real Estate</div>
-                </div>
-            </div>
-            
-            <a href="tel:+251922785816" class="flex items-center gap-2 bg-slate-800 hover:bg-slate-700 border border-slate-700 hover:border-slate-600 text-white font-medium px-4 py-2.5 rounded-xl text-sm transition-all duration-200 shadow-sm">
-                <i class="fas fa-phone-alt text-cyan-400 text-xs"></i>
-                <span class="hidden sm:inline">+251 922 785 816</span>
-            </a>
+  <header class="navbar">
+    <div class="nav-container">
+      
+      <div class="logo-brand">
+        <div class="social-icons">
+          <a href="https://facebook.com/share/1CpreHHXre/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+          <a href="https://www.instagram.com/lamrot_property?igsh=dTY0MHNrZGF3Y2Zt" target="_blank"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.tiktok.com/@lamrottemer_properties?_r=1&_t=ZS-96PNmmPOxvA" target="_blank"><i class="fab fa-tiktok"></i></a>
+          <a href="https://t.me/LamrotHabtamu" target="_blank"><i class="fab fa-telegram-plane"></i></a>
         </div>
-    </nav>
+      </div>
 
-    <main class="flex-grow max-w-7xl mx-auto px-4 py-10 w-full">
-        
-        <div class="mb-12 text-center sm:text-left">
-            <h2 class="text-2xl font-bold tracking-tight text-white flex items-center justify-center sm:justify-start gap-2.5">
-                <span class="w-1.5 h-6 bg-cyan-500 rounded-full inline-block"></span>
-                Listings
-            </h2>
-            <p class="text-slate-400 text-sm mt-1.5 max-w-xl">Explore our exclusive, premium apartments available across prime residential locations.</p>
+      <div class="logo-text">
+        <h1>LAMROT</h1>
+        <h2>PROPERTIES</h2>
+      </div>
+
+      <input type="checkbox" id="menu-toggle" class="menu-toggle">
+      
+      <label for="menu-toggle" class="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </label>
+
+      <div class="social-icons-mobile">
+        <a href="https://facebook.com/share/1CpreHHXre/" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <a href="https://www.instagram.com/lamrot_property?igsh=dTY0MHNrZGF3Y2Zt" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.tiktok.com/@lamrottemer_properties?_r=1&_t=ZS-96PNmmPOxvA" target="_blank"><i class="fab fa-tiktok"></i></a>
+        <a href="https://t.me/LamrotHabtamu" target="_blank"><i class="fab fa-telegram-plane"></i></a>
+      </div>
+
+      <nav class="nav-links">
+        <label for="menu-toggle"><a href="#home">HOME</a></label>
+        <label for="menu-toggle"><a href="#listings">LISTINGS</a></label>
+        <label for="menu-toggle"><a href="#about">ABOUT US</a></label>
+      </nav>
+      
+    </div>
+  </header>
+
+  <main class="hero-section" id="home">
+    <div class="hero-image-container">
+      <img src="headshot.jpg" alt="Lamrot Properties Professional" class="hero-img">
+    </div>
+    
+    <div class="hero-content">
+      <h2 class="main-headline">ጥራት ያላቸው የመኖሪያና የንግድ ቤቶችን ዛሬውኑ ያግኙ!</h2>
+      <div class="quote-box">
+        <p class="quote-text">"Philosophy is the philosophy of ensuring the luxury of your life."</p>
+      </div>
+    </div>
+  </main>
+
+  <section class="listings-section" id="listings">
+    <h3 class="section-title">Our Properties</h3>
+    
+    <div class="listings-grid">
+      
+      <div class="property-card">
+        <img src="Aware1.jpg" alt="Aware Premium Apartment" class="property-img">
+        <div class="property-info">
+          <h4 class="property-title">Aware - Luxury 3 Bedroom Apartment</h4>
+          <p class="property-details">Premium master suite apartment located in Bulgaria. Features expansive scenic window designs and top-tier finishes.</p>
+          <div class="property-specs">
+            <span><i class="fas fa-bed"></i> Bed: 3</span>
+            <span><i class="fas fa-bath"></i> Bath: 2</span>
+            <span><i class="fas fa-expand-arrows-alt"></i> Size: 121 m²</span>
+          </div>
+          <div class="action-buttons-row">
+            <a href="tel:+251922785816" class="btn-action btn-call"><i class="fas fa-phone-alt"></i> Call</a>
+            <a href="mailto:lamrothabtamu2524@gmail.com?subject=Inquiry: Aware 121m²" class="btn-action btn-email"><i class="fas fa-envelope"></i> Email</a>
+            <a href="https://t.me/LamrotHabtamu" target="_blank" class="btn-action btn-telegram"><i class="fab fa-telegram-plane"></i> Telegram</a>
+          </div>
+          <input type="checkbox" id="toggle-p1" class="detail-toggle-chk">
+          <label for="toggle-p1" class="lbl-toggle-details">View Price & Details</label>
+          <div class="expandable-details-content">
+            <div class="inner-details-box">
+              <p class="detail-price-tag">Price: 12,900,000 ETB</p>
+              <p class="detail-dp-tag">Down Payment (20%): 2,580,000 ETB</p>
+              <ul class="deep-specs-list">
+                <li>• Location: Bulgaria</li>
+                <li>• Standby generator access</li>
+                <li>• 24/7 Monitored gate security</li>
+              </ul>
+            </div>
+          </div>
         </div>
+      </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-
-            <div class="bg-slate-800/50 border border-slate-700/60 rounded-3xl overflow-hidden hover:border-cyan-500/40 transition-all duration-300 shadow-xl flex flex-col group">
-                <div class="relative h-64 overflow-hidden bg-slate-900">
-                    <img src="Aware1.jpg" alt="Aware" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                    <div class="absolute top-4 left-4 bg-slate-900/80 backdrop-blur-md border border-slate-700 text-cyan-400 text-[11px] font-bold uppercase tracking-wider px-3 py-1.5 rounded-xl">
-                        20% Downpayment
-                    </div>
-                </div>
-                <div class="p-6 flex flex-col flex-grow">
-                    <div class="text-cyan-400 text-xs font-bold uppercase tracking-wider mb-1">Bole District</div>
-                    <h3 class="text-xl font-bold text-white mb-2">Aware Apartments</h3>
-                    <p class="text-slate-400 text-sm mb-6 leading-relaxed">Premium 3-Bedroom units situated in a high-demand, calm and serene residential area.</p>
-                    
-                    <div class="grid grid-cols-3 gap-2 py-3 px-4 bg-slate-900/40 border border-slate-800 rounded-2xl text-center text-xs font-medium text-slate-300 mb-6 mt-auto">
-                        <div>
-                            <div class="text-cyan-400 mb-1"><i class="fas fa-bed"></i></div>
-                            <div>3 Bed</div>
-                        </div>
-                        <div class="border-x border-slate-800">
-                            <div class="text-cyan-400 mb-1"><i class="fas fa-bath"></i></div>
-                            <div>2 Bath</div>
-                        </div>
-                        <div>
-                            <div class="text-cyan-400 mb-1"><i class="fas fa-ruler-combined"></i></div>
-                            <div>121-157 m²</div>
-                        </div>
-                    </div>
-
-                    <button onclick="openModal('modal-aware')" class="w-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-semibold py-3.5 px-4 rounded-2xl shadow-lg shadow-cyan-500/10 transition-all duration-200 text-sm tracking-wide">
-                        View Details
-                    </button>
-                </div>
+      <div class="property-card">
+        <img src="Bulgaria1.jpg" alt="Bulgaria Cozy Apartment" class="property-img">
+        <div class="property-info">
+          <h4 class="property-title">Bulgaria - Modern 1 Bedroom Suite</h4>
+          <p class="property-details">An elegant, space-optimized design tailored for high-end styling preferences in a vital city core area.</p>
+          <div class="property-specs">
+            <span><i class="fas fa-bed"></i> Bed: 1</span>
+            <span><i class="fas fa-bath"></i> Bath: 1</span>
+            <span><i class="fas fa-expand-arrows-alt"></i> Size: 68 m²</span>
+          </div>
+          <div class="action-buttons-row">
+            <a href="tel:+251922785816" class="btn-action btn-call"><i class="fas fa-phone-alt"></i> Call</a>
+            <a href="mailto:lamrothabtamu2524@gmail.com?subject=Inquiry: Bulgaria 68m²" class="btn-action btn-email"><i class="fas fa-envelope"></i> Email</a>
+            <a href="https://t.me/LamrotHabtamu" target="_blank" class="btn-action btn-telegram"><i class="fab fa-telegram-plane"></i> Telegram</a>
+          </div>
+          <input type="checkbox" id="toggle-p2" class="detail-toggle-chk">
+          <label for="toggle-p2" class="lbl-toggle-details">View Price & Details</label>
+          <div class="expandable-details-content">
+            <div class="inner-details-box">
+              <p class="detail-price-tag">Price: 7,820,000 ETB</p>
+              <p class="detail-dp-tag">Down Payment (20%): 1,564,000 ETB</p>
+              <ul class="deep-specs-list">
+                <li>• Location: Bulgaria</li>
+                <li>• Modern smart kitchen layout</li>
+                <li>• Undercover vehicle storage</li>
+              </ul>
             </div>
-
-            <div class="bg-slate-800/50 border border-slate-700/60 rounded-3xl overflow-hidden hover:border-cyan-500/40 transition-all duration-300 shadow-xl flex flex-col group">
-                <div class="relative h-64 overflow-hidden bg-slate-900">
-                    <img src="property1.jpg" alt="Piassa Lycee" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                    <div class="absolute top-4 left-4 bg-slate-900/80 backdrop-blur-md border border-slate-700 text-emerald-400 text-[11px] font-bold uppercase tracking-wider px-3 py-1.5 rounded-xl">
-                        10% Downpayment
-                    </div>
-                </div>
-                <div class="p-6 flex flex-col flex-grow">
-                    <div class="text-cyan-400 text-xs font-bold uppercase tracking-wider mb-1">Arada District</div>
-                    <h3 class="text-xl font-bold text-white mb-2">Piassa Lycee</h3>
-                    <p class="text-slate-400 text-sm mb-6 leading-relaxed">Centrally located urban luxury options, featuring beautifully designed flexible layouts.</p>
-                    
-                    <div class="grid grid-cols-3 gap-2 py-3 px-4 bg-slate-900/40 border border-slate-800 rounded-2xl text-center text-xs font-medium text-slate-300 mb-6 mt-auto">
-                        <div>
-                            <div class="text-cyan-400 mb-1"><i class="fas fa-bed"></i></div>
-                            <div>2-3 Bed</div>
-                        </div>
-                        <div class="border-x border-slate-800">
-                            <div class="text-cyan-400 mb-1"><i class="fas fa-bath"></i></div>
-                            <div>2 Bath</div>
-                        </div>
-                        <div>
-                            <div class="text-cyan-400 mb-1"><i class="fas fa-ruler-combined"></i></div>
-                            <div>80-142 m²</div>
-                        </div>
-                    </div>
-
-                    <button onclick="openModal('modal-piassa')" class="w-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-semibold py-3.5 px-4 rounded-2xl shadow-lg shadow-cyan-500/10 transition-all duration-200 text-sm tracking-wide">
-                        View Details
-                    </button>
-                </div>
-            </div>
-
-            <div class="bg-slate-800/50 border border-slate-700/60 rounded-3xl overflow-hidden hover:border-cyan-500/40 transition-all duration-300 shadow-xl flex flex-col group">
-                <div class="relative h-64 overflow-hidden bg-slate-900">
-                    <img src="Bulgaria1.jpg" alt="Bulgaria" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
-                    <div class="absolute top-4 left-4 bg-slate-900/80 backdrop-blur-md border border-slate-700 text-cyan-400 text-[11px] font-bold uppercase tracking-wider px-3 py-1.5 rounded-xl">
-                        20% Downpayment
-                    </div>
-                </div>
-                <div class="p-6 flex flex-col flex-grow">
-                    <div class="text-cyan-400 text-xs font-bold uppercase tracking-wider mb-1">Kirkos District</div>
-                    <h3 class="text-xl font-bold text-white mb-2">Bulgaria Area</h3>
-                    <p class="text-slate-400 text-sm mb-6 leading-relaxed">Modern, premium apartments featuring diverse configurations to suit your space needs.</p>
-                    
-                    <div class="grid grid-cols-3 gap-2 py-3 px-4 bg-slate-900/40 border border-slate-800 rounded-2xl text-center text-xs font-medium text-slate-300 mb-6 mt-auto">
-                        <div>
-                            <div class="text-cyan-400 mb-1"><i class="fas fa-bed"></i></div>
-                            <div>1-3 Bed</div>
-                        </div>
-                        <div class="border-x border-slate-800">
-                            <div class="text-cyan-400 mb-1"><i class="fas fa-bath"></i></div>
-                            <div>1-2 Bath</div>
-                        </div>
-                        <div>
-                            <div class="text-cyan-400 mb-1"><i class="fas fa-ruler-combined"></i></div>
-                            <div>68-121 m²</div>
-                        </div>
-                    </div>
-
-                    <button onclick="openModal('modal-bulgaria')" class="w-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-semibold py-3.5 px-4 rounded-2xl shadow-lg shadow-cyan-500/10 transition-all duration-200 text-sm tracking-wide">
-                        View Details
-                    </button>
-                </div>
-            </div>
-
+          </div>
         </div>
-    </main>
+      </div>
 
-    <footer class="bg-slate-950 border-t border-slate-850 py-12 px-4 text-center mt-auto">
-        <div class="max-w-3xl mx-auto">
-            <h4 class="text-white font-semibold text-lg mb-2">Inquiries & Private Walkthroughs</h4>
-            <p class="text-slate-400 text-sm mb-6 max-w-md mx-auto">Get in touch directly through Phone or Telegram for full catalog breakdowns and special tailored offers.</p>
-            <div class="flex flex-col sm:flex-row justify-center items-center gap-3.5 max-w-md mx-auto">
-                <a href="tel:+251922785816" class="w-full inline-flex items-center justify-center gap-2 bg-slate-800 hover:bg-slate-700 border border-slate-700 text-white font-semibold px-6 py-3.5 rounded-2xl shadow-md transition-all">
-                    <i class="fas fa-phone-alt text-cyan-400"></i> Call Office
-                </a>
-                <a href="https://t.me/LamrotHabtamu" target="_blank" class="w-full inline-flex items-center justify-center gap-2 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white font-semibold px-6 py-3.5 rounded-2xl shadow-lg shadow-cyan-500/10 transition-all">
-                    <i class="fab fa-telegram-plane"></i> Telegram Channel
-                </a>
+      <div class="property-card">
+        <img src="property1.jpg" alt="Piassa Lycee Premium Executive Suite" class="property-img">
+        <div class="property-info">
+          <h4 class="property-title">Piassa Lycee - Executive 3 Bedroom Suite</h4>
+          <p class="property-details">Spacious modern layout situated in the vibrant Piassa Lycee metropolitan center with premium accessibility options.</p>
+          <div class="property-specs">
+            <span><i class="fas fa-bed"></i> Bed: 3</span>
+            <span><i class="fas fa-bath"></i> Bath: 2</span>
+            <span><i class="fas fa-expand-arrows-alt"></i> Size: 132 m²</span>
+          </div>
+          <div class="action-buttons-row">
+            <a href="tel:+251922785816" class="btn-action btn-call"><i class="fas fa-phone-alt"></i> Call</a>
+            <a href="mailto:lamrothabtamu2524@gmail.com?subject=Inquiry: Piassa Lycee 132m²" class="btn-action btn-email"><i class="fas fa-envelope"></i> Email</a>
+            <a href="https://t.me/LamrotHabtamu" target="_blank" class="btn-action btn-telegram"><i class="fab fa-telegram-plane"></i> Telegram</a>
+          </div>
+          <input type="checkbox" id="toggle-p3" class="detail-toggle-chk">
+          <label for="toggle-p3" class="lbl-toggle-details">View Price & Details</label>
+          <div class="expandable-details-content">
+            <div class="inner-details-box">
+              <p class="detail-price-tag">Price: 15,180,000 ETB</p>
+              <p class="detail-dp-tag">Down Payment (10%): 1,518,000 ETB</p>
+              <ul class="deep-specs-list">
+                <li>• Location: Piassa Lycee</li>
+                <li>• Dynamic panoramic balcony overview</li>
+                <li>• Advanced built-in intercom systems</li>
+              </ul>
             </div>
-            <div class="text-xs text-slate-600 mt-10">&copy; 2026 Lamrot Properties. All Rights Reserved.</div>
+          </div>
         </div>
-    </footer>
+      </div>
 
-    <div id="modal-aware" class="modal opacity-0 pointer-events-none fixed w-full h-full top-0 left-0 flex items-center justify-center z-50">
-        <div class="modal-overlay absolute w-full h-full bg-slate-950/80 backdrop-blur-sm" onclick="closeModal('modal-aware')"></div>
-        <div class="modal-container bg-slate-900 border border-slate-800 w-11/12 max-w-2xl mx-auto rounded-3xl shadow-2xl z-50 overflow-y-auto max-h-[85vh]">
-            <div class="p-6 border-b border-slate-800 flex justify-between items-center bg-slate-900 sticky top-0 z-10">
-                <div>
-                    <h3 class="text-xl font-bold text-white">Aware - Unit Catalog</h3>
-                    <p class="text-[11px] text-cyan-400 font-bold uppercase tracking-wider mt-0.5">3 Bedroom &bull; 2 Bathroom &bull; 20% Downpayment</p>
-                </div>
-                <button onclick="closeModal('modal-aware')" class="text-slate-400 hover:text-white text-2xl p-2 transition-colors">&times;</button>
-            </div>
-            <div class="p-6 space-y-5">
-                <div class="bg-gradient-to-r from-amber-500/10 to-orange-500/10 border border-amber-500/20 text-amber-300 rounded-2xl p-4 text-center font-medium text-sm">
-                    <i class="fas fa-tags text-amber-400 mr-2"></i> For discounts, contact me!
-                </div>
-                <div class="overflow-x-auto border border-slate-800 rounded-2xl bg-slate-950/40">
-                    <table class="w-full text-left border-collapse text-sm">
-                        <thead>
-                            <tr class="bg-slate-950 text-slate-400 uppercase text-[10px] font-bold tracking-wider border-b border-slate-800">
-                                <th class="p-4">Unit Size</th>
-                                <th class="p-4">Full Price</th>
-                                <th class="p-4 text-right">Downpayment (20%)</th>
-                            </tr>
-                        </thead>
-                        <tbody class="divide-y divide-slate-800/60 font-medium text-slate-300">
-                            <tr><td class="p-4 font-bold text-white">121 m²</td><td class="p-4">12,900,000 Birr</td><td class="p-4 text-right text-cyan-400 font-bold">2,580,000 Birr</td></tr>
-                            <tr><td class="p-4 font-bold text-white">131 m²</td><td class="p-4">14,000,000 Birr</td><td class="p-4 text-right text-cyan-400 font-bold">2,800,000 Birr</td></tr>
-                            <tr><td class="p-4 font-bold text-white">135 m²</td><td class="p-4">14,400,000 Birr</td><td class="p-4 text-right text-cyan-400 font-bold">2,880,000 Birr</td></tr>
-                            <tr><td class="p-4 font-bold text-white">140 m²</td><td class="p-4">14,900,000 Birr</td><td class="p-4 text-right text-cyan-400 font-bold">2,980,000 Birr</td></tr>
-                            <tr><td class="p-4 font-bold text-white">142 m²</td><td class="p-4">15,100,000 Birr</td><td class="p-4 text-right text-cyan-400 font-bold">3,020,000 Birr</td></tr>
-                            <tr><td class="p-4 font-bold text-white">145 m²</td><td class="p-4">15,300,000 Birr</td><td class="p-4 text-right text-cyan-400 font-bold">3,060,000 Birr</td></tr>
-                            <tr><td class="p-4 font-bold text-white">146 m²</td><td class="p-4">15,600,000 Birr</td><td class="p-4 text-right text-cyan-400 font-bold">3,120,000 Birr</td></tr>
-                            <tr><td class="p-4 font-bold text-white">150 m²</td><td class="p-4">16,000,000 Birr</td><td class="p-4 text-right text-cyan-400 font-bold">3,200,000 Birr</td></tr>
-                            <tr><td class="p-4 font-bold text-white">157 m²</td><td class="p-4">16,700,000 Birr</td><td class="p-4 text-right text-cyan-400 font-bold">3,340,000 Birr</td></tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
     </div>
 
-    <div id="modal-piassa" class="modal opacity-0 pointer-events-none fixed w-full h-full top-0 left-0 flex items-center justify-center z-50">
-        <div class="modal-overlay absolute w-full h-full bg-slate-950/80 backdrop-blur-sm" onclick="closeModal('modal-piassa')"></div>
-        <div class="modal-container bg-slate-900 border border-slate-800 w-11/12 max-w-2xl mx-auto rounded-3xl shadow-2xl z-50 overflow-y-auto max-h-[85vh]">
-            <div class="p-6 border-b border-slate-800 flex justify-between items-center bg-slate-900 sticky top-0 z-10">
-                <div>
-                    <h3 class="text-xl font-bold text-white">Piassa Lycee - Unit Catalog</h3>
-                    <p class="text-[11px] text-emerald-400 font-bold uppercase tracking-wider mt-0.5">2 Bathrooms &bull; 10% Downpayment</p>
-                </div>
-                <button onclick="closeModal('modal-piassa')" class="text-slate-400 hover:text-white text-2xl p-2 transition-colors">&times;</button>
-            </div>
-            <div class="p-6 space-y-5">
-                <div class="bg-gradient-to-r from-amber-500/10 to-orange-500/10 border border-amber-500/20 text-amber-300 rounded-2xl p-4 text-center font-medium text-sm">
-                    <i class="fas fa-tags text-amber-400 mr-2"></i> For discounts, contact me!
-                </div>
-                <div class="overflow-x-auto border border-slate-800 rounded-2xl bg-slate-950/40">
-                    <table class="w-full text-left border-collapse text-sm">
-                        <thead>
-                            <tr class="bg-slate-950 text-slate-400 uppercase text-[10px] font-bold tracking-wider border-b border-slate-800">
-                                <th class="p-4">Configuration / Size</th>
-                                <th class="p-4">Full Price</th>
-                                <th class="p-4 text-right">Downpayment (10%)</th>
-                            </tr>
-                        </thead>
-                        <tbody class="divide-y divide-slate-800/60 font-medium text-slate-300">
-                            <tr class="bg-slate-900/80"><td colspan="3" class="p-3 text-[10px] font-bold text-slate-400 uppercase tracking-widest bg-slate-950/60 border-y border-slate-800/80">3 Bedroom Layouts</td></tr>
-                            <tr><td class="p-4 font-bold text-white">132 m²</td><td class="p-4">15,180,000 Birr</td><td class="p-4 text-right text-emerald-400 font-bold">1,518,000 Birr</td></tr>
-                            <tr><td class="p-4 font-bold text-white">136 m²</td><td class="p-4">15,640,000 Birr</td><td class="p-4 text-right text-emerald-400 font-bold">1,564,000 Birr</td></tr>
-                            <tr><td class="p-4 font-bold text-white">142 m²</td><td class="p-4">16,330,000 Birr</td><td class="p-4 text-right text-emerald-400 font-bold">1,633,000 Birr</td></tr>
-                            <tr class="bg-slate-900/80"><td colspan="3" class="p-3 text-[10px] font-bold text-slate-400 uppercase tracking-widest bg-slate-950/60 border-y border-slate-800/80">2 Bedroom Layouts</td></tr>
-                            <tr><td class="p-4 font-bold text-white">80 m²</td><td class="p-4">9,200,000 Birr</td><td class="p-4 text-right text-emerald-400 font-bold">920,000 Birr</td></tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+    <input type="checkbox" id="view-more-trigger" class="view-more-checkbox">
+    
+    <div class="hidden-listings-wrapper">
+      
+      <div class="property-card">
+        <img src="Aware1.jpg" alt="Aware Apartment" class="property-img">
+        <div class="property-info">
+          <h4 class="property-title">Aware - Luxury 3 Bedroom Apartment</h4>
+          <p class="property-details">High-rise luxury residence located in Bulgaria with stunning layout engineering.</p>
+          <div class="property-specs"><span><i class="fas fa-bed"></i> Bed: 3</span><span><i class="fas fa-bath"></i> Bath: 2</span><span><i class="fas fa-expand-arrows-alt"></i> 131 m²</span></div>
+          <div class="action-buttons-row">
+            <a href="tel:+251922785816" class="btn-call btn-action">Call</a>
+            <a href="mailto:lamrothabtamu2524@gmail.com" class="btn-email btn-action">Email</a>
+            <a href="https://t.me/LamrotHabtamu" class="btn-telegram btn-action">Telegram</a>
+          </div>
+          <input type="checkbox" id="toggle-p4" class="detail-toggle-chk"><label for="toggle-p4" class="lbl-toggle-details">View Details</label>
+          <div class="expandable-details-content"><div class="inner-details-box"><p class="detail-price-tag">Price: 14,000,000 ETB</p><p class="detail-dp-tag">DP (20%): 2,800,000 ETB</p></div></div>
         </div>
+      </div>
+
+      <div class="property-card">
+        <img src="Aware1.jpg" alt="Aware Apartment" class="property-img">
+        <div class="property-info">
+          <h4 class="property-title">Aware - Luxury 3 Bedroom Apartment</h4>
+          <p class="property-details">High-rise luxury residence located in Bulgaria with stunning layout engineering.</p>
+          <div class="property-specs"><span><i class="fas fa-bed"></i> Bed: 3</span><span><i class="fas fa-bath"></i> Bath: 2</span><span><i class="fas fa-expand-arrows-alt"></i> 135 m²</span></div>
+          <div class="action-buttons-row">
+            <a href="tel:+251922785816" class="btn-call btn-action">Call</a>
+            <a href="mailto:lamrothabtamu2524@gmail.com" class="btn-email btn-action">Email</a>
+            <a href="https://t.me/LamrotHabtamu" class="btn-telegram btn-action">Telegram</a>
+          </div>
+          <input type="checkbox" id="toggle-p5" class="detail-toggle-chk"><label for="toggle-p5" class="lbl-toggle-details">View Details</label>
+          <div class="expandable-details-content"><div class="inner-details-box"><p class="detail-price-tag">Price: 14,400,000 ETB</p><p class="detail-dp-tag">DP (20%): 2,880,000 ETB</p></div></div>
+        </div>
+      </div>
+
+      <div class="property-card">
+        <img src="Aware1.jpg" alt="Aware Apartment" class="property-img">
+        <div class="property-info">
+          <h4 class="property-title">Aware - Luxury 3 Bedroom Apartment</h4>
+          <p class="property-details">High-rise luxury residence located in Bulgaria with stunning layout engineering.</p>
+          <div class="property-specs"><span><i class="fas fa-bed"></i> Bed: 3</span><span><i class="fas fa-bath"></i> Bath: 2</span><span><i class="fas fa-expand-arrows-alt"></i> 140 m²</span></div>
+          <div class="action-buttons-row">
+            <a href="tel:+251922785816" class="btn-call btn-action">Call</a>
+            <a href="mailto:lamrothabtamu2524@gmail.com" class="btn-email btn-action">Email</a>
+            <a href="https://t.me/LamrotHabtamu" class="btn-telegram btn-action">Telegram</a>
+          </div>
+          <input type="checkbox" id="toggle-p6" class="detail-toggle-chk"><label for="toggle-p6" class="lbl-toggle-details">View Details</label>
+          <div class="expandable-details-content"><div class="inner-details-box"><p class="detail-price-tag">Price: 14,900,000 ETB</p><p class="detail-dp-tag">DP (20%): 2,980,000 ETB</p></div></div>
+        </div>
+      </div>
+
+      <div class="property-card">
+        <img src="Aware1.jpg" alt="Aware Apartment" class="property-img">
+        <div class="property-info">
+          <h4 class="property-title">Aware - Luxury 3 Bedroom Apartment</h4>
+          <p class="property-details">High-rise luxury residence located in Bulgaria with stunning layout engineering.</p>
+          <div class="property-specs"><span><i class="fas fa-bed"></i> Bed: 3</span><span><i class="fas fa-bath"></i> Bath: 2</span><span><i class="fas fa-expand-arrows-alt"></i> 142 m²</span></div>
+          <div class="action-buttons-row">
+            <a href="tel:+251922785816" class="btn-call btn-action">Call</a>
+            <a href="mailto:lamrothabtamu2524@gmail.com" class="btn-email btn-action">Email</a>
+            <a href="https://t.me/LamrotHabtamu" class="btn-telegram btn-action">Telegram</a>
+          </div>
+          <input type="checkbox" id="toggle-p7" class="detail-toggle-chk"><label for="toggle-p7" class="lbl-toggle-details">View Details</label>
+          <div class="expandable-details-content"><div class="inner-details-box"><p class="detail-price-tag">Price: 15,100,000 ETB</p><p class="detail-dp-tag">DP (20%): 3,020,000 ETB</p></div></div>
+        </div>
+      </div>
+
+      <div class="property-card">
+        <img src="Aware1.jpg" alt="Aware Apartment" class="property-img">
+        <div class="property-info">
+          <h4 class="property-title">Aware - Luxury 3 Bedroom Apartment</h4>
+          <p class="property-details">High-rise luxury residence located in Bulgaria with stunning layout engineering.</p>
+          <div class="property-specs"><span><i class="fas fa-bed"></i> Bed: 3</span><span><i class="fas fa-bath"></i> Bath: 2</span><span><i class="fas fa-expand-arrows-alt"></i> 145 m²</span></div>
+          <div class="action-buttons-row">
+            <a href="tel:+251922785816" class="btn-call btn-action">Call</a>
+            <a href="mailto:lamrothabtamu2524@gmail.com" class="btn-email btn-action">Email</a>
+            <a href="https://t.me/LamrotHabtamu" class="btn-telegram btn-action">Telegram</a>
+          </div>
+          <input type="checkbox" id="toggle-p8" class="detail-toggle-chk"><label for="toggle-p8" class="lbl-toggle-details">View Details</label>
+          <div class="expandable-details-content"><div class="inner-details-box"><p class="detail-price-tag">Price: 15,300,000 ETB</p><p class="detail-dp-tag">DP (20%): 3,060,000 ETB</p></div></div>
+        </div>
+      </div>
+
+      <div class="property-card">
+        <img src="Aware1.jpg" alt="Aware Apartment" class="property-img">
+        <div class="property-info">
+          <h4 class="property-title">Aware - Luxury 3 Bedroom Apartment</h4>
+          <p class="property-details">High-rise luxury residence located in Bulgaria with stunning layout engineering.</p>
+          <div class="property-specs"><span><i class="fas fa-bed"></i> Bed: 3</span><span><i class="fas fa-bath"></i> Bath: 2</span><span><i class="fas fa-expand-arrows-alt"></i> 146 m²</span></div>
+          <div class="action-buttons-row">
+            <a href="tel:+251922785816" class="btn-call btn-action">Call</a>
+            <a href="mailto:lamrothabtamu2524@gmail.com" class="btn-email btn-action">Email</a>
+            <a href="https://t.me/LamrotHabtamu" class="btn-telegram btn-action">Telegram</a>
+          </div>
+          <input type="checkbox" id="toggle-p9" class="detail-toggle-chk"><label for="toggle-p9" class="lbl-toggle-details">View Details</label>
+          <div class="expandable-details-content"><div class="inner-details-box"><p class="detail-price-tag">Price: 15,600,000 ETB</p><p class="detail-dp-tag">DP (20%): 3,120,000 ETB</p></div></div>
+        </div>
+      </div>
+
+      <div class="property-card">
+        <img src="Aware1.jpg" alt="Aware Apartment" class="property-img">
+        <div class="property-info">
+          <h4 class="property-title">Aware - Luxury 3 Bedroom Apartment</h4>
+          <p class="property-details">High-rise luxury residence located in Bulgaria with stunning layout engineering.</p>
+          <div class="property-specs"><span><i class="fas fa-bed"></i> Bed: 3</span><span><i class="fas fa-bath"></i> Bath: 2</span><span><i class="fas fa-expand-arrows-alt"></i> 150 m²</span></div>
+          <div class="action-buttons-row">
+            <a href="tel:+251922785816" class="btn-call btn-action">Call</a>
+            <a href="mailto:lamrothabtamu2524@gmail.com" class="btn-email btn-action">Email</a>
+            <a href="https://t.me/LamrotHabtamu" class="btn-telegram btn-action">Telegram</a>
+          </div>
+          <input type="checkbox" id="toggle-p10" class="detail-toggle-chk"><label for="toggle-p10" class="lbl-toggle-details">View Details</label>
+          <div class="expandable-details-content"><div class="inner-details-box"><p class="detail-price-tag">Price: 16,000,000 ETB</p><p class="detail-dp-tag">DP (20%): 3,200,000 ETB</p></div></div>
+        </div>
+      </div>
+
+      <div class="property-card">
+        <img src="Aware1.jpg" alt="Aware Apartment" class="property-img">
+        <div class="property-info">
+          <h4 class="property-title">Aware - Luxury 3 Bedroom Apartment</h4>
+          <p class="property-details">High-rise luxury residence located in Bulgaria with stunning layout engineering.</p>
+          <div class="property-specs"><span><i class="fas fa-bed"></i> Bed: 3</span><span><i class="fas fa-bath"></i> Bath: 2</span><span><i class="fas fa-expand-arrows-alt"></i> 157 m²</span></div>
+          <div class="action-buttons-row">
+            <a href="tel:+251922785816" class="btn-call btn-action">Call</a>
+            <a href="mailto:lamrothabtamu2524@gmail.com" class="btn-email btn-action">Email</a>
+            <a href="https://t.me/LamrotHabtamu" class="btn-telegram btn-action">Telegram</a>
+          </div>
+          <input type="checkbox" id="toggle-p11" class="detail-toggle-chk"><label for="toggle-p11" class="lbl-toggle-details">View Details</label>
+          <div class="expandable-details-content"><div class="inner-details-box"><p class="detail-price-tag">Price: 16,700,000 ETB</p><p class="detail-dp-tag">DP (20%): 3,340,000 ETB</p></div></div>
+        </div>
+      </div>
+
+      <div class="property-card">
+        <img src="Bulgaria1.jpg" alt="Bulgaria Apartment" class="property-img">
+        <div class="property-info">
+          <h4 class="property-title">Bulgaria - Modern 1 Bedroom Suite</h4>
+          <p class="property-details">Elegant premium space-optimized residential unit option located in Bulgaria.</p>
+          <div class="property-specs"><span><i class="fas fa-bed"></i> Bed: 1</span><span><i class="fas fa-bath"></i> Bath: 1</span><span><i class="fas fa-expand-arrows-alt"></i> 72 m²</span></div>
+          <div class="action-buttons-row">
+            <a href="tel:+251922785816" class="btn-call btn-action">Call</a>
+            <a href="mailto:lamrothabtamu2524@gmail.com" class="btn-email btn-action">Email</a>
+            <a href="https://t.me/LamrotHabtamu" class="btn-telegram btn-action">Telegram</a>
+          </div>
+          <input type="checkbox" id="toggle-p12" class="detail-toggle-chk"><label for="toggle-p12" class="lbl-toggle-details">View Details</label>
+          <div class="expandable-details-content"><div class="inner-details-box"><p class="detail-price-tag">Price: 8,280,000 ETB</p><p class="detail-dp-tag">DP (20%): 1,656,000 ETB</p></div></div>
+        </div>
+      </div>
+
+      <div class="property-card">
+        <img src="Bulgaria1.jpg" alt="Bulgaria Apartment" class="property-img">
+        <div class="property-info">
+          <h4 class="property-title">Bulgaria - Premium 2 Bedroom Option</h4>
+          <p class="property-details">Elegant premium space-optimized residential unit option located in Bulgaria.</p>
+          <div class="property-specs"><span><i class="fas fa-bed"></i> Bed: 2</span><span><i class="fas fa-bath"></i> Bath: 2</span><span><i class="fas fa-expand-arrows-alt"></i> 81 m²</span></div>
+          <div class="action-buttons-row">
+            <a href="tel:+251922785816" class="btn-call btn-action">Call</a>
+            <a href="mailto:lamrothabtamu2524@gmail.com" class="btn-email btn-action">Email</a>
+            <a href="https://t.me/LamrotHabtamu" class="btn-telegram btn-action">Telegram</a>
+          </div>
+          <input type="checkbox" id="toggle-p13" class="detail-toggle-chk"><label for="toggle-p13" class="lbl-toggle-details">View Details</label>
+          <div class="expandable-details-content"><div class="inner-details-box"><p class="detail-price-tag">Price: 9,315,000 ETB</p><p class="detail-dp-tag">DP (20%): 1,863,000 ETB</p></div></div>
+        </div>
+      </div>
+
+      <div class="property-card">
+        <img src="Bulgaria1.jpg" alt="Bulgaria Apartment" class="property-img">
+        <div class="property-info">
+          <h4 class="property-title">Bulgaria - Premium 2 Bedroom Option</h4>
+          <p class="property-details">Elegant premium space-optimized residential unit option located in Bulgaria.</p>
+          <div class="property-specs"><span><i class="fas fa-bed"></i> Bed: 2</span><span><i class="fas fa-bath"></i> Bath: 2</span><span><i class="fas fa-expand-arrows-alt"></i> 87 m²</span></div>
+          <div class="action-buttons-row">
+            <a href="tel:+251922785816" class="btn-call btn-action">Call</a>
+            <a href="mailto:lamrothabtamu2524@gmail.com" class="btn-email btn-action">Email</a>
+            <a href="https://t.me/LamrotHabtamu" class="btn-telegram btn-action">Telegram</a>
+          </div>
+          <input type="checkbox" id="toggle-p14" class="detail-toggle-chk"><label for="toggle-p14" class="lbl-toggle-details">View Details</label>
+          <div class="expandable-details-content"><div class="inner-details-box"><p class="detail-price-tag">Price: 10,005,000 ETB</p><p class="detail-dp-tag">DP (20%): 2,001,000 ETB</p></div></div>
+        </div>
+      </div>
+
+      <div class="property-card">
+        <img src="Bulgaria1.jpg" alt="Bulgaria Apartment" class="property-img">
+        <div class="property-info">
+          <h4 class="property-title">Bulgaria - Premium 2 Bedroom Option</h4>
+          <p class="property-details">Elegant premium space-optimized residential unit option located in Bulgaria.</p>
+          <div class="property-specs"><span><i class="fas fa-bed"></i> Bed: 2</span><span><i class="fas fa-bath"></i> Bath: 2</span><span><i class="fas fa-expand-arrows-alt"></i> 90 m²</span></div>
+          <div class="action-buttons-row">
+            <a href="tel:+251922785816" class="btn-call btn-action">Call</a>
+            <a href="mailto:lamrothabtamu2524@gmail.com" class="btn-email btn-action">Email</a>
+            <a href="https://t.me/LamrotHabtamu" class="btn-telegram btn-action">Telegram</a>
+          </div>
+          <input type="checkbox" id="toggle-p15" class="detail-toggle-chk"><label for="toggle-p15" class="lbl-toggle-details">View Details</label>
+          <div class="expandable-details-content"><div class="inner-details-box"><p class="detail-price-tag">Price: 10,350,000 ETB</p><p class="detail-dp-tag">DP (20%): 2,070,000 ETB</p></div></div>
+        </div>
+      </div>
+
+      <div class="property-card">
+        <img src="Bulgaria1.jpg" alt="Bulgaria Apartment" class="property-img">
+        <div class="property-info">
+          <h4 class="property-title">Bulgaria - Deluxe 3 Bedroom Residence</h4>
+          <p class="property-details">Premium high-tier spacious suite with smart floor layouts located in Bulgaria.</p>
+          <div class="property-specs"><span><i class="fas fa-bed"></i> Bed: 3</span><span><i class="fas fa-bath"></i> Bath: 2</span><span><i class="fas fa-expand-arrows-alt"></i> 121 m²</span></div>
+          <div class="action-buttons-row">
+            <a href="tel:+251922785816" class="btn-call btn-action">Call</a>
+            <a href="mailto:lamrothabtamu2524@gmail.com" class="btn-email btn-action">Email</a>
+            <a href="https://t.me/LamrotHabtamu" class="btn-telegram btn-action">Telegram</a>
+          </div>
+          <input type="checkbox" id="toggle-p16" class="detail-toggle-chk"><label for="toggle-p16" class="lbl-toggle-details">View Details</label>
+          <div class="expandable-details-content"><div class="inner-details-box"><p class="detail-price-tag">Price: 13,915,000 ETB</p><p class="detail-dp-tag">DP (20%): 2,783,000 ETB</p></div></div>
+        </div>
+      </div>
+
+      <div class="property-card">
+        <img src="property1.jpg" alt="Piassa Lycee" class="property-img">
+        <div class="property-info">
+          <h4 class="property-title">Piassa Lycee - Executive 3 Bedroom Suite</h4>
+          <p class="property-details">Exceptional metropolitan layout with elite structural craft based in Piassa Lycee.</p>
+          <div class="property-specs"><span><i class="fas fa-bed"></i> Bed: 3</span><span><i class="fas fa-bath"></i> Bath: 2</span><span><i class="fas fa-expand-arrows-alt"></i> 136 m²</span></div>
+          <div class="action-buttons-row">
+            <a href="tel:+251922785816" class="btn-call btn-action">Call</a>
+            <a href="mailto:lamrothabtamu2524@gmail.com" class="btn-email btn-action">Email</a>
+            <a href="https://t.me/LamrotHabtamu" class="btn-telegram btn-action">Telegram</a>
+          </div>
+          <input type="checkbox" id="toggle-p17" class="detail-toggle-chk"><label for="toggle-p17" class="lbl-toggle-details">View Details</label>
+          <div class="expandable-details-content"><div class="inner-details-box"><p class="detail-price-tag">Price: 15,640,000 ETB</p><p class="detail-dp-tag">DP (10%): 1,564,000 ETB</p></div></div>
+        </div>
+      </div>
+
+      <div class="property-card">
+        <img src="property1.jpg" alt="Piassa Lycee" class="property-img">
+        <div class="property-info">
+          <h4 class="property-title">Piassa Lycee - Executive 3 Bedroom Suite</h4>
+          <p class="property-details">Exceptional metropolitan layout with elite structural craft based in Piassa Lycee.</p>
+          <div class="property-specs"><span><i class="fas fa-bed"></i> Bed: 3</span><span><i class="fas fa-bath"></i> Bath: 2</span><span><i class="fas fa-expand-arrows-alt"></i> 142 m²</span></div>
+          <div class="action-buttons-row">
+            <a href="tel:+251922785816" class="btn-call btn-action">Call</a>
+            <a href="mailto:lamrothabtamu2524@gmail.com" class="btn-email btn-action">Email</a>
+            <a href="https://t.me/LamrotHabtamu" class="btn-telegram btn-action">Telegram</a>
+          </div>
+          <input type="checkbox" id="toggle-p18" class="detail-toggle-chk"><label for="toggle-p18" class="lbl-toggle-details">View Details</label>
+          <div class="expandable-details-content"><div class="inner-details-box"><p class="detail-price-tag">Price: 16,330,000 ETB</p><p class="detail-dp-tag">DP (10%): 1,633,000 ETB</p></div></div>
+        </div>
+      </div>
+
+      <div class="property-card">
+        <img src="property1.jpg" alt="Piassa Lycee" class="property-img">
+        <div class="property-info">
+          <h4 class="property-title">Piassa Lycee - Elite 2 Bedroom Option</h4>
+          <p class="property-details">Comfortable and highly modern compact executive floor plans located in Piassa Lycee.</p>
+          <div class="property-specs"><span><i class="fas fa-bed"></i> Bed: 2</span><span><i class="fas fa-bath"></i> Bath: 2</span><span><i class="fas fa-expand-arrows-alt"></i> 80 m²</span></div>
+          <div class="action-buttons-row">
+            <a href="tel:+251922785816" class="btn-call btn-action">Call</a>
+            <a href="mailto:lamrothabtamu2524@gmail.com" class="btn-email btn-action">Email</a>
+            <a href="https://t.me/LamrotHabtamu" class="btn-telegram btn-action">Telegram</a>
+          </div>
+          <input type="checkbox" id="toggle-p19" class="detail-toggle-chk"><label for="toggle-p19" class="lbl-toggle-details">View Details</label>
+          <div class="expandable-details-content"><div class="inner-details-box"><p class="detail-price-tag">Price: 9,200,000 ETB</p><p class="detail-dp-tag">DP (10%): 920,000 ETB</p></div></div>
+        </div>
+      </div>
+
     </div>
 
-    <div id="modal-bulgaria" class="modal opacity-0 pointer-events-none fixed w-full h-full top-0 left-0 flex items-center justify-center z-50">
-        <div class="modal-overlay absolute w-full h-full bg-slate-950/80 backdrop-blur-sm" onclick="closeModal('modal-bulgaria')"></div>
-        <div class="modal-container bg-slate-900 border border-slate-800 w-11/12 max-w-2xl mx-auto rounded-3xl shadow-2xl z-50 overflow-y-auto max-h-[85vh]">
-            <div class="p-6 border-b border-slate-800 flex justify-between items-center bg-slate-900 sticky top-0 z-10">
-                <div>
-                    <h3 class="text-xl font-bold text-white">Bulgaria - Unit Catalog</h3>
-                    <p class="text-[11px] text-cyan-400 font-bold uppercase tracking-wider mt-0.5">20% Downpayment Structure</p>
-                </div>
-                <button onclick="closeModal('modal-bulgaria')" class="text-slate-400 hover:text-white text-2xl p-2 transition-colors">&times;</button>
-            </div>
-            <div class="p-6 space-y-5">
-                <div class="bg-gradient-to-r from-amber-500/10 to-orange-500/10 border border-amber-500/20 text-amber-300 rounded-2xl p-4 text-center font-medium text-sm">
-                    <i class="fas fa-tags text-amber-400 mr-2"></i> For discounts, contact me!
-                </div>
-                <div class="overflow-x-auto border border-slate-800 rounded-2xl bg-slate-950/40">
-                    <table class="w-full text-left border-collapse text-sm">
-                        <thead>
-                            <tr class="bg-slate-950 text-slate-400 uppercase text-[10px] font-bold tracking-wider border-b border-slate-800">
-                                <th class="p-4">Type & Size</th>
-                                <th class="p-4">Full Price</th>
-                                <th class="p-4 text-right">Downpayment (20%)</th>
-                            </tr>
-                        </thead>
-                        <tbody class="divide-y divide-slate-800/60 font-medium text-slate-300">
-                            <tr class="bg-slate-900/80"><td colspan="3" class="p-3 text-[10px] font-bold text-slate-400 uppercase tracking-widest bg-slate-950/60 border-y border-slate-800/80">1 Bedroom &bull; 1 Bathroom</td></tr>
-                            <tr><td class="p-4 font-bold text-white">68 m²</td><td class="p-4">7,820,000 Birr</td><td class="p-4 text-right text-cyan-400 font-bold">1,564,000 Birr</td></tr>
-                            <tr><td class="p-4 font-bold text-white">72 m²</td><td class="p-4">8,280,000 Birr</td><td class="p-4 text-right text-cyan-400 font-bold">1,656,000 Birr</td></tr>
-                            
-                            <tr class="bg-slate-900/80"><td colspan="3" class="p-3 text-[10px] font-bold text-slate-400 uppercase tracking-widest bg-slate-950/60 border-y border-slate-800/80">2 Bedroom &bull; 2 Bathroom</td></tr>
-                            <tr><td class="p-4 font-bold text-white">81 m²</td><td class="p-4">9,315,000 Birr</td><td class="p-4 text-right text-cyan-400 font-bold">1,863,000 Birr</td></tr>
-                            <tr><td class="p-4 font-bold text-white">87 m²</td><td class="p-4">10,005,000 Birr</td><td class="p-4 text-right text-cyan-400 font-bold">2,001,000 Birr</td></tr>
-                            <tr><td class="p-4 font-bold text-white">90 m²</td><td class="p-4">10,350,000 Birr</td><td class="p-4 text-right text-cyan-400 font-bold">2,070,000 Birr</td></tr>
-                            
-                            <tr class="bg-slate-900/80"><td colspan="3" class="p-3 text-[10px] font-bold text-slate-400 uppercase tracking-widest bg-slate-950/60 border-y border-slate-800/80">3 Bedroom &bull; 2 Bathroom</td></tr>
-                            <tr><td class="p-4 font-bold text-white">121 m²</td><td class="p-4">13,915,000 Birr</td><td class="p-4 text-right text-cyan-400 font-bold">2,783,000 Birr</td></tr>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
-        </div>
+    <label for="view-more-trigger" class="btn-view-more-label">View More Properties</label>
+  </section>
+
+  <section class="about-section" id="about">
+    <h3 class="section-title">About Us</h3>
+    <div class="about-split-container">
+      
+      <div class="about-column">
+        <p>Welcome to Lamrot Properties. We specialize in providing high-end, premium real estate choices tailored to match an exceptional standard of living. Our absolute dedication ensures that whether you are looking for luxurious residential options or a premium business office layout, we source spaces that reflect luxury, functionality, and outstanding architectural craftsmanship.</p>
+      </div>
+
+      <div class="about-divider"></div>
+
+      <div class="about-column">
+        <p>ወደ ላምሮት ፕሮፐርቲስ በደህና መጡ። እኛ ከፍተኛ ደረጃ ያላቸውን እና የቅንጦት መኖሪያ ቤቶችን እንዲሁም ምቹ የንግድ ቢሮዎችን በማቅረብ ላይ እንሰራለን። የእርስዎ ፍላጎት የቅንጦት መኖሪያም ሆነ ዘመናዊ የንግድ ቦታ፣ የእርስዎን የአኗኗር ዘይቤ የሚመጥኑ፣ ጥራታቸውን የጠበቁ እና አስደናቂ የስነ-ህንፃ ጥበብ ያረፈባቸውን ቦታዎች በጥንቃቄ መርጠን እናቀርባለን።</p>
+      </div>
+
     </div>
+  </section>
 
-    <script>
-        function openModal(modalId) {
-            const modal = document.getElementById(modalId);
-            modal.classList.remove('opacity-0', 'pointer-events-none');
-            document.body.classList.add('modal-active');
-        }
+  <footer class="main-footer">
+    <div class="footer-container">
+      
+      <div class="footer-contacts">
+        <a href="tel:+251922785816" class="contact-item">
+          <i class="fas fa-phone-alt"></i> +251 922 785 816
+        </a>
+        <a href="mailto:lamrothabtamu2524@gmail.com" class="contact-item">
+          <i class="fas fa-envelope"></i> lamrothabtamu2524@gmail.com
+        </a>
+      </div>
 
-        function closeModal(modalId) {
-            const modal = document.getElementById(modalId);
-            modal.classList.add('opacity-0', 'pointer-events-none');
-            document.body.classList.remove('modal-active');
-        }
-    </script>
+      <div class="footer-logo-brand">
+        <div class="lp-monogram">LP</div>
+        <p class="footer-credits">&copy; 2026 LAMROT PROPERTIES. All Rights Reserved.</p>
+      </div>
+
+    </div>
+  </footer>
 
 </body>
 </html>
