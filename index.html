@@ -234,8 +234,8 @@
 
     .listings-grid {
       display: grid;
-      grid-template-columns: repeat(5, 1fr); /* Expands to five-column grid on desktop */
-      gap: 30px;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 25px;
       width: 100%;
       height: auto;
     }
@@ -266,10 +266,10 @@
 
     .view-more-checkbox:checked ~ .hidden-listings-wrapper {
       display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 30px;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 25px;
       width: 100%;
-      margin-top: 30px;
+      margin-top: 25px;
     }
 
     .btn-view-more-label {
@@ -301,13 +301,13 @@
 
     .property-img {
       width: 100%;
-      height: 240px;
+      height: 200px;
       object-fit: cover;
       display: block;
     }
 
     .property-info {
-      padding: 24px;
+      padding: 20px;
       display: flex;
       flex-direction: column;
       flex-grow: 1;
@@ -315,19 +315,20 @@
     }
 
     .property-title {
-      font-size: 18px;
+      font-size: 16px;
       font-weight: 600;
       margin-bottom: 10px;
       color: #ffffff;
       letter-spacing: 0.5px;
+      min-height: 40px;
     }
 
     .property-details {
       font-size: 13px;
       color: #d1d1d1;
-      line-height: 1.6;
+      line-height: 1.5;
       margin-bottom: 16px;
-      min-height: 62px; /* Uniform detail spacing on desktop rows */
+      min-height: 60px; 
     }
 
     .property-specs {
@@ -335,9 +336,9 @@
       justify-content: space-between;
       background: rgba(197, 168, 128, 0.05);
       border: 1px solid rgba(197, 168, 128, 0.1);
-      padding: 10px 14px;
+      padding: 10px 12px;
       border-radius: 8px;
-      font-size: 13px;
+      font-size: 12px;
       color: #c5a880;
       font-weight: 500;
       margin-bottom: 20px;
@@ -346,8 +347,8 @@
     .action-buttons-row {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 10px;
-      margin-bottom: 18px;
+      gap: 8px;
+      margin-bottom: 15px;
     }
 
     .btn-action {
@@ -356,12 +357,12 @@
       align-items: center;
       justify-content: center;
       gap: 6px;
-      padding: 10px 5px;
+      padding: 10px 2px;
       border-radius: 8px;
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 600;
       text-decoration: none;
-      letter-spacing: 1px;
+      letter-spacing: 0.5px;
       text-transform: uppercase;
       transition: all 0.2s ease;
     }
@@ -404,7 +405,7 @@
       display: block;
       text-align: center;
       padding: 10px;
-      font-size: 13px;
+      font-size: 12px;
       color: #c5a880;
       border: 1px dashed rgba(197, 168, 128, 0.3);
       border-radius: 8px;
@@ -431,14 +432,14 @@
     }
 
     .detail-price-tag {
-      font-size: 16px;
+      font-size: 15px;
       color: #ffffff;
       font-weight: 600;
       margin-bottom: 4px;
     }
 
     .detail-dp-tag {
-      font-size: 13px;
+      font-size: 12px;
       color: #c5a880;
       font-weight: 500;
       margin-bottom: 12px;
@@ -579,7 +580,13 @@
     }
 
     /* RESPONSIVE MOBILE OVERRIDES */
-    @media only screen and (max-width: 850px) {
+    @media only screen and (max-width: 950px) {
+      .listings-grid, .view-more-checkbox:checked ~ .hidden-listings-wrapper {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media only screen and (max-width: 650px) {
       .navbar {
         padding: 15px 15px;
       }
@@ -699,13 +706,7 @@
         height: auto;
       }
 
-      .listings-grid {
-        grid-template-columns: 1fr; /* Stacks vertically on mobile screens */
-        gap: 25px;
-        height: auto;
-      }
-
-      .view-more-checkbox:checked ~ .hidden-listings-wrapper {
+      .listings-grid, .view-more-checkbox:checked ~ .hidden-listings-wrapper {
         grid-template-columns: 1fr;
         gap: 25px;
       }
@@ -801,37 +802,57 @@
     <div class="listings-grid">
       
       <div class="property-card">
+        <img src="sarbet.jpg" alt="Sarbet Premium Apartment" class="property-img">
+        <div class="property-info">
+          <h4 class="property-title">Sarbet - Modern 1 Bedroom Suite</h4>
+          <p class="property-details">Exquisite space-optimized interior layout positioned in the central hub of Sarbet with luxury elements.</p>
+          <div class="property-specs">
+            <span><i class="fas fa-bed"></i> Bed: 1</span><span><i class="fas fa-bath"></i> Bath: 1</span><span><i class="fas fa-expand-arrows-alt"></i> 76 m²</span>
+          </div>
+          <div class="action-buttons-row">
+            <a href="tel:+251922785816" class="btn-action btn-call"><i class="fas fa-phone-alt"></i> Call</a>
+            <a href="mailto:lamrothabtamu2524@gmail.com?subject=Inquiry: Sarbet 76m²" class="btn-action btn-email"><i class="fas fa-envelope"></i> Email</a>
+            <a href="https://t.me/LamrotHabtamu" target="_blank" class="btn-action btn-telegram"><i class="fab fa-telegram-plane"></i> Telegram</a>
+          </div>
+          <input type="radio" name="details-group" id="toggle-p1" class="detail-toggle-chk">
+          <label for="toggle-p1" class="lbl-toggle-details">View Details</label>
+          <div class="expandable-details-content">
+            <div class="inner-details-box">
+              <p class="detail-price-tag">Price: 9,300,000 ETB</p><p class="detail-dp-tag">Down Payment (20%): 1,860,000 ETB</p>
+              <ul class="deep-specs-list">
+                <li><i class="fas fa-clipboard-list"></i> 1,860,000 ETB initial payment balance across installments.</li>
+                <li><i class="fas fa-elevator"></i> High-performance vertical lift</li>
+                <li><i class="fas fa-bolt"></i> Standby Generator setup</li>
+                <li class="discount-highlight"><i class="fas fa-tags"></i> For discount contact Me!</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="property-card">
         <img src="Aware1.jpg" alt="Aware Premium Apartment" class="property-img">
         <div class="property-info">
           <h4 class="property-title">Aware - Luxury 3 Bedroom Apartment</h4>
-          <p class="property-details">Premium master suite apartment located in Aware. Features expansive scenic window designs and top-tier finishes.</p>
+          <p class="property-details">Premium master suite apartment located in Aware. Features expansive scenic window designs.</p>
           <div class="property-specs">
-            <span><i class="fas fa-bed"></i> Bed: 3</span>
-            <span><i class="fas fa-bath"></i> Bath: 2</span>
-            <span><i class="fas fa-expand-arrows-alt"></i> Size: 121 m²</span>
+            <span><i class="fas fa-bed"></i> Bed: 3</span><span><i class="fas fa-bath"></i> Bath: 2</span><span><i class="fas fa-expand-arrows-alt"></i> 121 m²</span>
           </div>
           <div class="action-buttons-row">
             <a href="tel:+251922785816" class="btn-action btn-call"><i class="fas fa-phone-alt"></i> Call</a>
             <a href="mailto:lamrothabtamu2524@gmail.com?subject=Inquiry: Aware 121m²" class="btn-action btn-email"><i class="fas fa-envelope"></i> Email</a>
             <a href="https://t.me/LamrotHabtamu" target="_blank" class="btn-action btn-telegram"><i class="fab fa-telegram-plane"></i> Telegram</a>
           </div>
-          
-          <input type="radio" name="details-group" id="toggle-p1" class="detail-toggle-chk">
-          <label for="toggle-p1" class="lbl-toggle-details">View Price & Details</label>
-          
+          <input type="radio" name="details-group" id="toggle-p2" class="detail-toggle-chk">
+          <label for="toggle-p2" class="lbl-toggle-details">View Details</label>
           <div class="expandable-details-content">
             <div class="inner-details-box">
-              <p class="detail-price-tag">Price: 12,900,000 ETB</p>
-              <p class="detail-dp-tag">Down Payment (20%): 2,580,000 ETB</p>
+              <p class="detail-price-tag">Price: 12,900,000 ETB</p><p class="detail-dp-tag">Down Payment (20%): 2,580,000 ETB</p>
               <ul class="deep-specs-list">
-                <li><i class="fas fa-clipboard-list"></i> <strong>The Process:</strong> 2,580,000 ETB down payment bank transfer, remaining balance across installments.</li>
-                <li><i class="fas fa-wifi"></i> WiFi: High-speed fiber connections ready</li>
-                <li><i class="fas fa-elevator"></i> Elevator: Dual high-speed passenger lifts</li>
-                <li><i class="fas fa-bolt"></i> Standby Generator: Fully automated heavy-duty fallback</li>
-                <li><i class="fas fa-shield-alt"></i> 24/7 Monitored Gate Security: Guard post + HD CCTV</li>
+                <li><i class="fas fa-elevator"></i> Dual passenger elevators</li>
+                <li><i class="fas fa-shield-alt"></i> 24/7 Monitored Compound Guard</li>
                 <li class="discount-highlight"><i class="fas fa-tags"></i> For discount contact Me!</li>
               </ul>
-              <label for="close-all-details" style="display:block; text-align:center; margin-top:12px; font-size:12px; color:#aaa; cursor:pointer;"><i class="fas fa-chevron-up"></i> Close Box</label>
             </div>
           </div>
         </div>
@@ -843,32 +864,22 @@
           <h4 class="property-title">Bulgaria - Modern 1 Bedroom Suite</h4>
           <p class="property-details">An elegant, space-optimized design tailored for high-end styling preferences in a vital city core area.</p>
           <div class="property-specs">
-            <span><i class="fas fa-bed"></i> Bed: 1</span>
-            <span><i class="fas fa-bath"></i> Bath: 1</span>
-            <span><i class="fas fa-expand-arrows-alt"></i> Size: 68 m²</span>
+            <span><i class="fas fa-bed"></i> Bed: 1</span><span><i class="fas fa-bath"></i> Bath: 1</span><span><i class="fas fa-expand-arrows-alt"></i> 68 m²</span>
           </div>
           <div class="action-buttons-row">
             <a href="tel:+251922785816" class="btn-action btn-call"><i class="fas fa-phone-alt"></i> Call</a>
             <a href="mailto:lamrothabtamu2524@gmail.com?subject=Inquiry: Bulgaria 68m²" class="btn-action btn-email"><i class="fas fa-envelope"></i> Email</a>
             <a href="https://t.me/LamrotHabtamu" target="_blank" class="btn-action btn-telegram"><i class="fab fa-telegram-plane"></i> Telegram</a>
           </div>
-          
-          <input type="radio" name="details-group" id="toggle-p2" class="detail-toggle-chk">
-          <label for="toggle-p2" class="lbl-toggle-details">View Price & Details</label>
-          
+          <input type="radio" name="details-group" id="toggle-p3" class="detail-toggle-chk">
+          <label for="toggle-p3" class="lbl-toggle-details">View Details</label>
           <div class="expandable-details-content">
             <div class="inner-details-box">
-              <p class="detail-price-tag">Price: 7,820,000 ETB</p>
-              <p class="detail-dp-tag">Down Payment (20%): 1,564,000 ETB</p>
+              <p class="detail-price-tag">Price: 7,820,000 ETB</p><p class="detail-dp-tag">Down Payment (20%): 1,564,000 ETB</p>
               <ul class="deep-specs-list">
-                <li><i class="fas fa-clipboard-list"></i> <strong>The Process:</strong> 1,564,000 ETB down payment bank transfer, remaining balance across installments.</li>
-                <li><i class="fas fa-wifi"></i> WiFi: Broadband wireless routers installed</li>
-                <li><i class="fas fa-elevator"></i> Elevator: Standard passenger elevator infrastructure</li>
-                <li><i class="fas fa-bolt"></i> Standby Generator: Smart backup generator setup</li>
-                <li><i class="fas fa-shield-alt"></i> 24/7 Monitored Gate Security: Complete secured checkpoint</li>
+                <li><i class="fas fa-wifi"></i> Broadband network setup ready</li>
                 <li class="discount-highlight"><i class="fas fa-tags"></i> For discount contact Me!</li>
               </ul>
-              <label for="close-all-details" style="display:block; text-align:center; margin-top:12px; font-size:12px; color:#aaa; cursor:pointer;"><i class="fas fa-chevron-up"></i> Close Box</label>
             </div>
           </div>
         </div>
@@ -878,34 +889,24 @@
         <img src="property1.jpg" alt="Piassa Lycee Premium Executive Suite" class="property-img">
         <div class="property-info">
           <h4 class="property-title">Piassa Lycee - Executive 3 Bedroom Suite</h4>
-          <p class="property-details">Spacious modern layout situated in the vibrant Piassa Lycee metropolitan center with premium accessibility options.</p>
+          <p class="property-details">Spacious modern layout situated in the vibrant Piassa Lycee metropolitan center with premium accessibility.</p>
           <div class="property-specs">
-            <span><i class="fas fa-bed"></i> Bed: 3</span>
-            <span><i class="fas fa-bath"></i> Bath: 2</span>
-            <span><i class="fas fa-expand-arrows-alt"></i> Size: 132 m²</span>
+            <span><i class="fas fa-bed"></i> Bed: 3</span><span><i class="fas fa-bath"></i> Bath: 2</span><span><i class="fas fa-expand-arrows-alt"></i> 132 m²</span>
           </div>
           <div class="action-buttons-row">
             <a href="tel:+251922785816" class="btn-action btn-call"><i class="fas fa-phone-alt"></i> Call</a>
             <a href="mailto:lamrothabtamu2524@gmail.com?subject=Inquiry: Piassa Lycee 132m²" class="btn-action btn-email"><i class="fas fa-envelope"></i> Email</a>
             <a href="https://t.me/LamrotHabtamu" target="_blank" class="btn-action btn-telegram"><i class="fab fa-telegram-plane"></i> Telegram</a>
           </div>
-          
-          <input type="radio" name="details-group" id="toggle-p3" class="detail-toggle-chk">
-          <label for="toggle-p3" class="lbl-toggle-details">View Price & Details</label>
-          
+          <input type="radio" name="details-group" id="toggle-p4" class="detail-toggle-chk">
+          <label for="toggle-p4" class="lbl-toggle-details">View Details</label>
           <div class="expandable-details-content">
             <div class="inner-details-box">
-              <p class="detail-price-tag">Price: 15,180,000 ETB</p>
-              <p class="detail-dp-tag">Down Payment (10%): 1,518,000 ETB</p>
+              <p class="detail-price-tag">Price: 15,180,000 ETB</p><p class="detail-dp-tag">Down Payment (10%): 1,518,000 ETB</p>
               <ul class="deep-specs-list">
-                <li><i class="fas fa-clipboard-list"></i> <strong>The Process:</strong> 1,518,000 ETB down payment bank transfer, remaining balance across installments.</li>
-                <li><i class="fas fa-wifi"></i> WiFi: Advanced building-wide fiber routing</li>
-                <li><i class="fas fa-elevator"></i> Elevator: High-capacity digital elevator array</li>
-                <li><i class="fas fa-bolt"></i> Standby Generator: High-kilowatt emergency backup system</li>
-                <li><i class="fas fa-shield-alt"></i> 24/7 Monitored Gate Security: Professional watchmen + electronic key access</li>
+                <li><i class="fas fa-bolt"></i> High-kW Fallback automatic grid generator</li>
                 <li class="discount-highlight"><i class="fas fa-tags"></i> For discount contact Me!</li>
               </ul>
-              <label for="close-all-details" style="display:block; text-align:center; margin-top:12px; font-size:12px; color:#aaa; cursor:pointer;"><i class="fas fa-chevron-up"></i> Close Box</label>
             </div>
           </div>
         </div>
@@ -918,146 +919,246 @@
     <div class="hidden-listings-wrapper">
       
       <div class="property-card">
-        <img src="property1.jpg" alt="Sarbet Apartment" class="property-img">
-        <div class="property-info">
-          <h4 class="property-title">Sarbet - Modern 1 Bedroom Suite</h4>
-          <p class="property-details">Exquisite space-optimized interior layout positioned in the central hub of Sarbet with luxury elements.</p>
-          <div class="property-specs"><span><i class="fas fa-bed"></i> Bed: 1</span><span><i class="fas fa-bath"></i> Bath: 1</span><span><i class="fas fa-expand-arrows-alt"></i> 76 m²</span></div>
-          <div class="action-buttons-row">
-            <a href="tel:+251922785816" class="btn-call btn-action"><i class="fas fa-phone-alt"></i> Call</a>
-            <a href="mailto:lamrothabtamu2524@gmail.com?subject=Inquiry: Sarbet 76m²" class="btn-email btn-action"><i class="fas fa-envelope"></i> Email</a>
-            <a href="https://t.me/LamrotHabtamu" target="_blank" class="btn-telegram btn-action"><i class="fab fa-telegram-plane"></i> Telegram</a>
-          </div>
-          <input type="radio" name="details-group" id="toggle-p4" class="detail-toggle-chk"><label for="toggle-p4" class="lbl-toggle-details">View Details</label>
-          <div class="expandable-details-content"><div class="inner-details-box"><p class="detail-price-tag">Price: 9,300,000 ETB</p><p class="detail-dp-tag">Down Payment (20%): 1,860,000 ETB</p><ul class="deep-specs-list"><li><i class="fas fa-clipboard-list"></i> <strong>The Process:</strong> 1,860,000 ETB down payment bank transfer, remaining balance across installments.</li><li><i class="fas fa-wifi"></i> WiFi: Building wide dedicated fiber modules</li><li><i class="fas fa-elevator"></i> Elevator: High-performance low noise lift system</li><li><i class="fas fa-bolt"></i> Standby Generator: Fully automatic transfer fallback grid</li><li><i class="fas fa-shield-alt"></i> 24/7 Monitored Gate Security: Complete private fencing control</li><li class="discount-highlight"><i class="fas fa-tags"></i> For discount contact Me!</li></ul><label for="close-all-details" style="display:block; text-align:center; margin-top:12px; font-size:12px; color:#aaa; cursor:pointer;"><i class="fas fa-chevron-up"></i> Close Box</label></div></div>
-        </div>
-      </div>
-
-      <div class="property-card">
-        <img src="property1.jpg" alt="Sarbet Apartment" class="property-img">
-        <div class="property-info">
-          <h4 class="property-title">Sarbet - Premium 2 Bedroom Option</h4>
-          <p class="property-details">Comfortable, sleek contemporary finish designed beautifully for dynamic urban residential layouts.</p>
-          <div class="property-specs"><span><i class="fas fa-bed"></i> Bed: 2</span><span><i class="fas fa-bath"></i> Bath: 2</span><span><i class="fas fa-expand-arrows-alt"></i> 99 m²</span></div>
-          <div class="action-buttons-row">
-            <a href="tel:+251922785816" class="btn-call btn-action"><i class="fas fa-phone-alt"></i> Call</a>
-            <a href="mailto:lamrothabtamu2524@gmail.com?subject=Inquiry: Sarbet 99m²" class="btn-email btn-action"><i class="fas fa-envelope"></i> Email</a>
-            <a href="https://t.me/LamrotHabtamu" target="_blank" class="btn-telegram btn-action"><i class="fab fa-telegram-plane"></i> Telegram</a>
-          </div>
-          <input type="radio" name="details-group" id="toggle-p5" class="detail-toggle-chk"><label for="toggle-p5" class="lbl-toggle-details">View Details</label>
-          <div class="expandable-details-content"><div class="inner-details-box"><p class="detail-price-tag">Price: 11,800,000 ETB</p><p class="detail-dp-tag">Down Payment (20%): 2,360,000 ETB</p><ul class="deep-specs-list"><li><i class="fas fa-clipboard-list"></i> <strong>The Process:</strong> 2,360,000 ETB down payment bank transfer, remaining balance across installments.</li><li><i class="fas fa-wifi"></i> WiFi: Pre-configured corporate broadband line</li><li><i class="fas fa-elevator"></i> Elevator: Advanced luxury vertical lifts</li><li><i class="fas fa-bolt"></i> Standby Generator: Smart secondary alternator system</li><li><i class="fas fa-shield-alt"></i> 24/7 Monitored Gate Security: Complete secured gate post checkpoints</li><li class="discount-highlight"><i class="fas fa-tags"></i> For discount contact Me!</li></ul><label for="close-all-details" style="display:block; text-align:center; margin-top:12px; font-size:12px; color:#aaa; cursor:pointer;"><i class="fas fa-chevron-up"></i> Close Box</label></div></div>
-        </div>
-      </div>
-
-      <div class="property-card">
-        <img src="property1.jpg" alt="Sarbet Apartment" class="property-img">
-        <div class="property-info">
-          <h4 class="property-title">Sarbet - Luxury 3 Bedroom Residence</h4>
-          <p class="property-details">High-tier spacious residential unit combining superior architectural craftsmanship with elite master suites.</p>
-          <div class="property-specs"><span><i class="fas fa-bed"></i> Bed: 3</span><span><i class="fas fa-bath"></i> Bath: 2</span><span><i class="fas fa-expand-arrows-alt"></i> 144 m²</span></div>
-          <div class="action-buttons-row">
-            <a href="tel:+251922785816" class="btn-call btn-action"><i class="fas fa-phone-alt"></i> Call</a>
-            <a href="mailto:lamrothabtamu2524@gmail.com?subject=Inquiry: Sarbet 144m²" class="btn-email btn-action"><i class="fas fa-envelope"></i> Email</a>
-            <a href="https://t.me/LamrotHabtamu" target="_blank" class="btn-telegram btn-action"><i class="fab fa-telegram-plane"></i> Telegram</a>
-          </div>
-          <input type="radio" name="details-group" id="toggle-p6" class="detail-toggle-chk"><label for="toggle-p6" class="lbl-toggle-details">View Details</label>
-          <div class="expandable-details-content"><div class="inner-details-box"><p class="detail-price-tag">Price: 17,200,000 ETB</p><p class="detail-dp-tag">Down Payment (20%): 3,440,000 ETB</p><ul class="deep-specs-list"><li><i class="fas fa-clipboard-list"></i> <strong>The Process:</strong> 3,440,000 ETB down payment bank transfer, remaining balance across installments.</li><li><i class="fas fa-wifi"></i> WiFi: Independent high throughput routers</li><li><i class="fas fa-elevator"></i> Elevator: High-capacity passenger mirror cabins</li><li><i class="fas fa-bolt"></i> Standby Generator: Automated emergency backup generator</li><li><i class="fas fa-shield-alt"></i> 24/7 Monitored Gate Security: Complete digital CCTV and guard systems</li><li class="discount-highlight"><i class="fas fa-tags"></i> For discount contact Me!</li></ul><label for="close-all-details" style="display:block; text-align:center; margin-top:12px; font-size:12px; color:#aaa; cursor:pointer;"><i class="fas fa-chevron-up"></i> Close Box</label></div></div>
-        </div>
-      </div>
-
-      <div class="property-card">
         <img src="Ayat49.jpg" alt="Ayat 49 Premium Apartment" class="property-img">
         <div class="property-info">
           <h4 class="property-title">Ayat 49 - Executive 3 Bedroom Suite</h4>
-          <p class="property-details">Stunning metropolitan residential layout featuring beautiful natural illumination and elite layout finishes.</p>
+          <p class="property-details">Stunning metropolitan residential layout featuring beautiful natural illumination.</p>
           <div class="property-specs"><span><i class="fas fa-bed"></i> Bed: 3</span><span><i class="fas fa-bath"></i> Bath: 2</span><span><i class="fas fa-expand-arrows-alt"></i> 146 m²</span></div>
           <div class="action-buttons-row">
-            <a href="tel:+251922785816" class="btn-call btn-action"><i class="fas fa-phone-alt"></i> Call</a>
-            <a href="mailto:lamrothabtamu2524@gmail.com?subject=Inquiry: Ayat 49 146m²" class="btn-email btn-action"><i class="fas fa-envelope"></i> Email</a>
-            <a href="https://t.me/LamrotHabtamu" target="_blank" class="btn-telegram btn-action"><i class="fab fa-telegram-plane"></i> Telegram</a>
+            <a href="tel:+251922785816" class="btn-call btn-action">Call</a>
+            <a href="mailto:lamrothabtamu2524@gmail.com" class="btn-email btn-action">Email</a>
+            <a href="https://t.me/LamrotHabtamu" class="btn-telegram btn-action">Telegram</a>
           </div>
-          <input type="radio" name="details-group" id="toggle-p7" class="detail-toggle-chk"><label for="toggle-p7" class="lbl-toggle-details">View Details</label>
-          <div class="expandable-details-content"><div class="inner-details-box"><p class="detail-price-tag">Price: 13,870,000 ETB</p><p class="detail-dp-tag">Down Payment (50%): 6,935,000 ETB</p><ul class="deep-specs-list"><li><i class="fas fa-clipboard-list"></i> <strong>The Process:</strong> 6,935,000 ETB down payment bank transfer, remaining balance across installments.</li><li><i class="fas fa-wifi"></i> WiFi: Advanced fiber internet pre-connected</li><li><i class="fas fa-elevator"></i> Elevator: High efficiency dual elevator array</li><li><i class="fas fa-bolt"></i> Standby Generator: Auto-grid emergency generator support</li><li><i class="fas fa-shield-alt"></i> 24/7 Monitored Gate Security: Complete secured checkpoint station</li><li class="discount-highlight"><i class="fas fa-tags"></i> For discount contact Me!</li></ul><label for="close-all-details" style="display:block; text-align:center; margin-top:12px; font-size:12px; color:#aaa; cursor:pointer;"><i class="fas fa-chevron-up"></i> Close Box</label></div></div>
+          <input type="radio" name="details-group" id="toggle-p5" class="detail-toggle-chk"><label for="toggle-p5" class="lbl-toggle-details">View Details</label>
+          <div class="expandable-details-content"><div class="inner-details-box"><p class="detail-price-tag">Price: 13,870,000 ETB</p><p class="detail-dp-tag">Down Payment (50%): 6,935,000 ETB</p></div></div>
         </div>
       </div>
 
       <div class="property-card">
-        <img src="Ayat49.jpg" alt="Ayat 49 Grand Elite Residence" class="property-img">
+        <img src="Ayat49.jpg" alt="Ayat 49 Grand Elite" class="property-img">
         <div class="property-info">
-          <h4 class="property-title">Ayat 49 - Grand Elite 3 Bedroom Residence</h4>
-          <p class="property-details">Expansive master floor layout crafted carefully for high tier luxury parameters in an idyllic residential community.</p>
+          <h4 class="property-title">Ayat 49 - Grand Elite 3 Bed Residence</h4>
+          <p class="property-details">Expansive master floor layout crafted carefully for high tier luxury parameters.</p>
           <div class="property-specs"><span><i class="fas fa-bed"></i> Bed: 3</span><span><i class="fas fa-bath"></i> Bath: 2</span><span><i class="fas fa-expand-arrows-alt"></i> 180 m²</span></div>
           <div class="action-buttons-row">
-            <a href="tel:+251922785816" class="btn-call btn-action"><i class="fas fa-phone-alt"></i> Call</a>
-            <a href="mailto:lamrothabtamu2524@gmail.com?subject=Inquiry: Ayat 49 180m²" class="btn-email btn-action"><i class="fas fa-envelope"></i> Email</a>
-            <a href="https://t.me/LamrotHabtamu" target="_blank" class="btn-telegram btn-action"><i class="fab fa-telegram-plane"></i> Telegram</a>
+            <a href="tel:+251922785816" class="btn-call btn-action">Call</a>
+            <a href="mailto:lamrothabtamu2524@gmail.com" class="btn-email btn-action">Email</a>
+            <a href="https://t.me/LamrotHabtamu" class="btn-telegram btn-action">Telegram</a>
+          </div>
+          <input type="radio" name="details-group" id="toggle-p6" class="detail-toggle-chk"><label for="toggle-p6" class="lbl-toggle-details">View Details</label>
+          <div class="expandable-details-content"><div class="inner-details-box"><p class="detail-price-tag">Price: 17,100,000 ETB</p><p class="detail-dp-tag">Down Payment (50%): 8,550,000 ETB</p></div></div>
+        </div>
+      </div>
+
+      <div class="property-card">
+        <img src="sarbet.jpg" alt="Sarbet Apartment" class="property-img">
+        <div class="property-info">
+          <h4 class="property-title">Sarbet - Premium 2 Bedroom Option</h4>
+          <p class="property-details">Comfortable, sleek contemporary finish designed beautifully for urban residential layouts.</p>
+          <div class="property-specs"><span><i class="fas fa-bed"></i> Bed: 2</span><span><i class="fas fa-bath"></i> Bath: 2</span><span><i class="fas fa-expand-arrows-alt"></i> 99 m²</span></div>
+          <div class="action-buttons-row">
+            <a href="tel:+251922785816" class="btn-call btn-action">Call</a>
+            <a href="mailto:lamrothabtamu2524@gmail.com" class="btn-email btn-action">Email</a>
+            <a href="https://t.me/LamrotHabtamu" class="btn-telegram btn-action">Telegram</a>
+          </div>
+          <input type="radio" name="details-group" id="toggle-p7" class="detail-toggle-chk"><label for="toggle-p7" class="lbl-toggle-details">View Details</label>
+          <div class="expandable-details-content"><div class="inner-details-box"><p class="detail-price-tag">Price: 11,800,000 ETB</p><p class="detail-dp-tag">Down Payment (20%): 2,360,000 ETB</p></div></div>
+        </div>
+      </div>
+
+      <div class="property-card">
+        <img src="sarbet.jpg" alt="Sarbet Residence" class="property-img">
+        <div class="property-info">
+          <h4 class="property-title">Sarbet - Luxury 3 Bedroom Residence</h4>
+          <p class="property-details">High-tier spacious residential unit combining superior architectural craftsmanship.</p>
+          <div class="property-specs"><span><i class="fas fa-bed"></i> Bed: 3</span><span><i class="fas fa-bath"></i> Bath: 2</span><span><i class="fas fa-expand-arrows-alt"></i> 144 m²</span></div>
+          <div class="action-buttons-row">
+            <a href="tel:+251922785816" class="btn-call btn-action">Call</a>
+            <a href="mailto:lamrothabtamu2524@gmail.com" class="btn-email btn-action">Email</a>
+            <a href="https://t.me/LamrotHabtamu" class="btn-telegram btn-action">Telegram</a>
           </div>
           <input type="radio" name="details-group" id="toggle-p8" class="detail-toggle-chk"><label for="toggle-p8" class="lbl-toggle-details">View Details</label>
-          <div class="expandable-details-content"><div class="inner-details-box"><p class="detail-price-tag">Price: 17,100,000 ETB</p><p class="detail-dp-tag">Down Payment (50%): 8,550,000 ETB</p><ul class="deep-specs-list"><li><i class="fas fa-clipboard-list"></i> <strong>The Process:</strong> 8,550,000 ETB down payment bank transfer, remaining balance across installments.</li><li><i class="fas fa-wifi"></i> WiFi: Full gigabit tier independent nodes</li><li><i class="fas fa-elevator"></i> Elevator: Luxury class smooth vertical infrastructure</li><li><i class="fas fa-bolt"></i> Standby Generator: Uninterrupted continuous energy module</li><li><i class="fas fa-shield-alt"></i> 24/7 Monitored Gate Security: Professional watchmen entry verification checkpoints</li><li class="discount-highlight"><i class="fas fa-tags"></i> For discount contact Me!</li></ul><label for="close-all-details" style="display:block; text-align:center; margin-top:12px; font-size:12px; color:#aaa; cursor:pointer;"><i class="fas fa-chevron-up"></i> Close Box</label></div></div>
+          <div class="expandable-details-content"><div class="inner-details-box"><p class="detail-price-tag">Price: 17,200,000 ETB</p><p class="detail-dp-tag">Down Payment (20%): 3,440,000 ETB</p></div></div>
         </div>
       </div>
 
       <div class="property-card">
-        <img src="Aware1.jpg" alt="Aware Apartment" class="property-img">
+        <img src="Bulgaria1.jpg" alt="Bulgaria Apartment" class="property-img">
         <div class="property-info">
-          <h4 class="property-title">Aware - Luxury 3 Bedroom Apartment</h4>
-          <p class="property-details">High-rise luxury residence located in Aware with stunning layout engineering.</p>
-          <div class="property-specs"><span><i class="fas fa-bed"></i> Bed: 3</span><span><i class="fas fa-bath"></i> Bath: 2</span><span><i class="fas fa-expand-arrows-alt"></i> 131 m²</span></div>
-          <div class="action-buttons-row">
-            <a href="tel:+251922785816" class="btn-call btn-action">Call</a>
-            <a href="mailto:lamrothabtamu2524@gmail.com" class="btn-email btn-action">Email</a>
-            <a href="https://t.me/LamrotHabtamu" class="btn-telegram btn-action">Telegram</a>
-          </div>
+          <h4 class="property-title">Bulgaria - Modern 1 Bedroom (V2)</h4>
+          <p class="property-details">Elegant premium space-optimized residential unit option located in Bulgaria area.</p>
+          <div class="property-specs"><span><i class="fas fa-bed"></i> 1</span><span><i class="fas fa-bath"></i> 1</span><span><i class="fas fa-expand-arrows-alt"></i> 72 m²</span></div>
+          <div class="action-buttons-row"><a href="tel:+251922785816" class="btn-call btn-action">Call</a><a href="mailto:lamrothabtamu2524@gmail.com" class="btn-email btn-action">Email</a><a href="https://t.me/LamrotHabtamu" class="btn-telegram btn-action">Telegram</a></div>
           <input type="radio" name="details-group" id="toggle-p9" class="detail-toggle-chk"><label for="toggle-p9" class="lbl-toggle-details">View Details</label>
-          <div class="expandable-details-content"><div class="inner-details-box"><p class="detail-price-tag">Price: 14,000,000 ETB</p><p class="detail-dp-tag">Down Payment (20%): 2,800,000 ETB</p><ul class="deep-specs-list"><li><i class="fas fa-clipboard-list"></i> <strong>The Process:</strong> 2,800,000 ETB down payment bank transfer.</li><li><i class="fas fa-wifi"></i> WiFi: Full property signal coverage</li><li><i class="fas fa-elevator"></i> Elevator: Smooth low-noise infrastructure</li><li><i class="fas fa-bolt"></i> Standby Generator: Automated generator</li><li><i class="fas fa-shield-alt"></i> Security: Strict compound oversight</li><li class="discount-highlight"><i class="fas fa-tags"></i> For discount contact Me!</li></ul><label for="close-all-details" style="display:block; text-align:center; margin-top:12px; font-size:12px; color:#aaa; cursor:pointer;"><i class="fas fa-chevron-up"></i> Close Box</label></div></div>
+          <div class="expandable-details-content"><div class="inner-details-box"><p class="detail-price-tag">Price: 8,280,000 ETB</p></div></div>
+        </div>
+      </div>
+
+      <div class="property-card">
+        <img src="Bulgaria1.jpg" alt="Bulgaria Apartment" class="property-img">
+        <div class="property-info">
+          <h4 class="property-title">Bulgaria - Comfort 2 Bedroom Unit</h4>
+          <p class="property-details">A beautifully integrated master suite floorplan ideal for small families.</p>
+          <div class="property-specs"><span><i class="fas fa-bed"></i> 2</span><span><i class="fas fa-bath"></i> 2</span><span><i class="fas fa-expand-arrows-alt"></i> 81 m²</span></div>
+          <div class="action-buttons-row"><a href="tel:+251922785816" class="btn-call btn-action">Call</a><a href="mailto:lamrothabtamu2524@gmail.com" class="btn-email btn-action">Email</a><a href="https://t.me/LamrotHabtamu" class="btn-telegram btn-action">Telegram</a></div>
+          <input type="radio" name="details-group" id="toggle-p10" class="detail-toggle-chk"><label for="toggle-p10" class="lbl-toggle-details">View Details</label>
+          <div class="expandable-details-content"><div class="inner-details-box"><p class="detail-price-tag">Price: 9,315,000 ETB</p></div></div>
+        </div>
+      </div>
+
+      <div class="property-card">
+        <img src="Bulgaria1.jpg" alt="Bulgaria Apartment" class="property-img">
+        <div class="property-info">
+          <h4 class="property-title">Bulgaria - Premium 2 Bed Suite</h4>
+          <p class="property-details">Spacious living quarter layout situated around vital infrastructure hubs.</p>
+          <div class="property-specs"><span><i class="fas fa-bed"></i> 2</span><span><i class="fas fa-bath"></i> 2</span><span><i class="fas fa-expand-arrows-alt"></i> 85 m²</span></div>
+          <div class="action-buttons-row"><a href="tel:+251922785816" class="btn-call btn-action">Call</a><a href="mailto:lamrothabtamu2524@gmail.com" class="btn-email btn-action">Email</a><a href="https://t.me/LamrotHabtamu" class="btn-telegram btn-action">Telegram</a></div>
+          <input type="radio" name="details-group" id="toggle-p11" class="detail-toggle-chk"><label for="toggle-p11" class="lbl-toggle-details">View Details</label>
+          <div class="expandable-details-content"><div class="inner-details-box"><p class="detail-price-tag">Price: 9,775,000 ETB</p></div></div>
+        </div>
+      </div>
+
+      <div class="property-card">
+        <img src="Bulgaria1.jpg" alt="Bulgaria Apartment" class="property-img">
+        <div class="property-info">
+          <h4 class="property-title">Bulgaria - Deluxe 3 Bedroom Corner</h4>
+          <p class="property-details">Generous floor plan matching modern urban convenience parameters beautifully.</p>
+          <div class="property-specs"><span><i class="fas fa-bed"></i> 3</span><span><i class="fas fa-bath"></i> 2</span><span><i class="fas fa-expand-arrows-alt"></i> 133 m²</span></div>
+          <div class="action-buttons-row"><a href="tel:+251922785816" class="btn-call btn-action">Call</a><a href="mailto:lamrothabtamu2524@gmail.com" class="btn-email btn-action">Email</a><a href="https://t.me/LamrotHabtamu" class="btn-telegram btn-action">Telegram</a></div>
+          <input type="radio" name="details-group" id="toggle-p12" class="detail-toggle-chk"><label for="toggle-p12" class="lbl-toggle-details">View Details</label>
+          <div class="expandable-details-content"><div class="inner-details-box"><p class="detail-price-tag">Price: 15,295,000 ETB</p></div></div>
+        </div>
+      </div>
+
+      <div class="property-card">
+        <img src="Bulgaria1.jpg" alt="Bulgaria Apartment" class="property-img">
+        <div class="property-info">
+          <h4 class="property-title">Bulgaria - Grand Family Suite</h4>
+          <p class="property-details">Top architectural tier spacing boasting broad window fronts and private balcony views.</p>
+          <div class="property-specs"><span><i class="fas fa-bed"></i> 3</span><span><i class="fas fa-bath"></i> 3</span><span><i class="fas fa-expand-arrows-alt"></i> 142 m²</span></div>
+          <div class="action-buttons-row"><a href="tel:+251922785816" class="btn-call btn-action">Call</a><a href="mailto:lamrothabtamu2524@gmail.com" class="btn-email btn-action">Email</a><a href="https://t.me/LamrotHabtamu" class="btn-telegram btn-action">Telegram</a></div>
+          <input type="radio" name="details-group" id="toggle-p13" class="detail-toggle-chk"><label for="toggle-p13" class="lbl-toggle-details">View Details</label>
+          <div class="expandable-details-content"><div class="inner-details-box"><p class="detail-price-tag">Price: 16,330,000 ETB</p></div></div>
+        </div>
+      </div>
+
+      <div class="property-card">
+        <img src="property1.jpg" alt="Piassa Apartment" class="property-img">
+        <div class="property-info">
+          <h4 class="property-title">Piassa Lycee - Executive 2 Bed Unit</h4>
+          <p class="property-details">High accessibility central location offering smooth metropolitan residential value.</p>
+          <div class="property-specs"><span><i class="fas fa-bed"></i> 2</span><span><i class="fas fa-bath"></i> 2</span><span><i class="fas fa-expand-arrows-alt"></i> 105 m²</span></div>
+          <div class="action-buttons-row"><a href="tel:+251922785816" class="btn-call btn-action">Call</a><a href="mailto:lamrothabtamu2524@gmail.com" class="btn-email btn-action">Email</a><a href="https://t.me/LamrotHabtamu" class="btn-telegram btn-action">Telegram</a></div>
+          <input type="radio" name="details-group" id="toggle-p14" class="detail-toggle-chk"><label for="toggle-p14" class="lbl-toggle-details">View Details</label>
+          <div class="expandable-details-content"><div class="inner-details-box"><p class="detail-price-tag">Price: 12,075,000 ETB</p></div></div>
+        </div>
+      </div>
+
+      <div class="property-card">
+        <img src="property1.jpg" alt="Piassa Apartment" class="property-img">
+        <div class="property-info">
+          <h4 class="property-title">Piassa Lycee - Elite Master Penthouse</h4>
+          <p class="property-details">Stunning expansive panoramic blueprint option tailored for corporate professionals.</p>
+          <div class="property-specs"><span><i class="fas fa-bed"></i> 3</span><span><i class="fas fa-bath"></i> 3</span><span><i class="fas fa-expand-arrows-alt"></i> 148 m²</span></div>
+          <div class="action-buttons-row"><a href="tel:+251922785816" class="btn-call btn-action">Call</a><a href="mailto:lamrothabtamu2524@gmail.com" class="btn-email btn-action">Email</a><a href="https://t.me/LamrotHabtamu" class="btn-telegram btn-action">Telegram</a></div>
+          <input type="radio" name="details-group" id="toggle-p15" class="detail-toggle-chk"><label for="toggle-p15" class="lbl-toggle-details">View Details</label>
+          <div class="expandable-details-content"><div class="inner-details-box"><p class="detail-price-tag">Price: 17,020,000 ETB</p></div></div>
         </div>
       </div>
 
       <div class="property-card">
         <img src="Aware1.jpg" alt="Aware Apartment" class="property-img">
         <div class="property-info">
-          <h4 class="property-title">Aware - Luxury 3 Bedroom Apartment</h4>
+          <h4 class="property-title">Aware - Luxury 3 Bedroom (V2)</h4>
           <p class="property-details">High-rise luxury residence located in Aware with stunning layout engineering.</p>
-          <div class="property-specs"><span><i class="fas fa-bed"></i> Bed: 3</span><span><i class="fas fa-bath"></i> Bath: 2</span><span><i class="fas fa-expand-arrows-alt"></i> 135 m²</span></div>
-          <div class="action-buttons-row">
-            <a href="tel:+251922785816" class="btn-call btn-action">Call</a>
-            <a href="mailto:lamrothabtamu2524@gmail.com" class="btn-email btn-action">Email</a>
-            <a href="https://t.me/LamrotHabtamu" class="btn-telegram btn-action">Telegram</a>
-          </div>
-          <input type="radio" name="details-group" id="toggle-p10" class="detail-toggle-chk"><label for="toggle-p10" class="lbl-toggle-details">View Details</label>
-          <div class="expandable-details-content"><div class="inner-details-box"><p class="detail-price-tag">Price: 14,400,000 ETB</p><p class="detail-dp-tag">Down Payment (20%): 2,880,000 ETB</p><ul class="deep-specs-list"><li><i class="fas fa-clipboard-list"></i> <strong>The Process:</strong> 2,880,000 ETB down payment.</li><li><i class="fas fa-wifi"></i> WiFi: Connected high-throughput lines</li><li><i class="fas fa-elevator"></i> Elevator: High-speed mechanical lifts</li><li><i class="fas fa-bolt"></i> Standby Generator: Smart backup setup</li><li><i class="fas fa-shield-alt"></i> Security: Armed security perimeter</li><li class="discount-highlight"><i class="fas fa-tags"></i> For discount contact Me!</li></ul><label for="close-all-details" style="display:block; text-align:center; margin-top:12px; font-size:12px; color:#aaa; cursor:pointer;"><i class="fas fa-chevron-up"></i> Close Box</label></div></div>
+          <div class="property-specs"><span><i class="fas fa-bed"></i> 3</span><span><i class="fas fa-bath"></i> 2</span><span><i class="fas fa-expand-arrows-alt"></i> 131 m²</span></div>
+          <div class="action-buttons-row"><a href="tel:+251922785816" class="btn-call btn-action">Call</a><a href="mailto:lamrothabtamu2524@gmail.com" class="btn-email btn-action">Email</a><a href="https://t.me/LamrotHabtamu" class="btn-telegram btn-action">Telegram</a></div>
+          <input type="radio" name="details-group" id="toggle-p16" class="detail-toggle-chk"><label for="toggle-p16" class="lbl-toggle-details">View Details</label>
+          <div class="expandable-details-content"><div class="inner-details-box"><p class="detail-price-tag">Price: 14,000,000 ETB</p></div></div>
         </div>
       </div>
 
       <div class="property-card">
-        <img src="Bulgaria1.jpg" alt="Bulgaria Apartment" class="property-img">
+        <img src="Aware1.jpg" alt="Aware Apartment" class="property-img">
         <div class="property-info">
-          <h4 class="property-title">Bulgaria - Modern 1 Bedroom Suite</h4>
-          <p class="property-details">Elegant premium space-optimized residential unit option located in Bulgaria.</p>
-          <div class="property-specs"><span><i class="fas fa-bed"></i> Bed: 1</span><span><i class="fas fa-bath"></i> Bath: 1</span><span><i class="fas fa-expand-arrows-alt"></i> 72 m²</span></div>
-          <div class="action-buttons-row">
-            <a href="tel:+251922785816" class="btn-call btn-action">Call</a>
-            <a href="mailto:lamrothabtamu2524@gmail.com" class="btn-email btn-action">Email</a>
-            <a href="https://t.me/LamrotHabtamu" class="btn-telegram btn-action">Telegram</a>
-          </div>
-          <input type="radio" name="details-group" id="toggle-p11" class="detail-toggle-chk"><label for="toggle-p11" class="lbl-toggle-details">View Details</label>
-          <div class="expandable-details-content"><div class="inner-details-box"><p class="detail-price-tag">Price: 8,280,000 ETB</p><p class="detail-dp-tag">Down Payment (20%): 1,656,000 ETB</p><ul class="deep-specs-list"><li><i class="fas fa-clipboard-list"></i> <strong>The Process:</strong> 1,656,000 ETB bank transfer.</li><li><i class="fas fa-wifi"></i> WiFi: High-speed setup ready</li><li><i class="fas fa-elevator"></i> Elevator: Central infrastructure</li><li><i class="fas fa-bolt"></i> Standby Generator: Emergency integration</li><li><i class="fas fa-shield-alt"></i> Security: Complete CCTV tracking</li><li class="discount-highlight"><i class="fas fa-tags"></i> For discount contact Me!</li></ul><label for="close-all-details" style="display:block; text-align:center; margin-top:12px; font-size:12px; color:#aaa; cursor:pointer;"><i class="fas fa-chevron-up"></i> Close Box</label></div></div>
+          <h4 class="property-title">Aware - Luxury 3 Bedroom (V3)</h4>
+          <p class="property-details">High-rise luxury residence located in Aware with stunning layout engineering.</p>
+          <div class="property-specs"><span><i class="fas fa-bed"></i> 3</span><span><i class="fas fa-bath"></i> 2</span><span><i class="fas fa-expand-arrows-alt"></i> 135 m²</span></div>
+          <div class="action-buttons-row"><a href="tel:+251922785816" class="btn-call btn-action">Call</a><a href="mailto:lamrothabtamu2524@gmail.com" class="btn-email btn-action">Email</a><a href="https://t.me/LamrotHabtamu" class="btn-telegram btn-action">Telegram</a></div>
+          <input type="radio" name="details-group" id="toggle-p17" class="detail-toggle-chk"><label for="toggle-p17" class="lbl-toggle-details">View Details</label>
+          <div class="expandable-details-content"><div class="inner-details-box"><p class="detail-price-tag">Price: 14,400,000 ETB</p></div></div>
         </div>
       </div>
 
       <div class="property-card">
-        <img src="Bulgaria1.jpg" alt="Bulgaria Apartment" class="property-img">
+        <img src="Aware1.jpg" alt="Aware Apartment" class="property-img">
         <div class="property-info">
-          <h4 class="property-title">Bulgaria - Premium 2 Bedroom Option</h4>
-          <p class="property-details">Elegant premium space-optimized residential unit option located in Bulgaria.</p>
-          <div class="property-specs"><span><i class="fas fa-bed"></i> Bed: 2</span><span><i class="fas fa-bath"></i> Bath: 2</span><span><i class="fas fa-expand-arrows-alt"></i> 81 m²</span></div>
-          <div class="action-buttons-row">
-            <a href="tel:+251922785816" class="btn-call btn-action">Call</a>
-            <a href="mailto:lamrothabtamu2524@gmail.com" class="btn-email btn-action">Email</a>
-            <a href="https://t.me/LamrotHabtamu" class="btn-telegram btn-action">Telegram</a>
-          </div>
-          <input type="radio" name="details-group" id="toggle-p12" class="detail-toggle-chk"><label for="toggle-p12" class="lbl-toggle-details">View Details</label>
-          <div class="expandable-details-content"><div class="inner-details-box"><p class="detail-price-tag">Price: 9,315,000 ETB</p><p class="detail-dp-tag">Down Payment (20%): 1,863,000 ETB</p><ul class="deep-specs-list"><li><i class="fas fa-clipboard-list"></i> <strong>The Process:</strong> 1,863,000 ETB bank transfer.</li><li><i class="fas fa-wifi"></i> WiFi: High-speed wireless setup</li><li><i class="fas fa-elevator"></i> Elevator: Dual vertical shafts</li><li><i class="fas fa-bolt"></i> Standby Generator: Automated backup</li><li><i class="fas fa-shield-alt"></i> Security: Active patrolling routine</li><li class="discount-highlight"><i class="fas fa-tags"></i> For discount contact Me!</li></ul><label for="close-all-details" style="display:block; text-align:center; margin-top:12px; font-size:12px; color:#aaa; cursor:pointer;"><i class="fas fa-chevron-up"></i> Close Box</label></div></div>
+          <h4 class="property-title">Aware - Grand Executive Apartment</h4>
+          <p class="property-details">Extra large family space featuring fully integrated premium kitchen units.</p>
+          <div class="property-specs"><span><i class="fas fa-bed"></i> 3</span><span><i class="fas fa-bath"></i> 3</span><span><i class="fas fa-expand-arrows-alt"></i> 151 m²</span></div>
+          <div class="action-buttons-row"><a href="tel:+251922785816" class="btn-call btn-action">Call</a><a href="mailto:lamrothabtamu2524@gmail.com" class="btn-email btn-action">Email</a><a href="https://t.me/LamrotHabtamu" class="btn-telegram btn-action">Telegram</a></div>
+          <input type="radio" name="details-group" id="toggle-p18" class="detail-toggle-chk"><label for="toggle-p18" class="lbl-toggle-details">View Details</label>
+          <div class="expandable-details-content"><div class="inner-details-box"><p class="detail-price-tag">Price: 16,100,000 ETB</p></div></div>
+        </div>
+      </div>
+
+      <div class="property-card">
+        <img src="Aware1.jpg" alt="Aware Apartment" class="property-img">
+        <div class="property-info">
+          <h4 class="property-title">Aware - Premium Corner Penthouse</h4>
+          <p class="property-details">Breathtaking views coupled with massive master balcony options in Aware.</p>
+          <div class="property-specs"><span><i class="fas fa-bed"></i> 3</span><span><i class="fas fa-bath"></i> 3</span><span><i class="fas fa-expand-arrows-alt"></i> 158 m²</span></div>
+          <div class="action-buttons-row"><a href="tel:+251922785816" class="btn-call btn-action">Call</a><a href="mailto:lamrothabtamu2524@gmail.com" class="btn-email btn-action">Email</a><a href="https://t.me/LamrotHabtamu" class="btn-telegram btn-action">Telegram</a></div>
+          <input type="radio" name="details-group" id="toggle-p19" class="detail-toggle-chk"><label for="toggle-p19" class="lbl-toggle-details">View Details</label>
+          <div class="expandable-details-content"><div class="inner-details-box"><p class="detail-price-tag">Price: 16,850,000 ETB</p></div></div>
+        </div>
+      </div>
+
+      <div class="property-card">
+        <img src="Aware1.jpg" alt="Aware Apartment" class="property-img">
+        <div class="property-info">
+          <h4 class="property-title">Aware - Elite Family Space</h4>
+          <p class="property-details">Top-tier structural build with reinforced acoustic sound isolation walls.</p>
+          <div class="property-specs"><span><i class="fas fa-bed"></i> 4</span><span><i class="fas fa-bath"></i> 3</span><span><i class="fas fa-expand-arrows-alt"></i> 165 m²</span></div>
+          <div class="action-buttons-row"><a href="tel:+251922785816" class="btn-call btn-action">Call</a><a href="mailto:lamrothabtamu2524@gmail.com" class="btn-email btn-action">Email</a><a href="https://t.me/LamrotHabtamu" class="btn-telegram btn-action">Telegram</a></div>
+          <input type="radio" name="details-group" id="toggle-p20" class="detail-toggle-chk"><label for="toggle-p20" class="lbl-toggle-details">View Details</label>
+          <div class="expandable-details-content"><div class="inner-details-box"><p class="detail-price-tag">Price: 17,600,000 ETB</p></div></div>
+        </div>
+      </div>
+
+      <div class="property-card">
+        <img src="Aware1.jpg" alt="Aware Apartment" class="property-img">
+        <div class="property-info">
+          <h4 class="property-title">Aware - Signature Elite Suite</h4>
+          <p class="property-details">Luxury finishes offering an immersive upscale residential layout style.</p>
+          <div class="property-specs"><span><i class="fas fa-bed"></i> 4</span><span><i class="fas fa-bath"></i> 4</span><span><i class="fas fa-expand-arrows-alt"></i> 170 m²</span></div>
+          <div class="action-buttons-row"><a href="tel:+251922785816" class="btn-call btn-action">Call</a><a href="mailto:lamrothabtamu2524@gmail.com" class="btn-email btn-action">Email</a><a href="https://t.me/LamrotHabtamu" class="btn-telegram btn-action">Telegram</a></div>
+          <input type="radio" name="details-group" id="toggle-p21" class="detail-toggle-chk"><label for="toggle-p21" class="lbl-toggle-details">View Details</label>
+          <div class="expandable-details-content"><div class="inner-details-box"><p class="detail-price-tag">Price: 18,150,000 ETB</p></div></div>
+        </div>
+      </div>
+
+      <div class="property-card">
+        <img src="Aware1.jpg" alt="Aware Apartment" class="property-img">
+        <div class="property-info">
+          <h4 class="property-title">Aware - Presidential Residence</h4>
+          <p class="property-details">Stunning spacious arrangement matching top-line luxury parameters accurately.</p>
+          <div class="property-specs"><span><i class="fas fa-bed"></i> 4</span><span><i class="fas fa-bath"></i> 4</span><span><i class="fas fa-expand-arrows-alt"></i> 182 m²</span></div>
+          <div class="action-buttons-row"><a href="tel:+251922785816" class="btn-call btn-action">Call</a><a href="mailto:lamrothabtamu2524@gmail.com" class="btn-email btn-action">Email</a><a href="https://t.me/LamrotHabtamu" class="btn-telegram btn-action">Telegram</a></div>
+          <input type="radio" name="details-group" id="toggle-p22" class="detail-toggle-chk"><label for="toggle-p22" class="lbl-toggle-details">View Details</label>
+          <div class="expandable-details-content"><div class="inner-details-box"><p class="detail-price-tag">Price: 19,450,000 ETB</p></div></div>
+        </div>
+      </div>
+
+      <div class="property-card">
+        <img src="Aware1.jpg" alt="Aware Apartment" class="property-img">
+        <div class="property-info">
+          <h4 class="property-title">Aware - Imperial Grand Penthouse</h4>
+          <p class="property-details">The pinnacle crown jewel floor plan design with custom master interior modules.</p>
+          <div class="property-specs"><span><i class="fas fa-bed"></i> 5</span><span><i class="fas fa-bath"></i> 5</span><span><i class="fas fa-expand-arrows-alt"></i> 212 m²</span></div>
+          <div class="action-buttons-row"><a href="tel:+251922785816" class="btn-call btn-action">Call</a><a href="mailto:lamrothabtamu2524@gmail.com" class="btn-email btn-action">Email</a><a href="https://t.me/LamrotHabtamu" class="btn-telegram btn-action">Telegram</a></div>
+          <input type="radio" name="details-group" id="toggle-p23" class="detail-toggle-chk"><label for="toggle-p23" class="lbl-toggle-details">View Details</label>
+          <div class="expandable-details-content"><div class="inner-details-box"><p class="detail-price-tag">Price: 22,600,000 ETB</p></div></div>
         </div>
       </div>
 
@@ -1069,37 +1170,26 @@
   <section class="about-section" id="about">
     <h3 class="section-title">About Us</h3>
     <div class="about-split-container">
-      
       <div class="about-column">
         <p>Welcome to Lamrot Properties. We specialize in providing high-end, premium real estate choices tailored to match an exceptional standard of living. Our absolute dedication ensures that whether you are looking for luxurious residential options or a premium business office layout, we source spaces that reflect luxury, functionality, and outstanding architectural craftsmanship.</p>
       </div>
-
       <div class="about-divider"></div>
-
       <div class="about-column">
         <p>ወደ ላምሮት ፕሮፐርቲስ በደህና መጡ። እኛ ከፍተኛ ደረጃ ያላቸውን እና የቅንጦት መኖሪያ ቤቶችን እንዲሁም ምቹ የንግድ ቢሮዎችን በማቅረብ ላይ እንሰራለን። የእርስዎ ፍላጎት የቅንጦት መኖሪያም ሆነ ዘመናዊ የንግድ ቦታ፣ የእርስዎን የአኗኗር ዘይቤ የሚመጥኑ፣ ጥራታቸውን የጠበቁ እና አስደናቂ የስነ-ህንፃ ጥበብ ያረፈባቸውን ቦታዎች በጥንቃቤ መርጠን እናቀርባለን።</p>
       </div>
-
     </div>
   </section>
 
   <footer class="main-footer">
     <div class="footer-container">
-      
       <div class="footer-contacts">
-        <a href="tel:+251922785816" class="contact-item">
-          <i class="fas fa-phone-alt"></i> +251 922 785 816
-        </a>
-        <a href="mailto:lamrothabtamu2524@gmail.com" class="contact-item">
-          <i class="fas fa-envelope"></i> lamrothabtamu2524@gmail.com
-        </a>
+        <a href="tel:+251922785816" class="contact-item"><i class="fas fa-phone-alt"></i> +251 922 785 816</a>
+        <a href="mailto:lamrothabtamu2524@gmail.com" class="contact-item"><i class="fas fa-envelope"></i> lamrothabtamu2524@gmail.com</a>
       </div>
-
       <div class="footer-logo-brand">
         <div class="lp-monogram">LP</div>
         <p class="footer-credits">&copy; 2026 LAMROT PROPERTIES. All Rights Reserved.</p>
       </div>
-
     </div>
   </footer>
 
@@ -1107,27 +1197,20 @@
     const mobileMenuCheckbox = document.getElementById('menu-toggle-open');
     const resetDetailsRadio = document.getElementById('close-all-details');
 
-    // 1. Automatically close mobile menu when any navigation link is clicked
     document.querySelectorAll('.nav-links a').forEach(link => {
-      link.addEventListener('click', () => {
-        mobileMenuCheckbox.checked = false;
-      });
+      link.addEventListener('click', () => { mobileMenuCheckbox.checked = false; });
     });
 
-    // 2. Automatically close open Property Details when user clicks outside cards
     document.addEventListener('click', (e) => {
       if (!e.target.closest('.property-card') && !e.target.closest('.lbl-toggle-details')) {
         resetDetailsRadio.checked = true;
       }
     });
 
-    // 3. Close open drawers on deep scroll movement to prevent visual blockage
     let scrollTimeout;
     window.addEventListener('scroll', () => {
       clearTimeout(scrollTimeout);
-      scrollTimeout = setTimeout(() => {
-        resetDetailsRadio.checked = true; 
-      }, 250);
+      scrollTimeout = setTimeout(() => { resetDetailsRadio.checked = true; }, 400);
     });
   </script>
 
