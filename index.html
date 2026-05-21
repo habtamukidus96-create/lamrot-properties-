@@ -579,13 +579,17 @@
       letter-spacing: 1px;
     }
 
-    /* RESPONSIVE MOBILE OVERRIDES */
+    /* RESPONSIVE TABLET OVERRIDES */
     @media only screen and (max-width: 950px) {
-      .listings-grid, .view-more-checkbox:checked ~ .hidden-listings-wrapper {
+      .listings-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .view-more-checkbox:checked ~ .hidden-listings-wrapper {
         grid-template-columns: repeat(2, 1fr);
       }
     }
 
+    /* RESPONSIVE MOBILE OVERRIDES */
     @media only screen and (max-width: 650px) {
       .navbar {
         padding: 15px 15px;
@@ -706,9 +710,15 @@
         height: auto;
       }
 
-      .listings-grid, .view-more-checkbox:checked ~ .hidden-listings-wrapper {
+      .listings-grid {
         grid-template-columns: 1fr;
         gap: 25px;
+      }
+
+      /* FIXED OVERRIDE: Forces hidden compartment grid into single continuous mobile view layout */
+      .view-more-checkbox:checked ~ .hidden-listings-wrapper {
+        grid-template-columns: 1fr !important;
+        gap: 25px !important;
       }
 
       .about-split-container {
@@ -923,7 +933,7 @@
         <div class="property-info">
           <h4 class="property-title">Ayat 49 - Executive 3 Bedroom Suite</h4>
           <p class="property-details">Stunning metropolitan residential layout featuring beautiful natural illumination.</p>
-          <div class="property-specs"><span><i class="fas fa-bed"></i> Bed: 3</span><span><i class="fas fa-bath"></i> Bath: 2</span><span><i class="fas fa-expand-arrows-alt"></i> 146 m²</span></div>
+          <div class="property-specs"><span><i class="fas fa-bed"></i> Bed: 3</span><span><i class="fas fa-bath"></i> Bed: 2</span><span><i class="fas fa-expand-arrows-alt"></i> 146 m²</span></div>
           <div class="action-buttons-row">
             <a href="tel:+251922785816" class="btn-call btn-action">Call</a>
             <a href="mailto:lamrothabtamu2524@gmail.com" class="btn-email btn-action">Email</a>
@@ -951,7 +961,7 @@
       </div>
 
       <div class="property-card">
-        <img src="sarbet.jpg" alt="Sarbet Apartment" class="property-img">
+        <img src="sarbet.jpg" alt="Sarbet Apartment Layout" class="property-img">
         <div class="property-info">
           <h4 class="property-title">Sarbet - Premium 2 Bedroom Option</h4>
           <p class="property-details">Comfortable, sleek contemporary finish designed beautifully for urban residential layouts.</p>
@@ -967,7 +977,7 @@
       </div>
 
       <div class="property-card">
-        <img src="sarbet.jpg" alt="Sarbet Residence" class="property-img">
+        <img src="sarbet.jpg" alt="Sarbet Luxury Residence Layout" class="property-img">
         <div class="property-info">
           <h4 class="property-title">Sarbet - Luxury 3 Bedroom Residence</h4>
           <p class="property-details">High-tier spacious residential unit combining superior architectural craftsmanship.</p>
