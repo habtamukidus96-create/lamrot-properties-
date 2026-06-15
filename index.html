@@ -1377,6 +1377,129 @@
       scrollTimeout = setTimeout(() => { resetDetailsRadio.checked = true; }, 400);
     });
   </script>
+<!-- LAMROT AI ASSISTANT -->
 
+<style>
+#chatBtn{
+position:fixed;
+bottom:20px;
+right:20px;
+width:60px;
+height:60px;
+border-radius:50%;
+background:#9bd82c;
+color:#03140a;
+font-size:28px;
+display:flex;
+align-items:center;
+justify-content:center;
+cursor:pointer;
+z-index:9999;
+font-weight:bold;
+box-shadow:0 4px 15px rgba(0,0,0,.4);
+}
+
+#chatBox{
+display:none;
+position:fixed;
+bottom:90px;
+right:20px;
+width:320px;
+background:#061d11;
+border:1px solid #9bd82c;
+border-radius:12px;
+padding:15px;
+z-index:9999;
+color:white;
+}
+
+#chatBox h3{
+color:#9bd82c;
+margin-bottom:10px;
+}
+
+#chatBox input,
+#chatBox textarea{
+width:100%;
+padding:10px;
+margin-bottom:10px;
+border:none;
+border-radius:6px;
+}
+
+#chatBox button{
+width:100%;
+padding:12px;
+background:#9bd82c;
+border:none;
+border-radius:6px;
+cursor:pointer;
+font-weight:bold;
+}
+</style>
+
+<div id="chatBtn">💬</div>
+
+<div id="chatBox">
+<h3>Lamrot AI Assistant</h3>
+
+<p style="font-size:13px;margin-bottom:10px;">
+Tell me what property you're looking for and I'll send your request directly to Lamrot Properties.
+</p>
+
+<input type="text" id="leadName" placeholder="Your Name">
+
+<input type="text" id="leadPhone" placeholder="Phone Number">
+
+<input type="text" id="leadBudget" placeholder="Budget">
+
+<input type="text" id="leadArea" placeholder="Preferred Area">
+
+<textarea id="leadMessage"
+placeholder="Tell us what property you need"></textarea>
+
+<button onclick="sendLead()">
+Send Inquiry
+</button>
+</div>
+
+<script>
+
+document.getElementById("chatBtn").onclick=function(){
+const box=document.getElementById("chatBox");
+box.style.display=
+box.style.display==="block"
+?"none":"block";
+};
+
+function sendLead(){
+
+let name=document.getElementById("leadName").value;
+let phone=document.getElementById("leadPhone").value;
+let budget=document.getElementById("leadBudget").value;
+let area=document.getElementById("leadArea").value;
+let message=document.getElementById("leadMessage").value;
+
+let text=
+"🏠 NEW LEAD%0A%0A"+
+"Name: "+name+"%0A"+
+"Phone: "+phone+"%0A"+
+"Budget: "+budget+"%0A"+
+"Area: "+area+"%0A"+
+"Request: "+message;
+
+window.open(
+"https://wa.me/251922785816?text="+text,
+"_blank"
+);
+
+window.location.href=
+"mailto:lamrothabtamu2524@gmail.com"+
+"?subject=New Real Estate Lead"+
+"&body="+text;
+}
+</script>
+
+<!-- END LAMROT AI ASSISTANT -->
 </body>
 </html>
